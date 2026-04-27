@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme { 
+  --color-main-50: #fbf8eb;
+  --color-main-100: #f5efcd;
+  --color-main-200: #ecde9f;
+  --color-main-300: #e1c868;
+  --color-main-400: #d4af37;
+  --color-main-500: #c39c2b;
+  --color-main-600: #a57b22;
+  --color-main-700: #825c1e;
+  --color-main-800: #6c4b1f;
+  --color-main-900: #5c4020;
+  --color-main-950: #35220e;
+}
+
+@theme { 
+  --color-details-50: #eafffe;
+  --color-details-100: #cbffff;
+  --color-details-200: #9efeff;
+  --color-details-300: #5bfbff;
+  --color-details-400: #00f5ff;
+  --color-details-500: #00d9e5;
+  --color-details-600: #00adc0;
+  --color-details-700: #03889b;
+  --color-details-800: #0d6d7d;
+  --color-details-900: #105969;
+  --color-details-950: #033c49;
+}
+
+@theme { 
+  --color-tertiary-50: #fafafa;
+  --color-tertiary-100: #f5f5f5;
+  --color-tertiary-200: #e6e6e6;
+  --color-tertiary-300: #d6d6d6;
+  --color-tertiary-400: #a5a5a5;
+  --color-tertiary-500: #767676;
+  --color-tertiary-600: #575757;
+  --color-tertiary-700: #434343;
+  --color-tertiary-800: #292929;
+  --color-tertiary-900: #292929;
+  --color-tertiary-950: #050505;
+}
+
+
+
+@layer utilities {
+  /* Primary Button: Solid Gold with a Glow Lift */
+  .btn-primary {
+    @apply relative overflow-hidden px-8 py-3 rounded-xl font-bold uppercase tracking-wider transition-all duration-400;
+    @apply bg-main-300 text-main-950 border border-main-400;
+    @apply shadow-[0_4px_0_0_var(--color-main-600)];
+    
+    /* Hover Effect: Lifts up, glow intensifies, and a light-sweep passes through */
+    &:hover {
+      @apply -translate-y-1 bg-main-200 cursor-pointer;
+      @apply shadow-[0_10px_20px_-5px_rgba(225,200,104,0.4)];
+    }
+
+    /* Active click effect */
+    &:active {
+      @apply translate-y-0 shadow-[0_2px_0_0_var(--color-main-600)];
+    }
+  }
+
+  /* Secondary Button: Dark & Minimal with 'Details' Cyan Border */
+  .btn-secondary {
+    @apply relative px-8 py-3 rounded-xl font-bold uppercase tracking-wider transition-all duration-500 overflow-hidden;
+    @apply bg-tertiary-950 text-tertiary-100 border border-details-800 cursor-pointer;
+    
+    /* Hover Effect: Border glows and the text color shifts to the detail cyan */
+    &:hover {
+      @apply border-details-300 text-details-300;
+      @apply shadow-[0_0_15px_rgba(91,251,255,0.2)];
+      
+      /* Adding a subtle pseudo-element 'shimmer' */
+      &::after {
+        content: '';
+        @apply absolute inset-0 bg-details-400/5 opacity-100;
+      }
+    }
+
+    &::after {
+      content: '';
+      @apply absolute inset-0 bg-details-400/0 transition-opacity duration-500;
+    }
+  }
+}
