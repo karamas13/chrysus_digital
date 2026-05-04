@@ -1,26 +1,19 @@
-import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Cormorant_Garamond } from "next/font/google";
-import "./globals.css";
-import Navigation from "@/components/sections/Navigation";
-import Footer from "@/components/sections/Footer";
+// app/layout.tsx
+import { Inter, Space_Grotesk } from 'next/font/google';
+import './globals.css';
+import Navigation from '@/components/sections/Navigation';
+import Footer from '@/components/sections/Footer';
 
-// Premium Sans-Serif for body and technical UI (Cyan details)
-const sans = Plus_Jakarta_Sans({ 
-  subsets: ["latin"], 
-  variable: '--font-sans' 
+// 1. Initialize the fonts
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter', // This creates a CSS variable
 });
 
-// Elegant Serif for high-end headings (Gold accents)
-const serif = Cormorant_Garamond({ 
-  subsets: ["latin"], 
-  weight: ['400', '600', '700'],
-  variable: '--font-serif' 
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'],
+  variable: '--font-space',
 });
-
-export const metadata: Metadata = {
-  title: "Chrysus Digital | Bespoke Web Experiences",
-  description: "Transforming digital presence into gold through high-end design and performance.",
-};
 
 export default function RootLayout({
   children,
@@ -28,13 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${sans.variable} ${serif.variable} font-sans bg-tertiary-950 text-tertiary-100 antialiased`}>
-        {/* You would place your Navigation component here so it stays on every page */}
+    // 2. Add both font variables to the html class
+    <html lang="gr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans"> 
         <Navigation />
-        
         <main>{children}</main>
-        
         <Footer />
       </body>
     </html>
