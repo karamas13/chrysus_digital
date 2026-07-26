@@ -82,27 +82,27 @@ export default function Hero() {
               </motion.p>
             </div>
 
-            <motion.div 
-              variants={revealVariants} 
-              className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
-            >
+             <motion.div 
+               variants={revealVariants} 
+               className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
+             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-  {/* Πρώτο κουμπί -> Οδηγεί στο CTA */}
-  <a 
-    href="#cta" 
-    className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
-  >
-    ΚΛΕΙΣΤΕ ΔΩΡΕΑΝ DEMO
-  </a>
-
-  {/* Δεύτερο κουμπί -> Οδηγεί στο Process */}
-  <a 
-    href="#process" 
-    className="btn-secondary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
-  >
-    ΔΕΙΤΕ ΠΩΣ ΛΕΙΤΟΥΡΓΕΙ
-  </a>
-</div>
+               {/* Πρώτο κουμπί -> Οδηγεί στο CTA */}
+               <a 
+                 href="#cta" 
+                 className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
+               >
+                 ΚΛΕΙΣΤΕ ΔΩΡΕΑΝ DEMO
+               </a>
+             
+               {/* Δεύτερο κουμπί -> Οδηγεί στο Process */}
+               <a 
+                 href="/pricing" 
+                 className="btn-secondary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
+               >
+                 ΔΙΑΘΕΣΙΜΑ ΠΑΚΕΤΑ
+               </a>
+             </div>
             </motion.div>
             
             <motion.p 

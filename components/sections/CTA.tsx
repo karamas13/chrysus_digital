@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function CTA() {
@@ -24,7 +23,7 @@ export default function CTA() {
             ΕΚΔΗΛΩΣΗ ΕΝΔΙΑΦΕΡΟΝΤΟΣ
           </h2>
           
-          <h3 className="text-4xl md:text-7xl font-black text-white tracking-tight mb-8 leading-[1.1]">
+          <h3 className="text-3xl md:text-7xl font-black text-white tracking-tight mb-8 leading-[1.1]">
             ΕΚΣΥΓΧΡΟΝΙΣΤΕ ΤΟ <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-main-200 via-main-400 to-main-700">
               ΙΑΤΡΕΙΟ ΣΑΣ

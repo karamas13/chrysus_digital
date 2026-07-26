@@ -6,10 +6,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const navLinks = [
-  { name: 'Λειτουργια', href: '#features' },
-  { name: 'Εγκατασταση', href: '#process' },
-  { name: 'Υπηρεσιες', href: '#services' },
-  { name: 'Επικοινωνια', href: '#cta' },
+  { name: 'Λειτουργια', href: '/#features' },
+  { name: 'Πακετα', href: '/pricing' }, 
+  { name: 'Εγκατασταση', href: '/#process' },
+  { name: 'Υπηρεσιες', href: '/#services' },
+  { name: 'Επικοινωνια', href: '/#cta' },
 ];
 
 export default function Navigation() {

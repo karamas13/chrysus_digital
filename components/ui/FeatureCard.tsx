@@ -21,7 +21,7 @@ export default function FeatureCard({ title, description, icon, index }: Feature
       className="group text-center relative p-8 rounded-3xl border border-tertiary-800 bg-tertiary-900/40 backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-details-500/50 hover:shadow-[0_20px_40px_-15px_rgba(0,245,255,0.1)]"
     >
       {/* Animated Gradient Background on Hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-main-400/5 to-details-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-linear-to-br from-main-400/5 to-details-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
       {/* Icon Wrapper */}
       <div className="relative mb-6 inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-tertiary-800 border border-tertiary-700 text-main-400 group-hover:text-details-300 group-hover:border-details-500/30 transition-all duration-500">
