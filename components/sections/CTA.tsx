@@ -30,8 +30,7 @@ export default function CTA() {
             </span>
           </h3>
 
-          <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-            Δεχόμαστε περιορισμένο αριθμό νέων συνεργασιών για το 2026.
+          <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">           
             Εξασφαλίστε την αυτόματη εξυπηρέτηση των ασθενών σας σήμερα.
             Αφήστε μας το email σας και θα επικοινωνήσουμε μαζί σας σύντομα!
           </p>
@@ -49,10 +48,7 @@ export default function CTA() {
                 >
                   ΕΝΔΙΑΦΕΡΟΜΑΙ
                 </button>
-              </form>
-              <p className="mt-4 text-[10px] text-zinc-500 uppercase tracking-[0.2em] font-mono">
-                Περιορισμένη διαθεσιμότητα για το Q2 2026
-              </p>
+              </form>           
           </div>
 
           {/* Decorative Corner Neon Lines - Cyan Shadow applied */}

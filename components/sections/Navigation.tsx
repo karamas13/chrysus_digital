@@ -6,11 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const navLinks = [
-  { name: 'Λειτουργια', href: '/#features' },
   { name: 'Πακετα', href: '/pricing' }, 
-  { name: 'Εγκατασταση', href: '/#process' },
-  { name: 'Υπηρεσιες', href: '/#services' },
-  { name: 'Επικοινωνια', href: '/#cta' },
+  { name: 'Υπηρεσιες', href: '/services' },
+  { name: 'Επικοινωνία', href: '/services' },
+  { name: 'AboutUS', href: '/services' },
 ];
 
 export default function Navigation() {
@@ -24,7 +23,7 @@ export default function Navigation() {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-100 px-4 md:px-6 py-4">
+    <nav className="absolute top-0 left-0 w-full z-100 px-4 md:px-6 py-4 ">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -55,7 +54,7 @@ export default function Navigation() {
               <Link 
                 key={link.name} 
                 href={link.href}
-                className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 hover:text-main-400 transition-colors whitespace-nowrap"
+                className="text-[13px] font-bold uppercase tracking-[0.3em] text-zinc-400 hover:text-main-400 transition-colors whitespace-nowrap"
               >
                 {link.name}
               </Link>

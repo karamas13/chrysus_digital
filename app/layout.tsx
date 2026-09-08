@@ -1,15 +1,13 @@
-"use client"
-
-// app/layout.tsx
 import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
+import PageTransition from '@/components/PageTransition'; // 1. Import του PageTransition
 
-// 1. Initialize the fonts
+// Initialize fonts
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-inter', // This creates a CSS variable
+  variable: '--font-inter',
 });
 
 const spaceGrotesk = Space_Grotesk({ 
@@ -23,11 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // 2. Add both font variables to the html class
-    <html lang="gr" className={`${inter.variable} ${spaceGrotesk.variable}`}>
-      <body className="font-sans"> 
+    <html lang="el" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+      <body className="font-sans bg-[#030303] text-white antialiased"> 
         <Navigation />
-        <main>{children}</main>
+        
+        {/* 2. Wrapping του main με το PageTransition */}
+        <PageTransition>
+          <main>{children}</main>
+        </PageTransition>
+
         <Footer />
       </body>
     </html>
