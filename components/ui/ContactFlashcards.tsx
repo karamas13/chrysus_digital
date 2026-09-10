@@ -15,12 +15,83 @@ export default function ContactFlashcards() {
     message: "",
   });
 
-  const nextStep = () => {
-    if (step === 1 && formData.fullName.trim() === "") return;
-    if (step === 2) {
-      if (contactMethod === "phone" && formData.phone.trim() === "") return;
-      if (contactMethod === "email" && formData.email.trim() === "") return;
+  // State για μηνύματα σφάλματος
+  const [errors, setErrors] = useState({
+    fullName: "",
+    phone: "",
+    email: "",
+  });
+
+  // --- SAFEGUARDS & HANDLERS ---
+
+  // 1. Safeguard για το Όνομα (Μόνο γράμματα & κενά, max 50 χαρακτήρες)
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Επιτρέπει Ελληνικούς, Λατινικούς χαρακτήρες, τόνο, διαλυτικά και κενά
+    const sanitized = value.replace(/[^a-zA-Za-zA-Zα-ωΑ-ΩάέήίόύώΆΈΉΊΌΎΏϊϋΐΰ\s]/g, "");
+
+    if (sanitized.length <= 50) {
+      setFormData((prev) => ({ ...prev, fullName: sanitized }));
+      if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: "" }));
     }
+  };
+
+  // 2. Safeguard για το Τηλέφωνο (Μόνο αριθμοί, max 10 ψηφία)
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const onlyNums = e.target.value.replace(/\D/g, ""); // Αφαιρεί τα πάντα εκτός από ψηφία
+
+    if (onlyNums.length <= 10) {
+      setFormData((prev) => ({ ...prev, phone: onlyNums }));
+      if (errors.phone) setErrors((prev) => ({ ...prev, phone: "" }));
+    }
+  };
+
+  // Helper για έλεγχο εγκυρότητας Email
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  // Validation πριν το πέρασμα στο επόμενο βήμα
+  const validateStep1 = () => {
+    const trimmed = formData.fullName.trim();
+    if (!trimmed) {
+      setErrors((prev) => ({ ...prev, fullName: "Το όνομα είναι υποχρεωτικό." }));
+      return false;
+    }
+    if (trimmed.length < 2) {
+      setErrors((prev) => ({ ...prev, fullName: "Το όνομα πρέπει να έχει τουλάχιστον 2 χαρακτήρες." }));
+      return false;
+    }
+    return true;
+  };
+
+  const validateStep2 = () => {
+    if (contactMethod === "phone") {
+      // Ελληνικό τηλέφωνο (κινητό/σταθερό): Ακριβώς 10 ψηφία και να ξεκινάει από 2, 6, ή 8
+      if (formData.phone.length !== 10) {
+        setErrors((prev) => ({ ...prev, phone: "Το τηλέφωνο πρέπει να αποτελείται από 10 ψηφία." }));
+        return false;
+      }
+      if (!/^[268]/.test(formData.phone)) {
+        setErrors((prev) => ({ ...prev, phone: "Πρέπει να ξεκινάει από 2, 6 ή 8." }));
+        return false;
+      }
+    }
+
+    if (contactMethod === "email") {
+      if (!formData.email.trim() || !isValidEmail(formData.email)) {
+        setErrors((prev) => ({ ...prev, email: "Παρακαλώ εισάγετε μια έγκυρη διεύθυνση email." }));
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const nextStep = () => {
+    if (step === 1 && !validateStep1()) return;
+    if (step === 2 && !validateStep2()) return;
+
     setStep((prev) => (prev < 3 ? ((prev + 1) as 1 | 2 | 3) : prev));
   };
 
@@ -30,6 +101,8 @@ export default function ContactFlashcards() {
 
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
+    if (!validateStep1() || !validateStep2()) return;
+
     setStatus("submitting");
 
     try {
@@ -42,11 +115,11 @@ export default function ContactFlashcards() {
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           to: "contact@chrysusdigital.gr",
-          subject: `Νέο Αίτημα Επικοινωνίας: ${formData.fullName}`,
-          from_name: formData.fullName,
+          subject: `Νέο Αίτημα Επικοινωνίας: ${formData.fullName.trim()}`,
+          from_name: formData.fullName.trim(),
           contact_method: contactMethod,
           phone: formData.phone,
-          email: formData.email,
+          email: formData.email.trim(),
           message: formData.message || "Δεν συμπληρώθηκε επιπλέον μήνυμα",
         }),
       });
@@ -64,6 +137,7 @@ export default function ContactFlashcards() {
   const resetForm = () => {
     setStep(1);
     setStatus("idle");
+    setErrors({ fullName: "", phone: "", email: "" });
     setFormData({
       fullName: "",
       email: "",
@@ -74,7 +148,7 @@ export default function ContactFlashcards() {
 
   return (
     <div className="w-full max-w-lg mx-auto relative text-left">
-      <div className="bg-[#09090b]/90 border border-zinc-800 p-6 sm:p-8 rounded-3xl backdrop-blur-xl shadow-2xl relative overflow-hidden min-h-[380px] flex flex-col justify-between">
+      <div className="bg-[#09090b]/90 border border-zinc-800 p-6 sm:p-8 rounded-3xl backdrop-blur-xl shadow-2xl relative overflow-hidden min-h-95 flex flex-col justify-between">
         
         {/* STATE: SUBMITTING */}
         {status === "submitting" && (
@@ -114,6 +188,31 @@ export default function ContactFlashcards() {
           </motion.div>
         )}
 
+        {/* STATE: ERROR */}
+        {status === "error" && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex flex-col items-center justify-center my-auto py-8 text-center"
+          >
+            <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6 text-red-400 text-2xl shadow-lg shadow-red-500/10">
+              ✕
+            </div>
+            <h3 className="text-2xl font-serif font-bold text-white mb-2">
+              Κάτι πήγε στραβά!
+            </h3>
+            <p className="text-xs text-zinc-400 font-light mb-8 max-w-xs">
+              Υπήρξε πρόβλημα κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά.
+            </p>
+            <button
+              onClick={() => setStatus("idle")}
+              className="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold rounded-xl transition duration-200"
+            >
+              Δοκιμάστε ξανά
+            </button>
+          </motion.div>
+        )}
+
         {/* STATE: IDLE / FORM FLASHCARDS */}
         {status === "idle" && (
           <>
@@ -148,20 +247,25 @@ export default function ContactFlashcards() {
                       Πώς σας λένε;
                     </h2>
                     <p className="text-xs text-zinc-400 font-light">
-                      Βάλτε μόνο το όνομά σας για να ξεκινήσουμε.
+                      Βάλτε το ονοματεπώνυμό σας για να ξεκινήσουμε.
                     </p>
 
-                    <div className="relative pt-4">
-                      <span className="absolute left-4 top-7 text-zinc-500 text-sm">👤</span>
+                    <div className="relative pt-2">
+                      <span className="absolute left-4 top-5 text-zinc-500 text-sm">👤</span>
                       <input
                         type="text"
                         autoFocus
                         placeholder="π.χ. Ιωάννης Παπαδόπουλος"
                         value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        onChange={handleNameChange}
                         onKeyDown={(e) => e.key === "Enter" && nextStep()}
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-main-500/60 transition"
+                        className={`w-full bg-zinc-950 border ${
+                          errors.fullName ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
+                        } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
                       />
+                      {errors.fullName && (
+                        <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.fullName}</p>
+                      )}
                     </div>
                   </motion.div>
                 )}
@@ -188,7 +292,10 @@ export default function ContactFlashcards() {
                     <div className="grid grid-cols-2 gap-3 pt-2">
                       <button
                         type="button"
-                        onClick={() => setContactMethod("phone")}
+                        onClick={() => {
+                          setContactMethod("phone");
+                          setErrors((prev) => ({ ...prev, phone: "", email: "" }));
+                        }}
                         className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border ${
                           contactMethod === "phone"
                             ? "bg-main-400 text-black border-main-400"
@@ -199,7 +306,10 @@ export default function ContactFlashcards() {
                       </button>
                       <button
                         type="button"
-                        onClick={() => setContactMethod("email")}
+                        onClick={() => {
+                          setContactMethod("email");
+                          setErrors((prev) => ({ ...prev, phone: "", email: "" }));
+                        }}
                         className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border ${
                           contactMethod === "email"
                             ? "bg-main-400 text-black border-main-400"
@@ -215,25 +325,49 @@ export default function ContactFlashcards() {
                         {contactMethod === "phone" ? "📞" : "✉"}
                       </span>
                       {contactMethod === "phone" ? (
-                        <input
-                          type="tel"
-                          autoFocus
-                          placeholder="π.χ. +30 69XX XXX XXX"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          onKeyDown={(e) => e.key === "Enter" && nextStep()}
-                          className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-main-500/60 transition"
-                        />
+                        <div>
+                          <input
+                            type="tel"
+                            autoFocus
+                            inputMode="numeric"
+                            maxLength={10}
+                            placeholder="69XXXXXXXX"
+                            value={formData.phone}
+                            onChange={handlePhoneChange}
+                            onKeyDown={(e) => e.key === "Enter" && nextStep()}
+                            className={`w-full bg-zinc-950 border ${
+                              errors.phone ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
+                            } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
+                          />
+                          {errors.phone && (
+                            <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.phone}</p>
+                          )}
+                        </div>
                       ) : (
-                        <input
-                          type="email"
-                          autoFocus
-                          placeholder="π.χ. doctor@example.gr"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          onKeyDown={(e) => e.key === "Enter" && nextStep()}
-                          className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-main-500/60 transition"
-                        />
+                        <div>
+                          <input
+                            type="email"
+                            autoFocus
+                            autoCapitalize="none"
+                            autoComplete="email"
+                            autoCorrect="off"
+                            placeholder="π.χ. name@example.gr"
+                            value={formData.email}
+                            onChange={(e) => {
+                              // Αφαιρεί τυχόν κενά διαστήματα που μπαίνουν κατά λάθος
+                              const cleanEmail = e.target.value.trim().toLowerCase();
+                              setFormData((prev) => ({ ...prev, email: cleanEmail }));
+                              if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
+                            }}
+                            onKeyDown={(e) => e.key === "Enter" && nextStep()}
+                            className={`w-full bg-zinc-950 border ${
+                              errors.email ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
+                            } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
+                          />
+                          {errors.email && (
+                            <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.email}</p>
+                          )}
+                        </div>
                       )}
                     </div>
                   </motion.div>
@@ -262,6 +396,7 @@ export default function ContactFlashcards() {
                       <textarea
                         rows={3}
                         autoFocus
+                        maxLength={500}
                         placeholder="Γράψτε μας λίγες λεπτομέρειες..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -290,8 +425,8 @@ export default function ContactFlashcards() {
                   type="button"
                   onClick={nextStep}
                   disabled={
-                    (step === 1 && !formData.fullName.trim()) ||
-                    (step === 2 && contactMethod === "phone" && !formData.phone.trim()) ||
+                    (step === 1 && formData.fullName.trim().length < 2) ||
+                    (step === 2 && contactMethod === "phone" && formData.phone.length !== 10) ||
                     (step === 2 && contactMethod === "email" && !formData.email.trim())
                   }
                   className="px-6 py-3 rounded-xl bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-main-400/10 ml-auto"
