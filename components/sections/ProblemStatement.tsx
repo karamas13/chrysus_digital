@@ -30,7 +30,7 @@ export default function ProblemSection() {
   return (
     <section className="relative py-5 px-6 bg-[#030303] overflow-hidden">
       {/* Background Subtle Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-red-950/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 bg-red-800/10 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
@@ -55,8 +55,7 @@ export default function ProblemSection() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.5 }}
-              whileHover={{ y: -5 }}
+              transition={{ delay: index * 0.15, duration: 0.5 }}              
               className="group relative rounded-2xl bg-zinc-900/30 border border-zinc-800/80 hover:border-red-500/30 p-8 flex flex-col justify-between transition-all duration-300 backdrop-blur-sm"
             >
               {/* Top Row: Number & Red Glow */}

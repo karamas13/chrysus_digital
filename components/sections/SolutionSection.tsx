@@ -19,7 +19,7 @@ const agentFeatures = [
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             ΚΑΤΑΣΤΑΣΗ: ΑΝΑΛΗΨΗ ΚΛΗΣΗΣ
           </span>
-          <span className="text-[10px] text-zinc-500">ZADARMA PBX</span>
+          <span className="text-[10px] text-zinc-500"></span>
         </div>
         <div className="flex items-center gap-1.5 pt-1">
           <div className="w-1 h-4 bg-amber-500/80 rounded-full animate-bounce" />
@@ -143,16 +143,16 @@ const agentFeatures = [
   {
     id: "06",
     tag: "ΤΗΛΕΦΩΝΙΚΟ ΟΙΚΟΣΥΣΤΗΜΑ",
-    title: "Zadarma PBX & Πολυ-Εταιρική Υποδομή",
+    title: "ΑΥΤΟΜΑΤΙΣΜΟΙ & Πολυ-Εταιρική Υποδομή",
     description:
-      "Σύνδεση μέσω Zadarma PBX με υποστήριξη για 1 έως 3 γιατρούς/ημερολόγια, πολλαπλά εσωτερικά γραμματείας (Softphones) και παράλληλες AI κλήσεις.",
+      "Σύνδεση αυτοματισμών με υποστήριξη για πολλαπλούς γιατρούς/ημερολόγια, πολλαπλά εσωτερικά γραμματείας (Softphones) και παράλληλες AI κλήσεις.",
     benefit:
       "Πλήρης επεκτασιμότητα που προσαρμόζεται από μικρά έως πολυμελή ιατρεία.",
     accent: "cyan",
     visual: (
       <div className="bg-zinc-950 p-4 rounded-xl border border-cyan-500/20 text-xs font-mono space-y-2">
         <div className="flex justify-between items-center text-cyan-400 text-[11px]">
-          <span>ZADARMA PBX / EXTENSIONS</span>
+          <span>ΑΥΤΟΜΑΤΙΣΜΟΙ / EXTENSIONS</span>
           <span className="text-emerald-400">ΕΝΕΡΓΟ</span>
         </div>
         <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 justify-center py-1">
@@ -165,7 +165,7 @@ const agentFeatures = [
           </span>
           <span>↔</span>
           <span className="bg-cyan-950 text-cyan-300 px-2 py-1 rounded border border-cyan-800">
-            Google Cal
+            Calendar
           </span>
         </div>
       </div>

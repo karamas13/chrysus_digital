@@ -49,7 +49,7 @@ export default function Hero() {
               <motion.div variants={revealVariants} className="flex items-center gap-4">
                 <div className="h-px w-8 bg-main-500 hidden md:block" />
                 <span className="text-main-400 font-mono text-[10px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
-                    Chrysus Project 2026
+                    Chrysus Project 
                 </span>
               </motion.div>
             </div>
@@ -114,67 +114,85 @@ export default function Hero() {
           </motion.div>
 
           {/* --- RIGHT: SIDEBAR (English gimmick preserved) --- */}
-          <div className="lg:col-span-5 w-full">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1 }}
-              className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
-            >
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                <span className="text-[10px] font-mono text-main-400 tracking-widest">AGENT_LOG_05</span>
-                <span className="text-[10px] font-mono text-zinc-500">LIVE // 12ms</span>
-              </div>
+           <div className="lg:col-span-5 w-full">
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 1 }}
+    className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
+  >
+    {/* Top Header Log Info */}
+    <div className="flex justify-between items-center border-b border-white/10 pb-4">
+      <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
+        LOGS // AI_AGENT_24/7
+      </span>
+      <span className="text-[10px] font-mono text-zinc-500 flex items-center gap-1.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        ΕΝΕΡΓΟ // 12ms
+      </span>
+    </div>
 
-              <div className="space-y-4">
-                {[
-                  { label: "Patient Triage", val: "ACTIVE", color: "text-main-400" },
-                  { label: "Calendar Sync", val: "CONNECTED", color: "text-green-500" },
-                  { label: "NLP Engine", val: "V4.2_STABLE", color: "text-zinc-300" }
-                ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center group">
-                    <span className="text-[11px] text-zinc-500 font-mono uppercase tracking-tighter">{item.label}</span>
-                    <span className={`text-[10px] font-bold font-mono ${item.color}`}>{item.val}</span>
-                  </div>
-                ))}
-              </div>
+    {/* Live Status Indicators */}
+    <div className="space-y-3">
+      {[
+        { label: "ΔΙΑΛΟΓΗ ΠΕΡΙΣΤΑΤΙΚΩΝ", val: "ΕΝΕΡΓΗ", color: "text-amber-400" },
+        { label: "CALENDAR", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
+        { label: "ALERTS", val: "ΑΝΑΜΟΝΗ (24/7)", color: "text-cyan-400" },
+      ].map((item, i) => (
+        <div key={i} className="flex justify-between items-center group">
+          <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-tighter">
+            {item.label}
+          </span>
+          <span className={`text-[10px] font-bold font-mono ${item.color}`}>
+            {item.val}
+          </span>
+        </div>
+      ))}
+    </div>
 
-              <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-32 md:h-36 overflow-hidden relative">
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 to-transparent z-10 pointer-events-none" />
-                <motion.div
-                  animate={{ y: [0, -140] }}
-                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-                  className="space-y-2"
-                >
-                  {[
-                    "Incoming call: +30 210...",
-                    "Analyzing patient intent...",
-                    "Emergency level: LOW",
-                    "Query: Tooth extraction price",
-                    "Responding via NLP...",
-                    "Booking suggested for Tuesday",
-                    "Call resolved: 142s",
-                    "Ready for next query..."
-                  ].map((log, i) => (
-                    <p key={i} className="text-[10px] font-mono text-main-300/60 lowercase">
-                      {`> ${log}`}
-                    </p>
-                  ))}
-                </motion.div>
-              </div>
+    {/* Terminal / Live Console Feed */}
+    <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-36 md:h-40 overflow-hidden relative">
+      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/30 z-10 pointer-events-none" />
+      <motion.div
+        animate={{ y: [0, -180] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+        className="space-y-2"
+      >
+        {[
+          "Εισερχόμενη κλήση: +30 210 ...",
+          "Αναγνώριση πρόθεσης ασθενούς...",
+          "Έλεγχος διαθεσιμότητας Google Calendar",
+          "Ερώτημα: Κόστος καθαρισμού & Ραντεβού",
+          "Εκτέλεση κανόνων ιατρείου (Διάρκεια: 30λ)",
+          "Καταχώρηση ραντεβού: Τρίτη 17:30",
+          "Επιβεβαίωση κλήσης: Ολοκληρώθηκε (84s)",
+          "Νέα κλήση: Εκτός ωραρίου",
+          "Ανίχνευση επείγοντος: Πόνος / Οίδημα",
+          "Αποστολή Telegram Alert στον γιατρό...",
+          "Έτοιμο για την επόμενη κλήση...",
+        ].map((log, i) => (
+          <p key={i} className="text-[10px] font-mono text-amber-300/70 lowercase">
+            {`> ${log}`}
+          </p>
+        ))}
+      </motion.div>
+    </div>
 
-              <div className="pt-2">
-                <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div 
-                    animate={{ width: ["0%", "100%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="h-full bg-main-500" 
-                  />
-                </div>
-                <p className="text-[8px] font-mono text-zinc-600 mt-2 text-center uppercase tracking-widest">AI Throughput Stable</p>
-              </div>
-            </motion.div>
-          </div>
+    {/* Bottom Activity Bar */}
+    <div className="pt-2">
+      <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
+        <motion.div 
+          animate={{ width: ["0%", "100%"] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="h-full bg-amber-500" 
+        />
+      </div>
+      <p className="text-[8px] font-mono text-zinc-500 mt-2 text-center uppercase tracking-widest">
+        ΑΥΤΟΜΑΤΗ ΕΞΥΠΗΡΕΤΗΣΗ // ΣΤΑΘΕΡΗ ΣΥΝΔΕΣΗ
+      </p>
+    </div>
+  </motion.div>
+</div>
 
         </div>
       </motion.div>
