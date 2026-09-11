@@ -83,17 +83,27 @@ export default function FAQSection() {
   };
 
   return (
-    <section className="relative py-28 px-6 bg-[#030303] text-zinc-100 overflow-hidden">
-      {/* Subtle Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-100 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" />
+    <section 
+      id="faq"
+      aria-labelledby="faq-heading"
+      className="relative py-28 px-6 bg-[#030303] text-zinc-100 overflow-hidden"
+    >
+      {/* Background Ambient Glow (Decorative) */}
+      <div 
+        aria-hidden="true" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-100 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
+      />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3 py-1 rounded-full bg-amber-950/40 border border-amber-500/20">
+        <header className="text-center mb-16">
+          <span className="inline-block text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3 py-1 rounded-full bg-amber-950/40 border border-amber-500/20">
             ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ)
           </span>
-          <h2 className="text-3xl sm:text-5xl font-black text-white mt-6 mb-4 tracking-tight font-serif leading-tight">
+          <h2 
+            id="faq-heading"
+            className="text-3xl sm:text-5xl font-black text-white mt-6 mb-4 tracking-tight font-serif leading-tight"
+          >
             Όσα θέλετε να γνωρίζετε για τον{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
               A.I. Agent
@@ -102,35 +112,46 @@ export default function FAQSection() {
           <p className="text-zinc-400 text-sm sm:text-base font-light max-w-2xl mx-auto">
             Απαντήσεις στις κυριότερες απορίες σχετικά με τη λειτουργία, την ασφάλεια, την τηλεφωνία Zadarma και τη διασύνδεση με το ιατρείο σας.
           </p>
-        </div>
+        </header>
 
-        {/* Filter Categories */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        {/* Filter Categories (Tablist) */}
+        <div 
+          role="tablist" 
+          aria-label="Κατηγορίες ερωτήσεων" 
+          className="flex flex-wrap justify-center gap-2 mb-12"
+        >
           {[
             { id: "all", label: "Όλες" },
             { id: "λειτουργια", label: "Λειτουργία" },
             { id: "τεχνικα", label: "Τεχνικά & Τηλεφωνία" },
             { id: "ασφαλεια", label: "Ασφάλεια & GDPR" },
             { id: "τιμολογηση", label: "Πλάνα & Χρέωση" },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-full text-xs font-mono transition-all duration-300 border cursor-pointer ${
-                activeTab === tab.id
-                  ? "bg-amber-500 text-black border-amber-400 font-bold shadow-lg shadow-amber-500/20"
-                  : "bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          ].map((tab) => {
+            const isSelected = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2 rounded-full text-xs font-mono transition-all duration-300 border cursor-pointer ${
+                  isSelected
+                    ? "bg-amber-500 text-black border-amber-400 font-bold shadow-lg shadow-amber-500/20"
+                    : "bg-zinc-900/60 text-zinc-400 border-zinc-800 hover:border-zinc-700 hover:text-white"
+                }`}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Accordion List */}
         <div className="space-y-4">
           {filteredFaqs.map((faq) => {
             const isOpen = openId === faq.id;
+            const buttonId = `faq-btn-${faq.id}`;
+            const panelId = `faq-panel-${faq.id}`;
 
             return (
               <div
@@ -141,27 +162,44 @@ export default function FAQSection() {
                     : "bg-zinc-900/30 border-zinc-800/80 hover:border-zinc-700"
                 }`}
               >
-                <button
-                  onClick={() => toggleFAQ(faq.id)}
-                  className="w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
-                >
-                  <span className="text-base sm:text-lg font-bold text-white leading-snug">
-                    {faq.question}
-                  </span>
-                  <div
-                    className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-transform duration-300 ${
-                      isOpen
-                        ? "bg-amber-500 text-black border-amber-400 rotate-180"
-                        : "bg-zinc-800 text-zinc-400 border-zinc-700"
-                    }`}
+                <h3>
+                  <button
+                    id={buttonId}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => toggleFAQ(faq.id)}
+                    className="w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                   >
-                    ↓
-                  </div>
-                </button>
+                    <span className="text-base sm:text-lg font-bold text-white leading-snug">
+                      {faq.question}
+                    </span>
+                    <div
+                      aria-hidden="true"
+                      className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-transform duration-300 ${
+                        isOpen
+                          ? "bg-amber-500 text-black border-amber-400 rotate-180"
+                          : "bg-zinc-800 text-zinc-400 border-zinc-700"
+                      }`}
+                    >
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </button>
+                </h3>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -177,6 +215,7 @@ export default function FAQSection() {
             );
           })}
         </div>
+
       </div>
     </section>
   );

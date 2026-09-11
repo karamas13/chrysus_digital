@@ -15,7 +15,6 @@ export default function ContactFlashcards() {
     message: "",
   });
 
-  // State για μηνύματα σφάλματος
   const [errors, setErrors] = useState({
     fullName: "",
     phone: "",
@@ -24,10 +23,8 @@ export default function ContactFlashcards() {
 
   // --- SAFEGUARDS & HANDLERS ---
 
-  // 1. Safeguard για το Όνομα (Μόνο γράμματα & κενά, max 50 χαρακτήρες)
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Επιτρέπει Ελληνικούς, Λατινικούς χαρακτήρες, τόνο, διαλυτικά και κενά
     const sanitized = value.replace(/[^a-zA-Za-zA-Zα-ωΑ-ΩάέήίόύώΆΈΉΊΌΎΏϊϋΐΰ\s]/g, "");
 
     if (sanitized.length <= 50) {
@@ -36,9 +33,8 @@ export default function ContactFlashcards() {
     }
   };
 
-  // 2. Safeguard για το Τηλέφωνο (Μόνο αριθμοί, max 10 ψηφία)
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const onlyNums = e.target.value.replace(/\D/g, ""); // Αφαιρεί τα πάντα εκτός από ψηφία
+    const onlyNums = e.target.value.replace(/\D/g, "");
 
     if (onlyNums.length <= 10) {
       setFormData((prev) => ({ ...prev, phone: onlyNums }));
@@ -46,12 +42,10 @@ export default function ContactFlashcards() {
     }
   };
 
-  // Helper για έλεγχο εγκυρότητας Email
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  // Validation πριν το πέρασμα στο επόμενο βήμα
   const validateStep1 = () => {
     const trimmed = formData.fullName.trim();
     if (!trimmed) {
@@ -67,7 +61,6 @@ export default function ContactFlashcards() {
 
   const validateStep2 = () => {
     if (contactMethod === "phone") {
-      // Ελληνικό τηλέφωνο (κινητό/σταθερό): Ακριβώς 10 ψηφία και να ξεκινάει από 2, 6, ή 8
       if (formData.phone.length !== 10) {
         setErrors((prev) => ({ ...prev, phone: "Το τηλέφωνο πρέπει να αποτελείται από 10 ψηφία." }));
         return false;
@@ -155,9 +148,11 @@ export default function ContactFlashcards() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
+            role="status"
+            aria-live="polite"
             className="flex flex-col items-center justify-center my-auto py-12 text-center"
           >
-            <div className="w-10 h-10 border-2 border-main-400 border-t-transparent rounded-full animate-spin mb-6" />
+            <div className="w-10 h-10 border-2 border-main-400 border-t-transparent rounded-full animate-spin mb-6" aria-hidden="true" />
             <h3 className="text-xl font-serif font-bold text-white mb-2">Αποστολή...</h3>
             <p className="text-xs font-mono text-zinc-400">Παρακαλώ περιμένετε.</p>
           </motion.div>
@@ -168,9 +163,11 @@ export default function ContactFlashcards() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
+            role="status"
+            aria-live="polite"
             className="flex flex-col items-center justify-center my-auto py-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-main-400/10 border border-main-400/30 flex items-center justify-center mb-6 text-main-400 text-2xl shadow-lg shadow-main-400/10">
+            <div className="w-16 h-16 rounded-full bg-main-400/10 border border-main-400/30 flex items-center justify-center mb-6 text-main-400 text-2xl shadow-lg shadow-main-400/10" aria-hidden="true">
               ✓
             </div>
             <h3 className="text-2xl font-serif font-bold text-white mb-2">
@@ -180,8 +177,9 @@ export default function ContactFlashcards() {
               Θα επικοινωνήσουμε μαζί σας σύντομα.
             </p>
             <button
+              type="button"
               onClick={resetForm}
-              className="w-full py-3.5 bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold rounded-xl transition duration-200"
+              className="w-full py-3.5 bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold rounded-xl transition duration-200 cursor-pointer"
             >
               Επιστροφή στην αρχική
             </button>
@@ -193,9 +191,11 @@ export default function ContactFlashcards() {
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
+            role="alert"
+            aria-live="assertive"
             className="flex flex-col items-center justify-center my-auto py-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6 text-red-400 text-2xl shadow-lg shadow-red-500/10">
+            <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6 text-red-400 text-2xl shadow-lg shadow-red-500/10" aria-hidden="true">
               ✕
             </div>
             <h3 className="text-2xl font-serif font-bold text-white mb-2">
@@ -205,8 +205,9 @@ export default function ContactFlashcards() {
               Υπήρξε πρόβλημα κατά την αποστολή. Παρακαλώ δοκιμάστε ξανά.
             </p>
             <button
+              type="button"
               onClick={() => setStatus("idle")}
-              className="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold rounded-xl transition duration-200"
+              className="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-white font-mono text-xs font-bold rounded-xl transition duration-200 cursor-pointer"
             >
               Δοκιμάστε ξανά
             </button>
@@ -215,14 +216,23 @@ export default function ContactFlashcards() {
 
         {/* STATE: IDLE / FORM FLASHCARDS */}
         {status === "idle" && (
-          <>
+          <form onSubmit={handleSubmit} className="flex flex-col justify-between flex-1">
             <div>
               {/* Progress Bar & Counter */}
-              <div className="flex items-center justify-between gap-2 mb-6">
+              <div className="flex items-center justify-between gap-2 mb-6" aria-label={`Βήμα ${step} από 3`}>
                 <div className="flex gap-2 flex-1">
-                  <div className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 1 ? "bg-main-400" : "bg-zinc-800"}`} />
-                  <div className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 2 ? "bg-main-400" : "bg-zinc-800"}`} />
-                  <div className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 3 ? "bg-main-400" : "bg-zinc-800"}`} />
+                  <div 
+                    aria-current={step === 1 ? "step" : undefined}
+                    className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 1 ? "bg-main-400" : "bg-zinc-800"}`} 
+                  />
+                  <div 
+                    aria-current={step === 2 ? "step" : undefined}
+                    className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 2 ? "bg-main-400" : "bg-zinc-800"}`} 
+                  />
+                  <div 
+                    aria-current={step === 3 ? "step" : undefined}
+                    className={`h-1.5 rounded-full flex-1 transition-all duration-300 ${step >= 3 ? "bg-main-400" : "bg-zinc-800"}`} 
+                  />
                 </div>
                 <span className="text-xs font-mono font-medium text-zinc-500 pl-2">
                   {step} / 3
@@ -243,28 +253,41 @@ export default function ContactFlashcards() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-main-400 font-bold block">
                       ΒΗΜΑ 1
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
                       Πώς σας λένε;
-                    </h2>
+                    </h3>
                     <p className="text-xs text-zinc-400 font-light">
                       Βάλτε το ονοματεπώνυμό σας για να ξεκινήσουμε.
                     </p>
 
                     <div className="relative pt-2">
-                      <span className="absolute left-4 top-5 text-zinc-500 text-sm">👤</span>
+                      <label htmlFor="fullName" className="sr-only">
+                        Ονοματεπώνυμο
+                      </label>
+                      <span className="absolute left-4 top-5 text-zinc-500 text-sm" aria-hidden="true">👤</span>
                       <input
+                        id="fullName"
                         type="text"
-                        autoFocus
+                        autoComplete="name"
                         placeholder="π.χ. Ιωάννης Παπαδόπουλος"
                         value={formData.fullName}
                         onChange={handleNameChange}
-                        onKeyDown={(e) => e.key === "Enter" && nextStep()}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            nextStep();
+                          }
+                        }}
+                        aria-invalid={!!errors.fullName}
+                        aria-describedby={errors.fullName ? "fullName-error" : undefined}
                         className={`w-full bg-zinc-950 border ${
                           errors.fullName ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
                         } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
                       />
                       {errors.fullName && (
-                        <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.fullName}</p>
+                        <p id="fullName-error" className="text-red-400 text-xs mt-1.5 font-mono">
+                          {errors.fullName}
+                        </p>
                       )}
                     </div>
                   </motion.div>
@@ -282,9 +305,9 @@ export default function ContactFlashcards() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-main-400 font-bold block">
                       ΒΗΜΑ 2
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
                       Πώς να επικοινωνήσουμε;
-                    </h2>
+                    </h3>
                     <p className="text-xs text-zinc-400 font-light">
                       Δώστε ένα τηλέφωνο ή ένα email.
                     </p>
@@ -296,13 +319,14 @@ export default function ContactFlashcards() {
                           setContactMethod("phone");
                           setErrors((prev) => ({ ...prev, phone: "", email: "" }));
                         }}
-                        className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border ${
+                        aria-pressed={contactMethod === "phone"}
+                        className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border cursor-pointer ${
                           contactMethod === "phone"
                             ? "bg-main-400 text-black border-main-400"
                             : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700"
                         }`}
                       >
-                        <span>📞</span> Τηλέφωνο
+                        <span aria-hidden="true">📞</span> Τηλέφωνο
                       </button>
                       <button
                         type="button"
@@ -310,62 +334,87 @@ export default function ContactFlashcards() {
                           setContactMethod("email");
                           setErrors((prev) => ({ ...prev, phone: "", email: "" }));
                         }}
-                        className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border ${
+                        aria-pressed={contactMethod === "email"}
+                        className={`flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-mono font-bold transition border cursor-pointer ${
                           contactMethod === "email"
                             ? "bg-main-400 text-black border-main-400"
                             : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-700"
                         }`}
                       >
-                        <span>✉</span> Email
+                        <span aria-hidden="true">✉</span> Email
                       </button>
                     </div>
 
                     <div className="relative pt-2">
-                      <span className="absolute left-4 top-5 text-zinc-500 text-sm">
+                      <span className="absolute left-4 top-5 text-zinc-500 text-sm" aria-hidden="true">
                         {contactMethod === "phone" ? "📞" : "✉"}
                       </span>
                       {contactMethod === "phone" ? (
                         <div>
+                          <label htmlFor="phone" className="sr-only">
+                            Αριθμός Τηλεφώνου
+                          </label>
                           <input
+                            id="phone"
                             type="tel"
-                            autoFocus
                             inputMode="numeric"
+                            autoComplete="tel"
                             maxLength={10}
                             placeholder="69XXXXXXXX"
                             value={formData.phone}
                             onChange={handlePhoneChange}
-                            onKeyDown={(e) => e.key === "Enter" && nextStep()}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                nextStep();
+                              }
+                            }}
+                            aria-invalid={!!errors.phone}
+                            aria-describedby={errors.phone ? "phone-error" : undefined}
                             className={`w-full bg-zinc-950 border ${
                               errors.phone ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
                             } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
                           />
                           {errors.phone && (
-                            <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.phone}</p>
+                            <p id="phone-error" className="text-red-400 text-xs mt-1.5 font-mono">
+                              {errors.phone}
+                            </p>
                           )}
                         </div>
                       ) : (
                         <div>
+                          <label htmlFor="email" className="sr-only">
+                            Διεύθυνση Email
+                          </label>
                           <input
+                            id="email"
                             type="email"
-                            autoFocus
                             autoCapitalize="none"
                             autoComplete="email"
                             autoCorrect="off"
                             placeholder="π.χ. name@example.gr"
                             value={formData.email}
                             onChange={(e) => {
-                              // Αφαιρεί τυχόν κενά διαστήματα που μπαίνουν κατά λάθος
                               const cleanEmail = e.target.value.trim().toLowerCase();
                               setFormData((prev) => ({ ...prev, email: cleanEmail }));
                               if (errors.email) setErrors((prev) => ({ ...prev, email: "" }));
                             }}
-                            onKeyDown={(e) => e.key === "Enter" && nextStep()}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                e.preventDefault();
+                                nextStep();
+                              }
+                            }}
+                            aria-invalid={!!errors.email}
+                            aria-describedby={errors.email ? "email-error" : undefined}
                             className={`w-full bg-zinc-950 border ${
                               errors.email ? "border-red-500/80 focus:border-red-500" : "border-zinc-800 focus:border-main-500/60"
                             } rounded-xl pl-11 pr-4 py-3.5 text-sm text-white placeholder-zinc-600 focus:outline-none transition`}
                           />
                           {errors.email && (
-                            <p className="text-red-400 text-xs mt-1.5 font-mono">{errors.email}</p>
+                            <p id="email-error" className="text-red-400 text-xs mt-1.5 font-mono">
+                              {errors.email}
+                            </p>
                           )}
                         </div>
                       )}
@@ -385,17 +434,20 @@ export default function ContactFlashcards() {
                     <span className="text-[10px] font-mono uppercase tracking-widest text-main-400 font-bold block">
                       ΒΗΜΑ 3
                     </span>
-                    <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                    <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
                       Θέλετε να μας πείτε κάτι ακόμα;
-                    </h2>
+                    </h3>
                     <p className="text-xs text-zinc-400 font-light">
                       Προαιρετικό — μπορείτε και να το παραλείψετε.
                     </p>
 
                     <div className="relative pt-2">
+                      <label htmlFor="message" className="sr-only">
+                        Επιπλέον μήνυμα
+                      </label>
                       <textarea
+                        id="message"
                         rows={3}
-                        autoFocus
                         maxLength={500}
                         placeholder="Γράψτε μας λίγες λεπτομέρειες..."
                         value={formData.message}
@@ -414,7 +466,7 @@ export default function ContactFlashcards() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="px-5 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 font-mono text-xs font-bold hover:bg-zinc-900 transition"
+                  className="px-5 py-3 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 font-mono text-xs font-bold hover:bg-zinc-900 transition cursor-pointer"
                 >
                   Πίσω
                 </button>
@@ -429,21 +481,20 @@ export default function ContactFlashcards() {
                     (step === 2 && contactMethod === "phone" && formData.phone.length !== 10) ||
                     (step === 2 && contactMethod === "email" && !formData.email.trim())
                   }
-                  className="px-6 py-3 rounded-xl bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-main-400/10 ml-auto"
+                  className="px-6 py-3 rounded-xl bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-main-400/10 ml-auto cursor-pointer"
                 >
                   Συνέχεια →
                 </button>
               ) : (
                 <button
-                  type="button"
-                  onClick={() => handleSubmit()}
-                  className="px-6 py-3 rounded-xl bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold uppercase transition shadow-lg shadow-main-400/20 ml-auto"
+                  type="submit"
+                  className="px-6 py-3 rounded-xl bg-main-400 hover:bg-main-300 text-black font-mono text-xs font-bold uppercase transition shadow-lg shadow-main-400/20 ml-auto cursor-pointer"
                 >
                   Αποστολή
                 </button>
               )}
             </div>
-          </>
+          </form>
         )}
       </div>
 

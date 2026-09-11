@@ -3,7 +3,15 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useRef } from "react";
 
-const steps = [
+interface ProcessStep {
+  number: string;
+  tag: string;
+  title: string;
+  description: string;
+  highlight: string;
+}
+
+const steps: ProcessStep[] = [
   {
     number: "01",
     tag: "ΣΤΑΔΙΟ 1: ΧΑΡΤΟΓΡΑΦΗΣΗ",
@@ -23,7 +31,7 @@ const steps = [
   {
     number: "03",
     tag: "ΣΤΑΔΙΟ 3: ΔΟΚΙΜΕΣ",
-    title: "Εκπαίδευση & Εσωτερικός Έλεγχος",
+    title: "Εκπαιδευση & Εσωτερικός Έλεγχος",
     description:
       "Εκπαιδεύουμε την AI στις ιδιαιτερότητες του ιατρείου. Διεξάγουμε εξαντλητικές δοκιμές σε σενάρια κρατήσεων, ακυρώσεων, επειγόντων περιστατικών και εκτός ωραρίου κλήσεων.",
     highlight: "Εγγυημένη ασφάλεια και ορθότητα πριν την έναρξη.",
@@ -34,7 +42,7 @@ const steps = [
     title: "Κλήση Αποδοχής & Πλήρης Λειτουργία",
     description:
       "Πραγματοποιούμε μαζί την τελική δοκιμαστική κλήση αποδοχής. Ενεργοποιείται η εκτροπή από τον δημόσιο αριθμό σας και ο Ψηφιακός Ρεσεψιονίστ αναλαμβάνει 24/7.",
-    highlight: "Άμεση κάλυψη 24/7 χωρίς απώλεια κλήσεων 2].",
+    highlight: "Άμεση κάλυψη 24/7 χωρίς απώλεια κλήσεων.",
   },
 ];
 
@@ -55,20 +63,30 @@ export default function Process() {
   return (
     <section
       ref={containerRef}
-      className="py-28 bg-[#030303] relative overflow-hidden"
       id="process"
+      aria-labelledby="process-heading"
+      className="py-28 bg-[#030303] relative overflow-hidden"
     >
-      {/* Background Ambient Glows */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-150 h-150 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-72 h-72 bg-amber-600/5 blur-[120px] rounded-full pointer-events-none" />
+      {/* Background Ambient Glows (Decorative) */}
+      <div 
+        aria-hidden="true" 
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-150 h-150 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
+      />
+      <div 
+        aria-hidden="true" 
+        className="absolute bottom-10 left-10 w-72 h-72 bg-amber-600/5 blur-[120px] rounded-full pointer-events-none" 
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-24">
-          <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 backdrop-blur-md">
+        <header className="text-center max-w-3xl mx-auto mb-24">
+          <span className="inline-block text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 backdrop-blur-md">
             Η ΕΓΚΑΤΑΣΤΑΣΗ
           </span>
-          <h2 className="text-4xl sm:text-6xl font-black text-white tracking-tight mt-6 mb-4 font-serif leading-tight">
+          <h2 
+            id="process-heading"
+            className="text-4xl sm:text-6xl font-black text-white tracking-tight mt-6 mb-4 font-serif leading-tight"
+          >
             Πώς Τίθεται Σε <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
               Πλήρη Λειτουργία
@@ -77,30 +95,34 @@ export default function Process() {
           <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
             Βήμα προς βήμα η διαδικασία ενσωμάτωσης του Ψηφιακού Ρεσεψιονίστ στο ιατρείο σας, με απόλυτη ασφάλεια και μηδενική αναστάτωση.
           </p>
-        </div>
+        </header>
 
         {/* Timeline Structure */}
         <div className="relative max-w-5xl mx-auto">
           {/* Background Vertical Line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-zinc-800 via-zinc-800/80 to-transparent -translate-x-1/2" />
+          <div 
+            aria-hidden="true" 
+            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-linear-to-b from-zinc-800 via-zinc-800/80 to-transparent -translate-x-1/2" 
+          />
 
           {/* Glowing Active Progress Line */}
           <motion.div
+            aria-hidden="true"
             style={{ scaleY }}
             className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-linear-to-b from-amber-400 via-amber-500 to-amber-300 -translate-x-1/2 shadow-[0_0_18px_rgba(245,158,11,0.9)] origin-top z-10"
           />
 
-          {/* Steps Loop */}
-          <div className="space-y-16 md:space-y-24">
+          {/* Steps Ordered List */}
+          <ol className="space-y-16 md:space-y-24 list-none p-0 m-0">
             {steps.map((step, index) => (
-              <div
-                key={index}
+              <li
+                key={step.number}
                 className={`relative flex flex-col md:flex-row items-center justify-between ${
                   index % 2 !== 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
                 {/* Interactive Card */}
-                <motion.div
+                <motion.article
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
@@ -127,15 +149,18 @@ export default function Process() {
 
                   {/* Highlight Box */}
                   <div className="pt-3.5 border-t border-zinc-800/80 flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                    <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
                     <span className="text-[11px] font-medium text-amber-300/90 tracking-wide">
                       {step.highlight}
                     </span>
                   </div>
-                </motion.div>
+                </motion.article>
 
                 {/* Timeline Center Node (Dot) */}
-                <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center top-8 md:top-1/2 md:-translate-y-1/2 z-20">
+                <div 
+                  aria-hidden="true" 
+                  className="absolute left-6 md:left-1/2 -translate-x-1/2 w-10 h-10 flex items-center justify-center top-8 md:top-1/2 md:-translate-y-1/2 z-20"
+                >
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -147,10 +172,10 @@ export default function Process() {
                   </motion.div>
                 </div>
 
-                <div className="hidden md:block w-[44%]" />
-              </div>
+                <div aria-hidden="true" className="hidden md:block w-[44%]" />
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </div>
     </section>

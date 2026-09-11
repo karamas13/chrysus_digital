@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { useRef } from "react";
+import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -18,17 +19,18 @@ export default function Hero() {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 } 
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 } 
     }
   };
 
   return (
-    <div 
+    <section 
       ref={containerRef}
+      aria-label="Εισαγωγή"
       className="relative min-h-screen w-full bg-[#030303] flex items-start md:items-center justify-center overflow-hidden px-6 pt-32 pb-20 md:py-12 perspective-1000 font-serif"
     >
       {/* ATMOSPHERE */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-150 h-150 bg-main-600/10 blur-[120px] rounded-full" />
       </div>
 
@@ -45,163 +47,157 @@ export default function Hero() {
             animate="visible"
             className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left"
           >
+            {/* Tagline */}
             <div className="overflow-hidden inline-block">
               <motion.div variants={revealVariants} className="flex items-center gap-4">
                 <div className="h-px w-8 bg-main-500 hidden md:block" />
-                <span className="text-main-400 font-mono text-[10px] md:text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
-                    Chrysus Project 
+                <span className="text-main-400 font-mono text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
+                  Chrysus Project // AI Call Reception
                 </span>
               </motion.div>
             </div>
 
-            <div className="space-y-2">
-              <div className="overflow-hidden">
-                <motion.h1 
-                  variants={revealVariants} 
-                  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter"
-                >
-                  ΨΗΦΙΑΚΗ
-                </motion.h1>
-              </div>
-              <div className="overflow-hidden">
-                <motion.h1 
-                  variants={revealVariants} 
-                  className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800 leading-[1.1] tracking-tighter"
-                >
-                   ΥΠΟΔΟΧΗ AI
-                </motion.h1>
-              </div>
+            {/* ΕΝΙΑΙΟ H1 - ΔΙΟΡΘΩΣΗ SEO */}
+            <div className="overflow-hidden">
+              <motion.h1 
+                variants={revealVariants} 
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter"
+              >
+                ΨΗΦΙΑΚΗ{" "}
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800">
+                  ΥΠΟΔΟΧΗ AI
+                </span>
+              </motion.h1>
             </div>
 
+            {/* Description με Keywords για SEO */}
             <div className="overflow-hidden">
               <motion.p 
                 variants={revealVariants} 
-                className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-zinc-500 font-light leading-relaxed px-2 md:px-0"
+                className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-zinc-400 font-light leading-relaxed px-2 md:px-0"
               >
-                <span className="text-white font-medium">AI τηλεφωνική υποδοχή για οδοντιατρεία</span> που απαντά 24/7, καταγράφει σωστά τα αιτήματα των ασθενών και βοηθά το ιατρείο σας να μη χάνει νέες ευκαιρίες.
+                <strong className="text-white font-medium">
+                  AI τηλεφωνική γραμματεία για οδοντιατρεία
+                </strong>{" "}
+                που απαντά 24/7, καταγράφει τα ραντεβού των ασθενών και διασφαλίζει ότι το ιατρείο σας δε χάνει καμία κλήση.
               </motion.p>
             </div>
 
-             <motion.div 
-               variants={revealVariants} 
-               className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
-             >
+            {/* CTA Buttons */}
+            <motion.div 
+              variants={revealVariants} 
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
+            >
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-               {/* Πρώτο κουμπί -> Οδηγεί στο CTA */}
-               <a 
-                 href="#cta" 
-                 className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
-               >
-                 ΚΛΕΙΣΤΕ ΔΩΡΕΑΝ DEMO
-               </a>
-             
-               {/* Δεύτερο κουμπί -> Οδηγεί στο Process */}
-               <a 
-                 href="/pricing" 
-                 className="btn-secondary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
-               >
-                 ΔΙΑΘΕΣΙΜΑ ΠΑΚΕΤΑ
-               </a>
-             </div>
+                <a 
+                  href="#cta" 
+                  aria-label="Κλείστε δωρεάν demo για την AI γραμματεία"
+                  className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
+                >
+                  ΚΛΕΙΣΤΕ ΔΩΡΕΑΝ DEMO
+                </a>
+              
+                <Link 
+                  href="/pricing" 
+                  aria-label="Δείτε τα διαθέσιμα πακέτα συνδρομής"
+                  className="btn-secondary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
+                >
+                  ΔΙΑΘΕΣΙΜΑ ΠΑΚΕΤΑ
+                </Link>
+              </div>
             </motion.div>
             
             <motion.p 
               variants={revealVariants}
-              className="text-[10px] md:text-[11px] font-mono text-zinc-600 uppercase tracking-widest pt-2"
+              className="text-[10px] md:text-[11px] font-mono text-zinc-500 uppercase tracking-widest pt-2"
             >
-              Ιδανικό για οδοντιατρεία που θέλουν πιο άμεση εξυπηρέτηση.
+              Ιδανικό για οδοντιατρεία & πολυιατρεία που θέλουν 24/7 αυτόματη εξυπηρέτηση.
             </motion.p>
           </motion.div>
 
-          {/* --- RIGHT: SIDEBAR (English gimmick preserved) --- */}
-           <div className="lg:col-span-5 w-full">
-  <motion.div 
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 1 }}
-    className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
-  >
-    {/* Top Header Log Info */}
-    <div className="flex justify-between items-center border-b border-white/10 pb-4">
-      <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
-        LOGS // AI_AGENT_24/7
-      </span>
-      <span className="text-[10px] font-mono text-zinc-500 flex items-center gap-1.5">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-        ΕΝΕΡΓΟ // 12ms
-      </span>
-    </div>
+          {/* --- RIGHT: SIDEBAR (LOGS DEMO) --- */}
+          <div className="lg:col-span-5 w-full" aria-hidden="true">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
+            >
+              {/* Top Header Log Info */}
+              <div className="flex justify-between items-center border-b border-white/10 pb-4">
+                <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
+                  LOGS // AI_AGENT_24/7
+                </span>
+                <span className="text-[10px] font-mono text-zinc-500 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  ΕΝΕΡΓΟ // 12ms
+                </span>
+              </div>
 
-    {/* Live Status Indicators */}
-    <div className="space-y-3">
-      {[
-        { label: "ΔΙΑΛΟΓΗ ΠΕΡΙΣΤΑΤΙΚΩΝ", val: "ΕΝΕΡΓΗ", color: "text-amber-400" },
-        { label: "CALENDAR", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
-        { label: "ALERTS", val: "ΑΝΑΜΟΝΗ (24/7)", color: "text-cyan-400" },
-      ].map((item, i) => (
-        <div key={i} className="flex justify-between items-center group">
-          <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-tighter">
-            {item.label}
-          </span>
-          <span className={`text-[10px] font-bold font-mono ${item.color}`}>
-            {item.val}
-          </span>
+              {/* Live Status Indicators */}
+              <div className="space-y-3">
+                {[
+                  { label: "ΔΙΑΛΟΓΗ ΠΕΡΙΣΤΑΤΙΚΩΝ", val: "ΕΝΕΡΓΗ", color: "text-amber-400" },
+                  { label: "CALENDAR", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
+                  { label: "ALERTS", val: "ΑΝΑΜΟΝΗ (24/7)", color: "text-cyan-400" },
+                ].map((item, i) => (
+                  <div key={i} className="flex justify-between items-center group">
+                    <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-tighter">
+                      {item.label}
+                    </span>
+                    <span className={`text-[10px] font-bold font-mono ${item.color}`}>
+                      {item.val}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Terminal / Live Console Feed */}
+              <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-36 md:h-40 overflow-hidden relative">
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/30 z-10 pointer-events-none" />
+                <motion.div
+                  animate={{ y: [0, -180] }}
+                  transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                  className="space-y-2"
+                >
+                  {[
+                    "Εισερχόμενη κλήση: +30 210 ...",
+                    "Αναγνώριση πρόθεσης ασθενούς...",
+                    "Έλεγχος διαθεσιμότητας Google Calendar",
+                    "Ερώτημα: Κόστος καθαρισμού & Ραντεβού",
+                    "Εκτέλεση κανόνων ιατρείου (Διάρκεια: 30λ)",
+                    "Καταχώρηση ραντεβού: Τρίτη 17:30",
+                    "Επιβεβαίωση κλήσης: Ολοκληρώθηκε (84s)",
+                    "Νέα κλήση: Εκτός ωραρίου",
+                    "Ανίχνευση επείγοντος: Πόνος / Οίδημα",
+                    "Αποστολή Telegram Alert στον γιατρό...",
+                    "Έτοιμο για την επόμενη κλήση...",
+                  ].map((log, i) => (
+                    <p key={i} className="text-[10px] font-mono text-amber-300/70 lowercase">
+                      {`> ${log}`}
+                    </p>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Bottom Activity Bar */}
+              <div className="pt-2">
+                <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
+                  <motion.div 
+                    animate={{ width: ["0%", "100%"] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                    className="h-full bg-amber-500" 
+                  />
+                </div>
+                <p className="text-[8px] font-mono text-zinc-500 mt-2 text-center uppercase tracking-widest">
+                  ΑΥΤΟΜΑΤΗ ΕΞΥΠΗΡΕΤΗΣΗ // ΣΤΑΘΕΡΗ ΣΥΝΔΕΣΗ
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
         </div>
-      ))}
-    </div>
-
-    {/* Terminal / Live Console Feed */}
-    <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-36 md:h-40 overflow-hidden relative">
-      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/30 z-10 pointer-events-none" />
-      <motion.div
-        animate={{ y: [0, -180] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-        className="space-y-2"
-      >
-        {[
-          "Εισερχόμενη κλήση: +30 210 ...",
-          "Αναγνώριση πρόθεσης ασθενούς...",
-          "Έλεγχος διαθεσιμότητας Google Calendar",
-          "Ερώτημα: Κόστος καθαρισμού & Ραντεβού",
-          "Εκτέλεση κανόνων ιατρείου (Διάρκεια: 30λ)",
-          "Καταχώρηση ραντεβού: Τρίτη 17:30",
-          "Επιβεβαίωση κλήσης: Ολοκληρώθηκε (84s)",
-          "Νέα κλήση: Εκτός ωραρίου",
-          "Ανίχνευση επείγοντος: Πόνος / Οίδημα",
-          "Αποστολή Telegram Alert στον γιατρό...",
-          "Έτοιμο για την επόμενη κλήση...",
-        ].map((log, i) => (
-          <p key={i} className="text-[10px] font-mono text-amber-300/70 lowercase">
-            {`> ${log}`}
-          </p>
-        ))}
       </motion.div>
-    </div>
-
-    {/* Bottom Activity Bar */}
-    <div className="pt-2">
-      <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
-        <motion.div 
-          animate={{ width: ["0%", "100%"] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          className="h-full bg-amber-500" 
-        />
-      </div>
-      <p className="text-[8px] font-mono text-zinc-500 mt-2 text-center uppercase tracking-widest">
-        ΑΥΤΟΜΑΤΗ ΕΞΥΠΗΡΕΤΗΣΗ // ΣΤΑΘΕΡΗ ΣΥΝΔΕΣΗ
-      </p>
-    </div>
-  </motion.div>
-</div>
-
-        </div>
-      </motion.div>
-
-      {/* FOOTER DECOR */}
-      <div className="absolute bottom-10 left-10 right-10 hidden sm:flex justify-between opacity-20">
-        <div className="text-[9px] font-mono text-white tracking-widest">SYSTEM_OK</div>
-        <div className="text-[9px] font-mono text-white tracking-widest uppercase">Encryption: AES-256</div>
-      </div>
-    </div>
+    </section>
   );
 }
