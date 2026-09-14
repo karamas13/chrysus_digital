@@ -7,7 +7,10 @@ import { AnimatePresence } from "framer-motion";
 
 export default function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  
+  // Έλεγχος των διαδρομών (Paths)
   const isWebSection = pathname.includes("/web");
+  const isAutomationsSection = pathname.includes("/automations");
 
   // --- STATE TO TRACK IF THE PAGE JUST OPENED (INITIAL MOUNT) ---
   const [hasMountedOnce, setHasMountedOnce] = useState(false);
@@ -24,9 +27,35 @@ export default function PageTransition({ children }: { children: ReactNode }) {
   }, []); // Run only ONCE on component mount
 
   // --- SAFEGUARDS & DYNAMIC STYLING ---
-  const activeColorClass = isWebSection ? "text-cyan-400" : "text-amber-400";
-  const activeBgGlow = isWebSection ? "bg-cyan-500/15" : "bg-amber-500/15";
-  const activeRing = isWebSection ? "border-cyan-400" : "border-amber-400";
+  const activeColorClass = isAutomationsSection
+    ? "text-emerald-400"
+    : isWebSection
+    ? "text-cyan-400"
+    : "text-amber-400";
+
+  const activeBgGlow = isAutomationsSection
+    ? "bg-emerald-500/15"
+    : isWebSection
+    ? "bg-cyan-500/15"
+    : "bg-amber-500/15";
+
+  const activeRing = isAutomationsSection
+    ? "border-emerald-400"
+    : isWebSection
+    ? "border-cyan-400"
+    : "border-amber-400";
+
+  const activeOuterRing = isAutomationsSection
+    ? "border-emerald-500/20"
+    : isWebSection
+    ? "border-cyan-500/20"
+    : "border-amber-500/20";
+
+  const activeGlowShadow = isAutomationsSection
+    ? "shadow-[0_0_20px_rgba(16,185,129,0.5)]"
+    : isWebSection
+    ? "shadow-[0_0_20px_rgba(6,182,212,0.5)]"
+    : "shadow-[0_0_20px_rgba(212,175,55,0.5)]";
 
   // Define transition times to reuse
   const loaderDuration = 1.5;
@@ -60,19 +89,11 @@ export default function PageTransition({ children }: { children: ReactNode }) {
           {/* Animated Glowing Dual Ring Loader */}
           <div className="relative w-16 h-16 mb-4 flex items-center justify-center">
             {/* Outer Static Subtle Ring */}
-            <div
-              className={`absolute inset-0 rounded-full border ${
-                isWebSection ? "border-cyan-500/20" : "border-amber-500/20"
-              }`}
-            />
+            <div className={`absolute inset-0 rounded-full border ${activeOuterRing}`} />
 
             {/* Spinning Glowing Arc */}
             <div
-              className={`w-16 h-16 rounded-full border-2 border-t-transparent animate-spin ${activeRing} ${
-                isWebSection
-                  ? "shadow-[0_0_20px_rgba(6,182,212,0.5)]"
-                  : "shadow-[0_0_20px_rgba(212,175,55,0.5)]"
-              }`}
+              className={`w-16 h-16 rounded-full border-2 border-t-transparent animate-spin ${activeRing} ${activeGlowShadow}`}
             />
           </div>
 

@@ -16,9 +16,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://chrysusdigital.gr";
 // Πλήρη Metadata για SEO & Social Sharing
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Chrysus Digital | Ψηφιακή Υποδοχή AI για Οδοντιατρεία",
+  title: "Chrysus Digital | Ψηφιακή Υποδοχή AI",
   description:
-    "AI τηλεφωνική υποδοχή για οδοντιατρεία που απαντά 24/7, καταγράφει σωστά τα αιτήματα και αυτοματοποιεί τα ραντεβού.",
+    "AI τηλεφωνική υποδοχή που απαντά 24/7, καταγράφει σωστά τα αιτήματα και αυτοματοποιεί τα ραντεβού.",
   keywords: [
     "AI γραμματέας",
     "οδοντιατρείο AI",
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "αυτοματοποίηση ραντεβού",
     "τηλεφωνική γραμματεία οδοντιατρείου",
     "Chrysus Digital",
+    "Chrysus",
   ],
   alternates: {
     canonical: siteUrl,
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${siteUrl}/og-image.jpg`, // Φροντίστε να υπάρχει εικόνα og-image.jpg στο /public
+        url: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Chrysus Digital - AI Receptionists για Οδοντιατρεία",

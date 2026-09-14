@@ -4,6 +4,45 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
+// Λίστα με εναλλαγή χρωματικών accents & στυλ badges (primary vs secondary)
+const agentFeatures = [
+  {
+    title: "24/7 Αυτόματη Απάντηση Κλήσεων",
+    tag: "AVAILABILITY",
+    variant: "primary", 
+  },
+  {
+    title: "Aμεση Διαλογή Επειγόντων Περιστατικών",
+    tag: "TRIAGE AI",
+    variant: "secondary", 
+  },
+  {
+    title: "Αυτοματισμοί",
+    tag: "AUTOMATIONS",
+    variant: "primary",
+  },
+  {
+    title: "Ανάπτυξη Ιστοσελίδων",
+    tag: "WEB DEVELOPMENT",
+    variant: "secondary",
+  },
+  {
+    title: "Φυσική Ελληνική Φωνή AI",
+    tag: "VOICE AGENT",
+    variant: "primary",
+  },
+  {
+    title: "Μηδενικές Χαμένες Κλήσεις",
+    tag: "PERFORMANCE",
+    variant: "secondary",
+  },
+  {
+    title: "Πλήρης Συμμόρφωση GDPR",
+    tag: "SECURITY",
+    variant: "primary",
+  },
+];
+
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -27,16 +66,17 @@ export default function Hero() {
     <section 
       ref={containerRef}
       aria-label="Εισαγωγή"
-      className="relative min-h-screen w-full bg-[#030303] flex items-start md:items-center justify-center overflow-hidden px-6 pt-32 pb-20 md:py-12 perspective-1000 font-serif"
+      className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-serif"
     >
       {/* ATMOSPHERE */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-150 h-150 bg-main-600/10 blur-[120px] rounded-full" />
       </div>
 
+      {/* MAIN HERO CONTENT */}
       <motion.div 
         style={{ transformStyle: "preserve-3d" }}
-        className="relative z-10 w-full max-w-7xl"
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 my-auto"
       >
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
@@ -57,20 +97,20 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* ΕΝΙΑΙΟ H1 - ΔΙΟΡΘΩΣΗ SEO */}
+            {/* H1 Title */}
             <div className="overflow-hidden">
               <motion.h1 
                 variants={revealVariants} 
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.1] tracking-tighter"
+                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter"
               >
-                ΨΗΦΙΑΚΗ{" "}
+                 ΛΙΓΟΤΕΡΑ ΤΗΛΕΦΩΝΑ{" "}
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800">
-                  ΥΠΟΔΟΧΗ AI
+                  ΠΕΡΙΣΣΟΤΕΡΑ ΡΑΝΤΕΒΟΥ
                 </span>
               </motion.h1>
             </div>
 
-            {/* Description με Keywords για SEO */}
+            {/* Description */}
             <div className="overflow-hidden">
               <motion.p 
                 variants={revealVariants} 
@@ -91,10 +131,10 @@ export default function Hero() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a 
                   href="#cta" 
-                  aria-label="Κλείστε δωρεάν demo για την AI γραμματεία"
+                  aria-label="Επικοινωνήστε μαζί μας για την AI γραμματεία"
                   className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
                 >
-                  ΚΛΕΙΣΤΕ ΔΩΡΕΑΝ DEMO
+                  ΑΝΑΒΑΘΜΙΣΤΕΙΤΕ 
                 </a>
               
                 <Link 
@@ -123,7 +163,6 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
               className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
             >
-              {/* Top Header Log Info */}
               <div className="flex justify-between items-center border-b border-white/10 pb-4">
                 <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
                   LOGS // AI_AGENT_24/7
@@ -134,7 +173,6 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Live Status Indicators */}
               <div className="space-y-3">
                 {[
                   { label: "ΔΙΑΛΟΓΗ ΠΕΡΙΣΤΑΤΙΚΩΝ", val: "ΕΝΕΡΓΗ", color: "text-amber-400" },
@@ -152,7 +190,6 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Terminal / Live Console Feed */}
               <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-36 md:h-40 overflow-hidden relative">
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/30 z-10 pointer-events-none" />
                 <motion.div
@@ -180,7 +217,6 @@ export default function Hero() {
                 </motion.div>
               </div>
 
-              {/* Bottom Activity Bar */}
               <div className="pt-2">
                 <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
                   <motion.div 
@@ -198,6 +234,56 @@ export default function Hero() {
 
         </div>
       </motion.div>
+
+      {/* --- MINIMAL COLOR-ACCENTED MARQUEE --- */}
+      <div 
+        aria-hidden="true" 
+        className="relative z-10 w-full mt-12 pt-5 pb-5 border-t border-b border-white/5 bg-black/50 backdrop-blur-md overflow-hidden"
+      >
+        <div className="flex whitespace-nowrap mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
+            className="flex items-center gap-6 pr-6"
+          >
+            {[...agentFeatures, ...agentFeatures].map((item, idx) => {
+              const isPrimary = item.variant === "primary";
+
+              return (
+                <div 
+                  key={idx} 
+                  className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 ${
+                    isPrimary 
+                      ? "bg-main-500/5 border-main-500/20 text-white" 
+                      : "bg-white/2 border-details-900 text-zinc-300"
+                  }`}
+                >
+                  {/* Tag Chip */}
+                  <span 
+                    className={`text-[9px] font-mono tracking-wider px-2 py-0.5 rounded-full uppercase ${
+                      isPrimary 
+                        ? "bg-main-800/20 text-main-300 font-semibold" 
+                        : "bg-details-800 text-zinc-200"
+                    }`}
+                  >
+                    {item.tag}
+                  </span>
+
+                  {/* Feature Title */}
+                  <span className="text-xs md:text-sm font-sans tracking-wide">
+                    {item.title}
+                  </span>
+
+                  {/* Diamond Separator */}
+                  <span className={`text-[8px] ml-1 ${isPrimary ? "text-main-400" : "text-details-600"}`}>
+                    ◆
+                  </span>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

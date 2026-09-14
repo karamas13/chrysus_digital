@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const navLinks = [
   { name: "ΑΡΧΙΚΗ", href: "/" },
-  { name: "Πακέτα", href: "/pricing" }, 
   { name: "Υπηρεσίες", href: "/services" },
+  { name: "Πακέτα", href: "/pricing" }, 
   { name: "Επικοινωνία", href: "/contact" },
 ];
 
@@ -45,43 +45,46 @@ export default function Navigation() {
   }, [isOpen]);
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-[100] px-4 md:px-6 py-4">
+    <header className="absolute top-0 left-0 w-full z-50 px-4 md:px-6 py-3 transition-all duration-300">
       <motion.div
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-500 border ${
+        transition={{ duration: 0.4, ease: "easeOut" }}
+        className={`mx-auto max-w-7xl rounded-2xl transition-all duration-300 border ${
           isScrolled 
-            ? "bg-tertiary-950/80 backdrop-blur-xl border-white/10 py-2 shadow-2xl" 
-            : "bg-transparent border-transparent py-4"
+            ? "bg-zinc-950/85 backdrop-blur-md border-white/10 py-1.5 shadow-2xl" 
+            : "bg-transparent border-transparent py-2"
         }`}
       >
-        <div className="flex items-center justify-between px-6 md:px-8">
+        <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 h-12 md:h-14">
           
           {/* 1. LOGO */}
-          <div className="flex-1 flex justify-start">
+          <div className="flex-1 flex justify-start items-center overflow-visible">
             <Link 
               href="/" 
-              className="relative w-40 h-10 md:w-48 md:h-12 transition-transform active:scale-95"
+              className="inline-flex items-center transition-transform active:scale-95 origin-left scale-110 sm:scale-125 md:scale-130 lg:scale-135"
               aria-label="Αρχική σελίδα Chrysus Digital"
             >
               <Image 
                 src="/images/Logo.avif" 
                 alt="Chrysus Digital Logo"
-                fill
-                sizes="(max-width: 768px) 160px, 192px"
-                className="object-contain object-left" 
+                width={500}
+                height={125}
+                quality={100}
                 priority
+                unoptimized
+                className="w-32 sm:w-40 md:w-44 lg:w-48 h-auto object-contain" 
               />
             </Link>
           </div>
 
-          {/* 2. NAV LINKS - Desktop */}
-          <ul className="hidden md:flex items-center gap-10">
+          {/* 2. NAV LINKS - Desktop Only (lg screens & above) */}
+          <ul className="hidden lg:flex items-center gap-8 lg:gap-10">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link 
                   href={link.href}
-                  className="text-[13px] font-bold uppercase tracking-[0.3em] text-zinc-400 hover:text-main-400 transition-colors whitespace-nowrap"
+                  className="text-[12px] lg:text-[13px] font-bold uppercase tracking-[0.25em] text-zinc-400 hover:text-amber-400 transition-colors whitespace-nowrap"
                 >
                   {link.name}
                 </Link>
@@ -89,12 +92,12 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* 3. ACTIONS & MOBILE TOGGLE */}
+          {/* 3. ACTIONS & MOBILE/TABLET TOGGLE */}
           <div className="flex-1 flex justify-end items-center gap-4">          
             <button 
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-main-400 hover:bg-main-400/10 rounded-lg transition-colors cursor-pointer"
+              className="lg:hidden p-2 text-zinc-200 hover:text-amber-400 hover:bg-zinc-900 rounded-lg transition-colors cursor-pointer"
               aria-label={isOpen ? "Κλείσιμο μενού" : "Άνοιγμα μενού"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -118,33 +121,36 @@ export default function Navigation() {
         </div>
       </motion.div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile & Tablet Menu Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop to close menu */}
+            {/* Backdrop */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[-1] md:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-40 lg:hidden"
               aria-hidden="true"
             />
+
+            {/* Mobile/Tablet Menu Content */}
             <motion.div
               id="mobile-menu"
               initial={{ opacity: 0, scale: 0.95, y: -20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
-              className="absolute top-24 left-4 right-4 p-8 bg-tertiary-950 border border-white/10 rounded-3xl shadow-2xl md:hidden z-50"
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="fixed top-20 left-4 right-4 p-8 bg-zinc-950 border border-zinc-800 rounded-3xl shadow-2xl lg:hidden z-50"
             >
-              <ul className="flex flex-col gap-8 items-center">
+              <ul className="flex flex-col gap-6 items-center">
                 {navLinks.map((link) => (
                   <li key={link.href}>
                     <Link 
                       href={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-sm font-bold uppercase tracking-[0.3em] text-zinc-200 hover:text-main-400 transition-colors"
+                      className="text-sm font-bold uppercase tracking-[0.3em] text-zinc-200 hover:text-amber-400 transition-colors"
                     >
                       {link.name}
                     </Link>
@@ -155,6 +161,6 @@ export default function Navigation() {
           </>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 }
