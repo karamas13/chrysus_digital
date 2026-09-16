@@ -1,0 +1,21 @@
+import type { MetadataRoute } from 'next';
+
+export default function robots(): MetadataRoute.Robots {
+  const baseUrl = 'https://chrysusdigital.com';
+
+  return {
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [
+          '/api/',        // Απόκρυψη των API endpoints
+          '/admin/',      // Απόκρυψη admin panels (αν υπάρχουν)
+          '/_next/',      // Απόκρυψη εσωτερικών αρχείων του Next.js
+          '/private/',    // Απόκρυψη ιδιωτικών φακέλων
+        ],
+      },
+    ],
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
+}

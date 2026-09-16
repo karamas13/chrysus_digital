@@ -26,7 +26,7 @@ export default function Services() {
         </header>
 
         {/* Bento / Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           
           {/* Box 1: AI Receptionist */}
           <motion.article 
@@ -57,8 +57,38 @@ export default function Services() {
               className="absolute -bottom-20 -right-20 w-64 h-64 bg-main-500/10 rounded-full blur-[80px] group-hover:bg-main-500/20 transition-all duration-700 pointer-events-none" 
             />
           </motion.article>
+
+          {/* Box 2: Automations (Emerald Neon/Green Palette) */}
+          <motion.article 
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-emerald-500/50 flex flex-col justify-between min-h-[380px]"
+          >
+            <div className="relative z-10 h-full flex flex-col justify-between">
+              <div>
+                <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-widest bg-emerald-400/10 px-3 py-1 rounded-full font-mono">
+                  Workflows & Automations
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mt-6 mb-4">
+                  Αυτοματοποιήσεις <br />Διαδικασιών
+                </h3>
+                <p className="text-zinc-400 max-w-sm text-sm leading-relaxed font-light">
+                  Σύνδεση των συστημάτων σας, αυτόματες υπενθυμίσεις ραντεβού, οργάνωση ψηφιακών δεδομένων και εξοικονόμηση δεκάδων ωρών εργασίας.
+                </p>
+              </div>
+              <div className="pt-6">
+                <p className="text-emerald-500 text-xs font-bold uppercase tracking-widest">
+                  Βελτιστοποίηση παραγωγικότητας
+                </p>
+              </div>
+            </div>
+            <div 
+              aria-hidden="true" 
+              className="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] group-hover:bg-emerald-500/20 transition-all duration-700 pointer-events-none" 
+            />
+          </motion.article>
          
-          {/* Box 2: WebDev */}
+          {/* Box 3: WebDev */}
           <motion.article 
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}

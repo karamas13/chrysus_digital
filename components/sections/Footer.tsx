@@ -37,17 +37,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-zinc-900 text-center items-center justify-items-center">
           
           {/* Brand Column */}
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col items-center space-y-2">
             <Link href="/" aria-label="Αρχική σελίδα Chrysus Digital" className="inline-block">
-              <div className="relative h-9 w-44">
-                <Image 
-                  src="/images/Logo.avif"
-                  alt="Chrysus Digital Logo"
-                  fill
-                  sizes="176px"
-                  className="object-contain object-center"
-                />
-              </div>
+              <Image 
+                 src="/images/Logo.avif" 
+                 alt="Chrysus Digital Logo"
+                 width={500}
+                 height={125}
+                 quality={100}
+                 priority
+                 unoptimized
+                 className="w-32 sm:w-40 md:w-44 lg:w-48 h-auto object-contain" 
+               />
             </Link>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-sm font-light uppercase tracking-wider font-mono">
               AI-Powered Receptionists για οδοντιατρεία που στοχεύουν στην κορυφή.

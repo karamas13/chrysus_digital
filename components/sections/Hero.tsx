@@ -9,20 +9,20 @@ const agentFeatures = [
   {
     title: "24/7 Αυτόματη Απάντηση Κλήσεων",
     tag: "AVAILABILITY",
-    variant: "primary", 
+    variant: "primary",
   },
   {
-    title: "Aμεση Διαλογή Επειγόντων Περιστατικών",
+    title: "Άμεση Διαλογή Αιτημάτων",
     tag: "TRIAGE AI",
-    variant: "secondary", 
+    variant: "secondary",
   },
   {
-    title: "Αυτοματισμοί",
+    title: "Business Automations & CRM",
     tag: "AUTOMATIONS",
     variant: "primary",
   },
   {
-    title: "Ανάπτυξη Ιστοσελίδων",
+    title: "Custom Web Development",
     tag: "WEB DEVELOPMENT",
     variant: "secondary",
   },
@@ -48,22 +48,22 @@ export default function Hero() {
 
   const revealVariants: Variants = {
     hidden: { y: "110%" },
-    visible: { 
-      y: 0, 
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } 
-    }
+    visible: {
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
   };
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.1 } 
-    }
+      transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+    },
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
       aria-label="Εισαγωγή"
       className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-serif"
@@ -74,14 +74,14 @@ export default function Hero() {
       </div>
 
       {/* MAIN HERO CONTENT */}
-      <motion.div 
+      <motion.div
         style={{ transformStyle: "preserve-3d" }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 my-auto"
       >
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* --- LEFT: REVEAL CONTENT --- */}
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -92,53 +92,53 @@ export default function Hero() {
               <motion.div variants={revealVariants} className="flex items-center gap-4">
                 <div className="h-px w-8 bg-main-500 hidden md:block" />
                 <span className="text-main-400 font-mono text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
-                  Chrysus Project // AI Call Reception
+                  Chrysus Digital // AI & Web Transformation
                 </span>
               </motion.div>
             </div>
 
             {/* H1 Title */}
             <div className="overflow-hidden">
-              <motion.h1 
-                variants={revealVariants} 
+              <motion.h1
+                variants={revealVariants}
                 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter"
               >
-                 ΛΙΓΟΤΕΡΑ ΤΗΛΕΦΩΝΑ{" "}
+                ΛΙΓΟΤΕΡΑ ΤΗΛΕΦΩΝΑ{" "}
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800">
-                  ΠΕΡΙΣΣΟΤΕΡΑ ΡΑΝΤΕΒΟΥ
+                  ΠΕΡΙΣΣΟΤΕΡΟΙ ΠΕΛΑΤΕΣ
                 </span>
               </motion.h1>
             </div>
 
             {/* Description */}
             <div className="overflow-hidden">
-              <motion.p 
-                variants={revealVariants} 
+              <motion.p
+                variants={revealVariants}
                 className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-zinc-400 font-light leading-relaxed px-2 md:px-0"
               >
                 <strong className="text-white font-medium">
-                  AI τηλεφωνική γραμματεία για οδοντιατρεία
+                  Ολοκληρωμένες λύσεις AI & Digital Solutions
                 </strong>{" "}
-                που απαντά 24/7, καταγράφει τα ραντεβού των ασθενών και διασφαλίζει ότι το ιατρείο σας δε χάνει καμία κλήση.
+                για σύγχρονες επιχειρήσεις. Από AI Voice Agents που απαντούν 24/7 και αυτοματοποιήσεις workflows, έως custom ιστοσελίδες υψηλής απόδοσης.
               </motion.p>
             </div>
 
             {/* CTA Buttons */}
-            <motion.div 
-              variants={revealVariants} 
+            <motion.div
+              variants={revealVariants}
               className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                <a 
-                  href="#cta" 
-                  aria-label="Επικοινωνήστε μαζί μας για την AI γραμματεία"
+                <a
+                  href="#cta"
+                  aria-label="Επικοινωνήστε μαζί μας"
                   className="btn-primary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
                 >
-                  ΑΝΑΒΑΘΜΙΣΤΕΙΤΕ 
+                  ΞΕΚΙΝΗΣΤΕ ΤΩΡΑ
                 </a>
-              
-                <Link 
-                  href="/pricing" 
+
+                <Link
+                  href="/pricing"
                   aria-label="Δείτε τα διαθέσιμα πακέτα συνδρομής"
                   className="btn-secondary w-full sm:w-auto px-10 py-4 md:py-5 text-center transition-all duration-300"
                 >
@@ -146,18 +146,18 @@ export default function Hero() {
                 </Link>
               </div>
             </motion.div>
-            
-            <motion.p 
+
+            <motion.p
               variants={revealVariants}
               className="text-[10px] md:text-[11px] font-mono text-zinc-500 uppercase tracking-widest pt-2"
             >
-              Ιδανικό για οδοντιατρεία & πολυιατρεία που θέλουν 24/7 αυτόματη εξυπηρέτηση.
+              Ιδανικό για επιχειρήσεις & επαγγελματίες που θέλουν 24/7 αυτόματη εξυπηρέτηση & ψηφιακή υπεροχή.
             </motion.p>
           </motion.div>
 
           {/* --- RIGHT: SIDEBAR (LOGS DEMO) --- */}
           <div className="lg:col-span-5 w-full" aria-hidden="true">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -165,7 +165,7 @@ export default function Hero() {
             >
               <div className="flex justify-between items-center border-b border-white/10 pb-4">
                 <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
-                  LOGS // AI_AGENT_24/7
+                  LOGS // CHRYSUS_ENGINE_24/7
                 </span>
                 <span className="text-[10px] font-mono text-zinc-500 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -175,9 +175,9 @@ export default function Hero() {
 
               <div className="space-y-3">
                 {[
-                  { label: "ΔΙΑΛΟΓΗ ΠΕΡΙΣΤΑΤΙΚΩΝ", val: "ΕΝΕΡΓΗ", color: "text-amber-400" },
-                  { label: "CALENDAR", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
-                  { label: "ALERTS", val: "ΑΝΑΜΟΝΗ (24/7)", color: "text-cyan-400" },
+                  { label: "VOICE AGENT (24/7)", val: "ΕΝΕΡΓΟ", color: "text-amber-400" },
+                  { label: "CALENDAR & CRM SYNC", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
+                  { label: "AUTOMATION ENGINE", val: "ONLINE", color: "text-cyan-400" },
                 ].map((item, i) => (
                   <div key={i} className="flex justify-between items-center group">
                     <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-tighter">
@@ -199,15 +199,14 @@ export default function Hero() {
                 >
                   {[
                     "Εισερχόμενη κλήση: +30 210 ...",
-                    "Αναγνώριση πρόθεσης ασθενούς...",
-                    "Έλεγχος διαθεσιμότητας Google Calendar",
-                    "Ερώτημα: Κόστος καθαρισμού & Ραντεβού",
-                    "Εκτέλεση κανόνων ιατρείου (Διάρκεια: 30λ)",
+                    "Αναγνώριση πρόθεσης πελάτη...",
+                    "Έλεγχος διαθεσιμότητας Calendar & CRM",
+                    "Ερώτημα: Πληροφορίες Υπηρεσιών & Ραντεβού",
+                    "Εκτέλεση επιχειρησιακών κανόνων",
                     "Καταχώρηση ραντεβού: Τρίτη 17:30",
+                    "Αποστολή επιβεβαίωσης SMS / Viber",
                     "Επιβεβαίωση κλήσης: Ολοκληρώθηκε (84s)",
-                    "Νέα κλήση: Εκτός ωραρίου",
-                    "Ανίχνευση επείγοντος: Πόνος / Οίδημα",
-                    "Αποστολή Telegram Alert στον γιατρό...",
+                    "Αυτόματο Review Flow: Ενεργό",
                     "Έτοιμο για την επόμενη κλήση...",
                   ].map((log, i) => (
                     <p key={i} className="text-[10px] font-mono text-amber-300/70 lowercase">
@@ -219,10 +218,10 @@ export default function Hero() {
 
               <div className="pt-2">
                 <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div 
+                  <motion.div
                     animate={{ width: ["0%", "100%"] }}
                     transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="h-full bg-amber-500" 
+                    className="h-full bg-amber-500"
                   />
                 </div>
                 <p className="text-[8px] font-mono text-zinc-500 mt-2 text-center uppercase tracking-widest">
@@ -236,8 +235,8 @@ export default function Hero() {
       </motion.div>
 
       {/* --- MINIMAL COLOR-ACCENTED MARQUEE --- */}
-      <div 
-        aria-hidden="true" 
+      <div
+        aria-hidden="true"
         className="relative z-10 w-full mt-12 pt-5 pb-5 border-t border-b border-white/5 bg-black/50 backdrop-blur-md overflow-hidden"
       >
         <div className="flex whitespace-nowrap mask-[linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
@@ -250,19 +249,19 @@ export default function Hero() {
               const isPrimary = item.variant === "primary";
 
               return (
-                <div 
-                  key={idx} 
+                <div
+                  key={idx}
                   className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 ${
-                    isPrimary 
-                      ? "bg-main-500/5 border-main-500/20 text-white" 
+                    isPrimary
+                      ? "bg-main-500/5 border-main-500/20 text-white"
                       : "bg-white/2 border-details-900 text-zinc-300"
                   }`}
                 >
                   {/* Tag Chip */}
-                  <span 
+                  <span
                     className={`text-[9px] font-mono tracking-wider px-2 py-0.5 rounded-full uppercase ${
-                      isPrimary 
-                        ? "bg-main-800/20 text-main-300 font-semibold" 
+                      isPrimary
+                        ? "bg-main-800/20 text-main-300 font-semibold"
                         : "bg-details-800 text-zinc-200"
                     }`}
                   >

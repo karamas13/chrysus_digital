@@ -1,51 +1,76 @@
-import Link from "next/link";
-import ServiceCard from "@/components/ui/ServiceCard";
+import type { Metadata } from "next";
+import AIServicesClient from "./AiServicesClient";
+
+// 1. Fully Generalized B2B SEO Metadata
+export const metadata: Metadata = {
+  title: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
+  description:
+    "Αναβαθμίστε την επιχειρησιακή σας επικοινωνία με AI Receptionists. 24/7 αυτόματη απάντηση κλήσεων, προγραμματισμός ραντεβού, διασύνδεση CRM & SMS follow-ups.",
+  keywords: [
+    "AI Voice Agents",
+    "AI Receptionist",
+    "Τηλεφωνική Υποδοχή AI",
+    "Αυτοματοποίηση Κλήσεων",
+    "Smart Booking System",
+    "AI για Επιχειρήσεις",
+    "Virtual Voice Assistant",
+  ],
+  alternates: {
+    canonical: "https://chrysusdigital.com/ai-services",
+  },
+  openGraph: {
+    title: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
+    description:
+      "24/7 AI τηλεφωνητές για επιχειρήσεις. Αυτόματος προγραμματισμός ραντεβού, διασύνδεση CRM και φυσική ελληνική ομιλία.",
+    url: "https://chrysusdigital.com/ai-services",
+    siteName: "Chrysus Digital",
+    locale: "el_GR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
+    description:
+      "24/7 AI τηλεφωνητές για επιχειρήσεις. Αυτόματος προγραμματισμός ραντεβού, διασύνδεση CRM και φυσική ελληνική ομιλία.",
+  },
+};
+
+// 2. Generalized Schema.org Structured Data (JSON-LD)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://chrysusdigital.com/ai-services/#webpage",
+      url: "https://chrysusdigital.com/ai-services",
+      name: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
+      description:
+        "Υπηρεσίες τεχνητής νοημοσύνης για αυτόματη τηλεφωνική εξυπηρέτηση, διαχείριση ραντεβού και αυτοματοποίηση ροής εργασιών.",
+    },
+    {
+      "@type": "Service",
+      name: "AI Voice Receptionist Services",
+      provider: {
+        "@type": "Organization",
+        name: "Chrysus Digital",
+        url: "https://chrysusdigital.com",
+      },
+      serviceType: "AI Telephony & Business Automation",
+      areaServed: "GR",
+      description:
+        "Έξυπνοι AI agents για διαχείριση κλήσεων, κρατήσεων και υποστήριξη πελατών 24 ώρες το 24ωρο.",
+    },
+  ],
+};
 
 export default function AIServicesPage() {
   return (
-    <main className="min-h-screen bg-[#030303] text-white pt-32 pb-20 px-6 font-serif text-center">
-      <div className="max-w-5xl mx-auto">
-        <span className="text-xs font-mono text-amber-400 uppercase tracking-[0.4em] mb-4 block">
-          AUTOMATION & AI RECEPTION
-        </span>
-        <h1 className="text-4xl md:text-6xl font-black mb-8">
-          Τηλεφωνική Υποδοχή AI για Οδοντιατρεία
-        </h1>
-        <p className="text-zinc-400 text-lg leading-relaxed mb-12 max-w-3xl font-light mx-auto">
-          Η AI Receptionist απαντά στις κλήσεις του ιατρείου σας 24 ώρες το 24ωρο, κλείνει ραντεβού απευθείας στο ημερολόγιό σας, αξιολογεί τα επείγοντα περιστατικά και απαντά σε συχνές ερωτήσεις ασθενών με απόλυτα φυσική ομιλία.
-        </p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 text-center">
-          <ServiceCard
-            variant="amber"
-            badge="PERFORMANCE"
-            title="Ultra Fast Loading"
-            description="Βελτιστοποιημένες ταχύτητες φορτωσης για υψηλό conversion rate και κατάταξη στο Google."
-          />
-          <ServiceCard
-            variant="amber"
-            badge="PERFORMANCE"
-            title="Ultra Fast Loading"
-            description="Βελτιστοποιημένες ταχύτητες φορτωσης για υψηλό conversion rate και κατάταξη στο Google."
-          />
-          <ServiceCard
-            variant="amber"
-            badge="PERFORMANCE"
-            title="Ultra Fast Loading"
-            description="Βελτιστοποιημένες ταχύτητες φορτωσης για υψηλό conversion rate και κατάταξη στο Google."
-          />
-          <ServiceCard
-            variant="amber"
-            badge="PERFORMANCE"
-            title="Ultra Fast Loading"
-            description="Βελτιστοποιημένες ταχύτητες φορτωσης για υψηλό conversion rate και κατάταξη στο Google."
-          />
-        </div>
-
-        <Link href="/pricing" className="btn-primary inline-block px-8 py-4 text-xs font-mono uppercase tracking-widest">
-          Δειτε τα Πακετα AI →
-        </Link>
-      </div>
-    </main>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AIServicesClient />
+    </>
   );
 }
