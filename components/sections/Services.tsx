@@ -32,7 +32,7 @@ export default function Services() {
           <motion.article 
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-main-500/50 flex flex-col justify-between min-h-[380px]"
+            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-main-500/50 flex flex-col justify-between min-h-95"
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
@@ -62,7 +62,7 @@ export default function Services() {
           <motion.article 
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-emerald-500/50 flex flex-col justify-between min-h-[380px]"
+            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-emerald-500/50 flex flex-col justify-between min-h-95"
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
@@ -92,7 +92,7 @@ export default function Services() {
           <motion.article 
             whileHover={{ y: -5 }}
             transition={{ duration: 0.3 }}
-            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-details-500/50 flex flex-col justify-between min-h-[380px]"
+            className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-details-500/50 flex flex-col justify-between min-h-95"
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>

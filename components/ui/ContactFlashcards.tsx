@@ -181,10 +181,10 @@ export default function ContactFlashcards() {
       {/* Ambient background glow */}
       <div 
         aria-hidden="true" 
-        className="absolute -inset-1 bg-gradient-to-r from-amber-500/20 via-main-400/10 to-transparent rounded-3xl blur-xl opacity-50 pointer-events-none" 
+        className="absolute -inset-1 bg-linear-to-r from-amber-500/20 via-main-400/10 to-transparent rounded-3xl blur-xl opacity-50 pointer-events-none" 
       />
 
-      <div className="bg-[#09090b]/95 border border-zinc-800 p-6 sm:p-8 rounded-3xl backdrop-blur-2xl shadow-2xl relative overflow-hidden min-h-[440px] flex flex-col justify-between">
+      <div className="bg-[#09090b]/95 border border-zinc-800 p-6 sm:p-8 rounded-3xl backdrop-blur-2xl shadow-2xl relative overflow-hidden min-h-110 flex flex-col justify-between">
         
         {/* STATE: SUBMITTING */}
         {status === "submitting" && (

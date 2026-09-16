@@ -74,8 +74,8 @@ export default function AIServicesClient() {
   return (
     <main className="min-h-screen bg-[#030303] text-white pt-32 pb-24 px-6 relative overflow-hidden font-sans">
       {/* Background Ambient Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-b from-amber-500/15 via-amber-500/5 to-transparent blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-linear-to-b from-amber-500/15 via-amber-500/5 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-125 h-125 bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
@@ -88,7 +88,7 @@ export default function AIServicesClient() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8">
-            Ψηφιακοί <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">AI Receptionists</span> για την Επιχείρησή σας
+            Ψηφιακοί <span className="bg-linear-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">AI Receptionists</span> για την Επιχείρησή σας
           </h1>
 
           <p className="text-zinc-400 text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mx-auto font-normal mb-10">
@@ -192,8 +192,8 @@ export default function AIServicesClient() {
         </div>
 
         {/* Call To Action */}
-        <div className="relative rounded-3xl bg-gradient-to-b from-zinc-900 to-black border border-amber-500/20 p-10 md:p-16 text-center overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="relative rounded-3xl bg-linear-to-b from-zinc-900 to-black border border-amber-500/20 p-10 md:p-16 text-center overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-100 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Έτοιμοι να Αναβαθμίσετε την Τηλεφωνική σας Υποδοχή;
           </h2>

@@ -73,8 +73,8 @@ export default function WebServicesClient() {
   return (
     <main className="min-h-screen bg-[#030303] text-white pt-32 pb-24 px-6 relative overflow-hidden font-sans">
       {/* Visual Ambient Lighting Background */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-gradient-to-b from-cyan-500/15 via-cyan-500/5 to-transparent blur-[150px] pointer-events-none" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[170px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-225 h-112.5 bg-linear-to-b from-cyan-500/15 via-cyan-500/5 to-transparent blur-[150px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-125 h-125 bg-amber-500/10 rounded-full blur-[170px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
@@ -88,7 +88,7 @@ export default function WebServicesClient() {
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8">
             Ψηφιακή Παρουσία <br className="hidden sm:inline" />
-            <span className="bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
               Υψηλής Αισθητικής & Απόδοσης
             </span>
           </h1>
@@ -166,8 +166,8 @@ export default function WebServicesClient() {
         </div>
 
         {/* Bottom CTA Banner */}
-        <div className="relative rounded-3xl bg-gradient-to-b from-zinc-900 to-black border border-cyan-500/20 p-10 md:p-16 text-center overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="relative rounded-3xl bg-linear-to-b from-zinc-900 to-black border border-cyan-500/20 p-10 md:p-16 text-center overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-100 h-100 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
           <h2 className="text-3xl md:text-5xl font-black mb-6">
             Έτοιμοι για μια Σύγχρονη Ψηφιακή Παρουσία;
           </h2>
