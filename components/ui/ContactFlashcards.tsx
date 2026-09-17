@@ -177,7 +177,7 @@ export default function ContactFlashcards() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto relative text-left">
+    <div className="w-full max-w-2xl mx-auto relative text-left">
       {/* Ambient background glow */}
       <div 
         aria-hidden="true" 

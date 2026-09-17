@@ -68,9 +68,17 @@ export default function Hero() {
       aria-label="Εισαγωγή"
       className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-serif"
     >
-      {/* ATMOSPHERE */}
+      {/* 1. SUBTLE TECH GRID PATTERN OVERLAY */}
+      <div 
+        aria-hidden="true" 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+      />
+
+      {/* 2. ATMOSPHERE / AMBIENT LIGHTS */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-150 h-150 bg-main-600/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/3 left-10 w-72 h-72 bg-amber-500/5 blur-[120px] rounded-full" />
+        <div className="absolute top-1/3 right-10 w-72 h-72 bg-cyan-500/5 blur-[120px] rounded-full" />
       </div>
 
       {/* MAIN HERO CONTENT */}

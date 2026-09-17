@@ -17,32 +17,32 @@ const steps: ProcessStep[] = [
     tag: "ΣΤΑΔΙΟ 1: ΧΑΡΤΟΓΡΑΦΗΣΗ",
     title: "Συλλογή & Παραμετροποίηση",
     description:
-      "Καταγράφουμε το ωράριο, τις υπηρεσίες, τον τιμοκατάλογο, τους κανόνες κρατήσεων και τις απαντήσεις σε συχνές ερωτήσεις του ιατρείου. Ορίζουμε τους υπεύθυνους επικοινωνίας και τη δρομολόγηση των κλήσεων.",
-    highlight: "Πλήρης προσαρμογή στις διαδικασίες του ιατρείου σας.",
+      "Καταγράφουμε το ωράριο, τις υπηρεσίες, τον τιμοκατάλογο, τους κανόνες κρατήσεων και τις απαντήσεις σε συχνές ερωτήσεις της επιχείρησής σας. Ορίζουμε τη δρομολόγηση κλήσεων και τις ροές εργασίας.",
+    highlight: "Πλήρης προσαρμογή στις επιχειρησιακές σας ανάγκες.",
   },
   {
     number: "02",
     tag: "ΣΤΑΔΙΟ 2: ΔΙΑΣΥΝΔΕΣΗ",
     title: "Τηλεφωνία & Ψηφιακό Οικοσύστημα",
     description:
-      "Δημιουργούμε τον αποκλειστικό αριθμό στο τηλεφωνικό κέντρο PBX και διασυνδέουμε τα συστήματα (Ημερολόγιο Google, ειδοποιήσεις Telegram, λογισμικό γραμματείας). Ο υφιστάμενος πάροχός σας παραμένει ως έχει.",
+      "Διαμορφώνουμε την τηλεφωνική υποδομή και διασυνδέουμε τα συστήματά σας (Google/Outlook Calendar, CRM, Telegram/Viber alerts, Webhooks). Ο υφιστάμενος πάροχός σας παραμένει ως έχει.",
     highlight: "Απρόσκοπτη σύνδεση χωρίς αλλαγή τηλεφωνικού παρόχου.",
   },
   {
     number: "03",
     tag: "ΣΤΑΔΙΟ 3: ΔΟΚΙΜΕΣ",
-    title: "Εκπαιδευση & Εσωτερικός Έλεγχος",
+    title: "Εκπαίδευση & Εσωτερικός Έλεγχος",
     description:
-      "Εκπαιδεύουμε την AI στις ιδιαιτερότητες του ιατρείου. Διεξάγουμε εξαντλητικές δοκιμές σε σενάρια κρατήσεων, ακυρώσεων, επειγόντων περιστατικών και εκτός ωραρίου κλήσεων.",
+      "Εκπαιδεύουμε τα συστήματα AI στις ιδιαιτερότητες του κλάδου σας. Διεξάγουμε εξαντλητικές δοκιμές σε σενάρια κρατήσεων, ακυρώσεων, επειγόντων αιτημάτων και εκτός ωραρίου κλήσεων.",
     highlight: "Εγγυημένη ασφάλεια και ορθότητα πριν την έναρξη.",
   },
   {
     number: "04",
     tag: "ΣΤΑΔΙΟ 4: ΕΝΑΡΞΗ",
-    title: "Κλήση Αποδοχής & Πλήρης Λειτουργία",
+    title: "Τελικός Έλεγχος & Πλήρης Λειτουργία",
     description:
-      "Πραγματοποιούμε μαζί την τελική δοκιμαστική κλήση αποδοχής. Ενεργοποιείται η εκτροπή από τον δημόσιο αριθμό σας και ο Ψηφιακός Ρεσεψιονίστ αναλαμβάνει 24/7.",
-    highlight: "Άμεση κάλυψη 24/7 χωρίς απώλεια κλήσεων.",
+      "Πραγματοποιούμε μαζί την τελική δοκιμαστική κλήση αποδοχής. Ενεργοποιείται η αυτόματη εκτροπή και οι AI Agents αναλαμβάνουν 24/7 την εξυπηρέτηση των πελατών σας.",
+    highlight: "Άμεση κάλυψη 24/7 με μηδενικές χαμένες ευκαιρίες.",
   },
 ];
 
@@ -65,9 +65,15 @@ export default function Process() {
       ref={containerRef}
       id="process"
       aria-labelledby="process-heading"
-      className="py-28 bg-[#030303] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#030303] relative overflow-hidden"
     >
-      {/* Background Ambient Glows (Decorative) */}
+      {/* 1. Subtle Tech Grid Pattern Overlay */}
+      <div 
+        aria-hidden="true" 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+      />
+
+      {/* 2. Background Ambient Glows */}
       <div 
         aria-hidden="true" 
         className="absolute top-1/3 left-1/2 -translate-x-1/2 w-150 h-150 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
@@ -79,21 +85,21 @@ export default function Process() {
 
       <div className="container mx-auto px-6 relative z-10">
         {/* Header */}
-        <header className="text-center max-w-3xl mx-auto mb-24">
-          <span className="inline-block text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 backdrop-blur-md">
-            Η ΕΓΚΑΤΑΣΤΑΣΗ
+        <header className="text-center max-w-3xl mx-auto mb-20 sm:mb-24">
+          <span className="inline-block text-[10px] sm:text-xs font-mono font-semibold text-amber-400 uppercase tracking-[0.3em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 backdrop-blur-md">
+            Η ΔΙΑΔΙΚΑΣΙΑ ΕΓΚΑΤΑΣΤΑΣΗΣ
           </span>
           <h2 
             id="process-heading"
-            className="text-4xl sm:text-6xl font-black text-white tracking-tight mt-6 mb-4 font-serif leading-tight"
+            className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mt-6 mb-4 leading-tight"
           >
             Πώς Τίθεται Σε <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
               Πλήρη Λειτουργία
             </span>
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
-            Βήμα προς βήμα η διαδικασία ενσωμάτωσης του Ψηφιακού Ρεσεψιονίστ στο ιατρείο σας, με απόλυτη ασφάλεια και μηδενική αναστάτωση.
+          <p className="text-zinc-400 text-xs sm:text-base font-light leading-relaxed">
+            Βήμα προς βήμα η διαδικασία ενσωμάτωσης των λύσεων AI & Automations στην επιχείρησή σας, με απόλυτη ασφάλεια και μηδενική αναστάτωση.
           </p>
         </header>
 
@@ -127,7 +133,7 @@ export default function Process() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="ml-14 md:ml-0 w-[calc(100%-56px)] md:w-[44%] p-7 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/30 backdrop-blur-xl relative group hover:border-amber-500/50 hover:bg-zinc-900/50 transition-all duration-500 shadow-xl"
+                  className="ml-14 md:ml-0 w-[calc(100%-56px)] md:w-[44%] p-6 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/30 backdrop-blur-xl relative group hover:border-amber-500/50 hover:bg-zinc-900/50 transition-all duration-500 shadow-xl"
                 >
                   {/* Glass Header Tag & Number Badge */}
                   <div className="flex items-center justify-between mb-5">

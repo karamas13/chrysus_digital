@@ -1,286 +1,187 @@
 "use client";
 
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-interface AgentFeature {
+interface FeaturePillar {
   id: string;
-  tag: string;
+  badge: string;
   title: string;
   description: string;
-  benefit: string;
-  accent: "amber" | "cyan" | "red";
-  visual: ReactNode;
+  accentColor: "amber" | "emerald" | "cyan";
+  points: { title: string; desc: string }[];
 }
 
-const agentFeatures: AgentFeature[] = [
+const pillars: FeaturePillar[] = [
   {
-    id: "01",
-    tag: "A.I. ΡΕΣΕΨΙΟΝΙΣΤ",
-    title: "Αυτόματη Απάντηση & Φυσική Επικοινωνία",
-    description:
-      "Απαντά αμέσως σε κάθε κλήση ασθενούς, διαχειρίζεται πολλαπλά αιτήματα (κρατήσεις, ακυρώσεις, μεταθέσεις, συχνές ερωτήσεις) και λειτουργεί 24/7 ως AI-first, overflow ή after-hours γραμματεία.",
-    benefit:
-      "Πλήρης κάλυψη του οδοντιατρείου 24/7 χωρίς να χάνεται καμία κλήση ασθενούς.",
-    accent: "amber",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-amber-500/20 font-mono text-xs space-y-2 select-none">
-        <div className="flex items-center justify-between text-amber-400 border-b border-zinc-800 pb-2">
-          <span className="flex items-center gap-2 text-[11px]">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            ΚΑΤΑΣΤΑΣΗ: ΑΝΑΛΗΨΗ ΚΛΗΣΗΣ
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5 pt-1">
-          <div className="w-1 h-4 bg-amber-500/80 rounded-full animate-bounce" />
-          <div className="w-1 h-7 bg-amber-400 rounded-full animate-bounce [animation-delay:0.1s]" />
-          <div className="w-1 h-3 bg-amber-500/80 rounded-full animate-bounce [animation-delay:0.2s]" />
-          <div className="w-1 h-6 bg-amber-300 rounded-full animate-bounce [animation-delay:0.3s]" />
-          <div className="w-1 h-2 bg-amber-500/50 rounded-full animate-bounce [animation-delay:0.4s]" />
-          <span className="text-[10px] text-zinc-400 font-sans ml-2">
-            «Γεια σας, πώς μπορώ να σας εξυπηρετήσω;»
-          </span>
-        </div>
-      </div>
-    ),
+    id: "voice",
+    badge: "01 / AI VOICE AGENTS",
+    title: "Αυτόνομη Τηλεφωνική Υποδοχή 24/7",
+    description: "Ο AI Voice Agent απαντά σε φυσική γλώσσα, κλείνει ραντεβού και εξυπηρετεί τους πελάτες σας χωρίς καθυστερήσεις.",
+    accentColor: "amber",
+    points: [
+      { title: "24/7 Διαθεσιμότητα", desc: "Απάντηση εκτός ωραρίου & σε ώρες αιχμής χωρίς αναμονή." },
+      { title: "Φυσική Συνομιλία", desc: "Άμεση επικοινωνία σε Ελληνικά & Αγγλικά." },
+      { title: "Αυτόματες Απαντήσεις", desc: "Συχνές ερωτήσεις για τιμές, τοποθεσία & υπηρεσίες." }
+    ],
   },
   {
-    id: "02",
-    tag: "ΔΙΑΧΕΙΡΙΣΗ ΡΑΝΤΕΒΟΥ",
-    title: "Προγραμματισμός & Συγχρονισμός",
-    description:
-      "Κλείνει, ελέγχει, ακυρώνει και μεταθέτει ραντεβού βάσει των κανόνων του ιατρείου (διάρκεια, ελάχιστος χρόνος προειδοποίησης) με άμεσο συγχρονισμό στο Google Calendar.",
-    benefit:
-      "Απόλυτος έλεγχος του προγράμματος χωρίς διπλοεγγραφές ή λάθη.",
-    accent: "amber",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-amber-500/20 text-xs font-mono select-none">
-        <div className="text-amber-400 mb-2 font-bold flex justify-between text-[11px]">
-          <span>GOOGLE CALENDAR SYNC</span>
-          <span className="text-emerald-400">✓ ΣΥΓΧΡΟΝΙΣΜΕΝΟ</span>
-        </div>
-        <div className="space-y-1.5 text-[11px]">
-          <div className="p-2 rounded bg-zinc-900 border border-zinc-800 flex justify-between items-center text-zinc-400">
-            <span>• Καθαρισμός (30 λεπτά)</span>
-            <span className="text-[9px] bg-amber-950/60 text-amber-400 px-1.5 py-0.5 rounded">
-              Κανόνες Ιατρείου
-            </span>
-          </div>
-          <div className="p-2 rounded bg-amber-950/40 border border-amber-500/30 flex justify-between items-center text-white font-bold">
-            <span>• Νέο Ραντεβού: 17:30</span>
-            <span className="text-[9px] bg-emerald-950 text-emerald-400 px-1.5 py-0.5 rounded">
-              Καταχωρήθηκε
-            </span>
-          </div>
-        </div>
-      </div>
-    ),
+    id: "automations",
+    badge: "02 / BUSINESS AUTOMATIONS",
+    title: "Αυτόματος Συντονισμός & CRM",
+    description: "Σύνδεση κλήσεων απευθείας με τα ημερολόγια και τα συστήματα της επιχείρησής σου χωρίς χειροκίνητη καταχώρηση.",
+    accentColor: "emerald",
+    points: [
+      { title: "Calendar Sync", desc: "Live έλεγχος διαθεσιμότητας & καταχώρηση ραντεβού." },
+      { title: "Smart Reminders", desc: "Αυτόματα SMS/Email για μείωση των No-Shows." },
+      { title: "CRM Integration", desc: "Αυτόματη ενημέρωση καρτέλας πελάτη μετά από κάθε κλήση." }
+    ],
   },
   {
-    id: "03",
-    tag: "ΔΙΑΛΟΓΗ ΕΠΕΙΓΟΝΤΩΝ",
-    title: "Διαχείριση Επειγόντων & Telegram Alerts",
-    description:
-      "Εντοπίζει επείγοντα οδοντιατρικά περιστατικά εκτός ωραρίου, επιχειρεί μεταβίβαση στον γιατρό ή αποστέλλει άμεση ειδοποίηση στο Telegram με κουμπί επιβεβαίωσης.",
-    benefit:
-      "Άμεση αντίδραση στα κρίσιμα περιστατικά με πλήρη ασφάλεια δεδομένων.",
-    accent: "red",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-red-500/20 text-xs font-mono space-y-2 select-none">
-        <div className="flex items-center justify-between text-red-400 font-bold text-[11px]">
-          <span className="flex items-center gap-1.5">
-            <span className="text-xs">🚨</span> TELEGRAM ALERT
-          </span>
-          <span className="text-[9px] bg-red-950 text-red-400 px-1.5 py-0.5 rounded">
-            ΕΠΕΙΓΟΝ
-          </span>
-        </div>
-        <div className="p-2.5 rounded bg-red-950/30 border border-red-500/30 text-zinc-300 font-sans text-[11px]">
-          <span className="text-red-400 font-mono font-bold block mb-1">
-            Ειδοποίηση Εκτός Ωραρίου:
-          </span>
-          «Κλήση επιστροφής: +30 69XXXXXXXX | Ώρα: 21:15»
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: "04",
-    tag: "ΒΑΣΗ ΓΝΩΣΗΣ & FAQs",
-    title: "Εγκεκριμένες Απαντήσεις Ιατρείου",
-    description:
-      "Απαντά σε συχνές ερωτήσεις για οδοντιατρικές υπηρεσίες, τιμές, τρόπους πληρωμής, πρόσβαση/parking και οδηγίες προετοιμασίας βάσει των δικών σας εγκρίσεων.",
-    benefit:
-      "Αποσυμφόρηση της γραμματείας από επαναλαμβανόμενες τηλεφωνικές ερωτήσεις.",
-    accent: "amber",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-amber-500/20 text-xs font-mono space-y-2 select-none">
-        <div className="text-zinc-400 text-[10px]">
-          Ερώτηση: «Ποιο είναι το ωράριο & οι τιμές;»
-        </div>
-        <div className="p-2 bg-amber-950/30 border border-amber-500/20 rounded text-amber-200 font-sans text-[11px]">
-          «Το ιατρείο λειτουργεί 09:00-21:00. Ο καθαρισμός ανέρχεται στα... Θέλετε να ελέγξουμε διαθεσιμότητα;»
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: "05",
-    tag: "ΕΞΥΠΝΗ ΔΡΟΜΟΛΟΓΗΣΗ",
-    title: "Ζωντανή Μεταβίβαση & Safe Fallbacks",
-    description:
-      "Μεταβιβάζει ζωντανά την κλήση στη γραμματεία κατά τις ώρες λειτουργίας. Αν δεν υπάρξει απάντηση ή αν η κλήση είναι από απόκρυψη, ενεργοποιεί αυτόματα ασφαλή διαδρομή.",
-    benefit:
-      "Μηδενικό ρίσκο απώλειας επικοινωνίας χάρη στα διπλά επίπεδα ασφαλείας.",
-    accent: "amber",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-amber-500/20 text-xs font-mono space-y-1.5 select-none">
-        <div className="text-amber-400 font-bold text-[11px]">
-          ROUTING & CALL TRANSFER
-        </div>
-        <div className="grid grid-cols-2 gap-1.5 text-[10px]">
-          <div className="p-1.5 bg-zinc-900 rounded border border-zinc-800 text-zinc-300">
-            <span>• Ώρες Εργασίας</span> → Transfer
-          </div>
-          <div className="p-1.5 bg-zinc-900 rounded border border-zinc-800 text-zinc-300">
-            <span>• Μη Απάντηση</span> → Callback Request
-          </div>
-        </div>
-      </div>
-    ),
-  },
-  {
-    id: "06",
-    tag: "ΤΗΛΕΦΩΝΙΚΟ ΟΙΚΟΣΥΣΤΗΜΑ",
-    title: "Αυτοματισμοί & Πολυ-Εταιρική Υποδομή",
-    description:
-      "Σύνδεση αυτοματισμών με υποστήριξη για πολλαπλούς γιατρούς/ημερολόγια, πολλαπλά εσωτερικά γραμματείας (Softphones) και παράλληλες AI κλήσεις.",
-    benefit:
-      "Πλήρης επεκτασιμότητα που προσαρμόζεται από μικρά έως πολυμελή ιατρεία.",
-    accent: "cyan",
-    visual: (
-      <div aria-hidden="true" className="bg-zinc-950 p-4 rounded-xl border border-cyan-500/20 text-xs font-mono space-y-2 select-none">
-        <div className="flex justify-between items-center text-cyan-400 text-[11px]">
-          <span>ΑΥΤΟΜΑΤΙΣΜΟΙ / EXTENSIONS</span>
-          <span className="text-emerald-400">ΕΝΕΡΓΟ</span>
-        </div>
-        <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 justify-center py-1">
-          <span className="bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-            AI Line
-          </span>
-          <span>↔</span>
-          <span className="bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
-            Staff App
-          </span>
-          <span>↔</span>
-          <span className="bg-cyan-950 text-cyan-300 px-2 py-1 rounded border border-cyan-800">
-            Calendar
-          </span>
-        </div>
-      </div>
-    ),
-  },
+    id: "web",
+    badge: "03 / WEB DEVELOPMENT",
+    title: "Ultra-Fast Ιστοσελίδες & Web Apps",
+    description: "Σύγχρονη ψηφιακή παρουσία υψηλής ταχύτητας σχεδιασμένη για να μετατρέπει τους επισκέπτες σε πελάτες.",
+    accentColor: "cyan",
+    points: [
+      { title: "Premium Performance", desc: "Ακαριαία ταχύτητα φόρτωσης & Search Engine Optimization." },
+      { title: "Mobile First UX", desc: "Πλήρης προσαρμογή σε κινητά, tablets & desktops." },
+      { title: "Online Booking Integration", desc: "Ενσωμάτωση συστήματος κρατήσεων & contact funnels." }
+    ],
+  }
 ];
 
+const colorStyles = {
+  amber: {
+    badge: "text-amber-400 bg-amber-500/10 border-amber-500/30",
+    pill: "bg-amber-500 text-black font-bold shadow-[0_0_20px_rgba(245,158,11,0.3)]",
+    iconBg: "bg-amber-500/10 text-amber-400 border-amber-500/20",
+    border: "border-amber-500/30",
+    glow: "bg-amber-500/10",
+  },
+  emerald: {
+    badge: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+    pill: "bg-emerald-500 text-black font-bold shadow-[0_0_20px_rgba(16,185,129,0.3)]",
+    iconBg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+    border: "border-emerald-500/30",
+    glow: "bg-emerald-500/10",
+  },
+  cyan: {
+    badge: "text-cyan-400 bg-cyan-500/10 border-cyan-500/30",
+    pill: "bg-cyan-500 text-black font-bold shadow-[0_0_20px_rgba(6,182,212,0.3)]",
+    iconBg: "bg-cyan-500/10 text-cyan-400 border-cyan-500/20",
+    border: "border-cyan-500/30",
+    glow: "bg-cyan-500/10",
+  }
+};
+
 export default function SolutionValueSection() {
+  const [activeTab, setActiveTab] = useState<string>("voice");
+
+  const currentPillar = pillars.find((p) => p.id === activeTab) || pillars[0];
+  const theme = colorStyles[currentPillar.accentColor];
+
   return (
     <section 
       aria-labelledby="solution-section-heading"
-      className="relative py-28 px-6 bg-[#030303] overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-linear-to-b from-[#030303] via-zinc-950/80 to-[#030303] overflow-hidden"
     >
-      {/* Background Atmosphere Lights (Decorative) */}
+      {/* Background Tech Grid */}
       <div 
         aria-hidden="true" 
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-6xl h-150 bg-amber-500/5 blur-[180px] rounded-full pointer-events-none" 
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
+        
         {/* Section Header */}
-        <header className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-block text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3 py-1 rounded-full bg-amber-950/40 border border-amber-500/20">
-            Ο A.I. AGENT ΣΤΗΝ ΠΡΑΞΗ
+        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-zinc-500 font-mono text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase block mb-2 sm:mb-3 font-semibold">
+            ΔΥΝΑΤΟΤΗΤΕΣ & ΛΕΙΤΟΥΡΓΙΕΣ
           </span>
           <h2 
             id="solution-section-heading" 
-            className="text-3xl sm:text-5xl font-black text-white mt-6 mb-4 tracking-tight font-serif leading-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight"
           >
-            Ένας Αυτόνομος 24/7{" "}
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
-              Ψηφιακός Ρεσεψιονίστ
-            </span>
+            Πώς λειτουργεί το σύστημά μας
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base font-light leading-relaxed">
-            Ανακαλύψτε πώς η τεχνητή νοημοσύνη διαχειρίζεται τις τηλεφωνικές κλήσεις, τις κρατήσεις ραντεβού και την εξυπηρέτηση των ασθενών με απόλυτη ασφάλεια.
-          </p>
         </header>
 
-        {/* 6 Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {agentFeatures.map((item, index) => {
-            const isCyan = item.accent === "cyan";
-            const isRed = item.accent === "red";
-
-            let borderStyle = "border-amber-500/30 hover:border-amber-500/60";
-            let tagStyle = "text-amber-400 bg-amber-950/40 border-amber-500/30";
-            let benefitTextColor = "text-amber-300/90";
-
-            if (isCyan) {
-              borderStyle = "border-cyan-500/30 hover:border-cyan-500/60";
-              tagStyle = "text-cyan-400 bg-cyan-950/40 border-cyan-500/30";
-              benefitTextColor = "text-cyan-300/90";
-            } else if (isRed) {
-              borderStyle = "border-red-500/30 hover:border-red-500/60";
-              tagStyle = "text-red-400 bg-red-950/40 border-red-500/30";
-              benefitTextColor = "text-red-300/90";
-            }
+        {/* Animated Pill Tabs (Mobile-Friendly Horizontal Scroll) */}
+        <div className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 mb-8 sm:mb-12 p-1.5 bg-zinc-900/60 backdrop-blur-md rounded-2xl border border-zinc-800/80 max-w-full sm:max-w-2xl mx-auto overflow-x-auto no-scrollbar scroll-smooth">
+          {pillars.map((tab) => {
+            const isActive = tab.id === activeTab;
+            const tabTheme = colorStyles[tab.accentColor];
 
             return (
-              <motion.article
-                key={item.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: index * 0.08, duration: 0.4 }}
-                className={`group relative rounded-3xl p-7 bg-zinc-900/30 border backdrop-blur-xl flex flex-col justify-between transition-all duration-500 ${borderStyle}`}
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs font-mono font-bold transition-colors cursor-pointer select-none whitespace-nowrap shrink-0 ${
+                  isActive ? "text-black" : "text-zinc-400 hover:text-white"
+                }`}
               >
-                <div>
-                  {/* Top Header */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span
-                      className={`text-[10px] font-mono tracking-widest px-2.5 py-0.5 rounded-full border uppercase ${tagStyle}`}
-                    >
-                      {item.tag}
-                    </span>
-                    <span className="text-xs font-mono text-zinc-600 font-bold">
-                      {item.id}
-                    </span>
-                  </div>
-
-                  {/* Title & Description */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-amber-200 transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-zinc-400 text-xs leading-relaxed font-light mb-6">
-                    {item.description}
-                  </p>
-
-                  {/* Interactive Visual Element */}
-                  <div className="mb-6">{item.visual}</div>
-                </div>
-
-                {/* Feature Benefit Callout */}
-                <div className="pt-4 border-t border-zinc-800/80">
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 block mb-1">
-                    ΟΦΕΛΟΣ ΙΑΤΡΕΙΟΥ
-                  </span>
-                  <p className={`text-xs font-medium leading-snug ${benefitTextColor}`}>
-                    {item.benefit}
-                  </p>
-                </div>
-              </motion.article>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabPill"
+                    className={`absolute inset-0 rounded-xl ${tabTheme.pill}`}
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{tab.badge.split("/ ")[1]}</span>
+              </button>
             );
           })}
         </div>
+
+        {/* Interactive Dynamic Panel */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentPillar.id}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.35 }}
+            className={`rounded-2xl sm:rounded-3xl bg-zinc-900/30 border ${theme.border} p-5 sm:p-8 lg:p-12 backdrop-blur-md grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center shadow-2xl relative overflow-hidden`}
+          >
+            {/* Background Ambient Glow */}
+            <div className={`absolute -top-24 -right-24 w-72 sm:w-96 h-72 sm:h-96 rounded-full blur-[100px] sm:blur-[120px] pointer-events-none ${theme.glow}`} />
+
+            {/* Left Column: Information & Points */}
+            <div className="lg:col-span-full">
+              <span className={`inline-block text-[9px] sm:text-[10px] font-mono tracking-widest px-2.5 sm:px-3 py-1 rounded-full border uppercase mb-3 sm:mb-4 ${theme.badge}`}>
+                {currentPillar.badge}
+              </span>
+              
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                {currentPillar.title}
+              </h3>
+              
+              <p className="text-zinc-400 text-xs sm:text-sm font-light leading-relaxed mb-6 sm:mb-8">
+                {currentPillar.description}
+              </p>
+
+              {/* 3 Minimal Points */}
+              <div className="space-y-3 sm:space-y-4">
+                {currentPillar.points.map((pt, i) => (
+                  <div key={i} className="flex items-start gap-3 bg-zinc-950/40 p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border border-zinc-800/60">
+                    <div className={`w-5 sm:w-6 h-5 sm:h-6 shrink-0 rounded-lg border flex items-center justify-center text-[10px] sm:text-[11px] font-mono font-bold mt-0.5 ${theme.iconBg}`}>
+                      0{i + 1}
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-white mb-0.5">{pt.title}</h4>
+                      <p className="text-zinc-400 text-[10px] sm:text-[11px] font-light leading-relaxed">{pt.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+
+          </motion.div>
+        </AnimatePresence>
+
       </div>
     </section>
   );

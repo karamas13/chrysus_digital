@@ -52,13 +52,7 @@ export default function Footer() {
             </Link>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-sm font-light uppercase tracking-wider font-mono">
               AI-Powered Receptionists για οδοντιατρεία που στοχεύουν στην κορυφή.
-            </p>
-            
-            {/* Status Indicator */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800/80 text-[11px] font-mono text-zinc-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-              <span>AI System Active</span>
-            </div>
+            </p>            
           </div>
 
           {/* Quick Navigation Column */}
