@@ -74,7 +74,7 @@ export default function ServiceCard({
     >
       {/* Top Subtle Border Highlight (Glass Edge) */}
       <div 
-        className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r ${styles.topGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} 
+        className={`absolute inset-x-0 top-0 h-px bg-linear-to-r ${styles.topGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} 
       />
 
       {/* Background Radial Glow Effect */}
@@ -107,7 +107,7 @@ export default function ServiceCard({
 
       {/* Bottom Glow Indicator Line */}
       <div
-        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-full transition-all duration-500 ease-in-out ${styles.indicatorColor}`}
+        className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-0 group-hover:w-full transition-all duration-500 ease-in-out ${styles.indicatorColor}`}
       />
     </motion.div>
   );

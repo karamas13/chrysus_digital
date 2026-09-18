@@ -75,12 +75,12 @@ export default function ProblemSection() {
   return (
     <section 
       aria-labelledby="digital-solutions-heading"
-      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-gradient-to-b from-[#030303] via-zinc-950/80 to-[#030303] overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-linear-to-b from-[#030303] via-zinc-950/80 to-[#030303] overflow-hidden"
     >
       {/* Subtle Tech Grid Pattern Overlay */}
       <div 
         aria-hidden="true" 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
       <div className="max-w-6xl mx-auto relative z-10">
