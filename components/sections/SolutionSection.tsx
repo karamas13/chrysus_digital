@@ -95,15 +95,14 @@ export default function SolutionValueSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-zinc-500 font-mono text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase block mb-2 sm:mb-3 font-semibold">
-            ΔΥΝΑΤΟΤΗΤΕΣ & ΛΕΙΤΟΥΡΓΙΕΣ
-          </span>
+        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">         
           <h2 
             id="solution-section-heading" 
-            className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight"
+            className="text-4xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight"
           >
-            Πώς λειτουργεί το σύστημά μας
+            Δυνατότητες & 
+            
+            <span className="text-main-500"> Λειτουργείες</span>
           </h2>
         </header>
 

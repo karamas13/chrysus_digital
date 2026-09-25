@@ -9,7 +9,7 @@ export default function ServicesClient() {
   const [hoveredSide, setHoveredSide] = useState<ServiceCategory>(null);
 
   return (
-    <main className="relative min-h-screen w-full bg-[#030303] text-white overflow-hidden pt-20 flex flex-col font-serif">
+    <main className="relative min-h-screen w-full bg-[#030303] text-white overflow-hidden pt-30 flex flex-col font-serif">
       {/* Background Atmosphere */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-white/5 blur-[150px]" />
@@ -17,11 +17,9 @@ export default function ServicesClient() {
 
       {/* Header Info */}
       <div className="text-center pt-8 pb-6 z-20 pointer-events-none px-4">
-        <span className="text-[10px] font-mono tracking-[0.4em] text-amber-400 uppercase">
-          CHRYSUS DIGITAL // ECOSYSTEM
-        </span>
         <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-2 text-white font-sans">
-          ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ ΥΠΗΡΕΣΙΩΝ
+          ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ 
+          <span className="text-emerald-500"> ΥΠΗΡΕΣΙΩΝ</span>
         </h1>
         <p className="text-zinc-400 text-xs md:text-sm font-sans mt-2 max-w-md mx-auto">
           Εξειδικευμένες λύσεις τεχνητής νοημοσύνης, αυτοματοποίησης και ιστού για σύγχρονες επιχειρήσεις.

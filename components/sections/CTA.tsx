@@ -8,7 +8,7 @@ export default function CTA() {
     <section 
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-24 sm:py-32 md:py-40 bg-[#030303] overflow-hidden"
+      className="relative py-24 sm:py-32 md:py-32 bg-[#030303] overflow-hidden"
     >
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
@@ -33,22 +33,7 @@ export default function CTA() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Open Header (Without Container Limits) */}
-        <header className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          
-          {/* Status Tag */}
-          <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/80 border border-zinc-800 mb-6 backdrop-blur-md"
-          >
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-[10px] sm:text-xs font-mono font-semibold tracking-[0.25em] text-zinc-400 uppercase">
-              ΕΚΔΗΛΩΣΗ ΕΝΔΙΑΦΕΡΟΝΤΟΣ
-            </span>
-          </motion.div>
-
+        <header className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">          
           {/* Main Title */}
           <motion.h2 
             id="cta-heading"
@@ -56,7 +41,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]"
           >
             Εκσυγχρονίστε την <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-400 to-amber-100">

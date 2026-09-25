@@ -51,7 +51,7 @@ export default function Footer() {
                />
             </Link>
             <p className="text-zinc-500 text-xs leading-relaxed max-w-sm font-light uppercase tracking-wider font-mono">
-              AI-Powered Receptionists για οδοντιατρεία που στοχεύουν στην κορυφή.
+              Ολοκληρωμένες λύσεις AI & Digital Solutions για σύγχρονες επιχειρήσεις.
             </p>            
           </div>
 

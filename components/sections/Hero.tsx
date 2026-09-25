@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
-// Λίστα με εναλλαγή χρωματικών accents & στυλ badges (primary vs secondary)
+// Infinite Maeque data
 const agentFeatures = [
   {
     title: "24/7 Αυτόματη Απάντηση Κλήσεων",
@@ -68,13 +68,13 @@ export default function Hero() {
       aria-label="Εισαγωγή"
       className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-serif"
     >
-      {/* 1. SUBTLE TECH GRID PATTERN OVERLAY */}
+      {/* Grid Pattern Background */}
       <div 
         aria-hidden="true" 
         className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
-      {/* 2. ATMOSPHERE / AMBIENT LIGHTS */}
+      {/* Background Ambiance */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-150 h-150 bg-main-600/10 blur-[120px] rounded-full" />
         <div className="absolute top-1/3 left-10 w-72 h-72 bg-amber-500/5 blur-[120px] rounded-full" />
@@ -86,33 +86,32 @@ export default function Hero() {
         style={{ transformStyle: "preserve-3d" }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 my-auto"
       >
-        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="flex flex-col  items-center justify-center ">
           
-          {/* --- LEFT: REVEAL CONTENT --- */}
+          {/* Content Reveal Animtation*/}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 space-y-6 md:space-y-8 text-center lg:text-left"
+            className="space-y-6 md:space-y-8 text-center lg:text-center"
           >
-            {/* Tagline */}
+            {/* Business Tagline */}
             <div className="overflow-hidden inline-block">
-              <motion.div variants={revealVariants} className="flex items-center gap-4">
-                <div className="h-px w-8 bg-main-500 hidden md:block" />
-                <span className="text-main-400 font-mono text-[10px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
+              <motion.div variants={revealVariants} className="flex items-center gap-4 ">               
+                <span className="text-main-400 font-mono text-[13px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
                   Chrysus Digital // AI & Web Transformation
                 </span>
               </motion.div>
             </div>
 
-            {/* H1 Title */}
-            <div className="overflow-hidden">
+            {/* Title */}
+            <div className="overflow-hidden py-8">
               <motion.h1
                 variants={revealVariants}
-                className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter"
+                className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter "
               >
                 ΛΙΓΟΤΕΡΑ ΤΗΛΕΦΩΝΑ{" "}
-                <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800 ">
                   ΠΕΡΙΣΣΟΤΕΡΟΙ ΠΕΛΑΤΕΣ
                 </span>
               </motion.h1>
@@ -122,7 +121,7 @@ export default function Hero() {
             <div className="overflow-hidden">
               <motion.p
                 variants={revealVariants}
-                className="max-w-xl mx-auto lg:mx-0 text-lg md:text-xl text-zinc-400 font-light leading-relaxed px-2 md:px-0"
+                className="max-w-xl mx-auto text-lg md:text-xl text-zinc-400 font-light leading-relaxed px-2 md:px-0 pb-5"
               >
                 <strong className="text-white font-medium">
                   Ολοκληρωμένες λύσεις AI & Digital Solutions
@@ -134,7 +133,7 @@ export default function Hero() {
             {/* CTA Buttons */}
             <motion.div
               variants={revealVariants}
-              className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-4 justify-center"
             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <a
@@ -161,84 +160,7 @@ export default function Hero() {
             >
               Ιδανικό για επιχειρήσεις & επαγγελματίες που θέλουν 24/7 αυτόματη εξυπηρέτηση & ψηφιακή υπεροχή.
             </motion.p>
-          </motion.div>
-
-          {/* --- RIGHT: SIDEBAR (LOGS DEMO) --- */}
-          <div className="lg:col-span-5 w-full" aria-hidden="true">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="p-5 md:p-8 rounded-4xl border border-white/5 bg-white/2 backdrop-blur-3xl space-y-6 max-w-md mx-auto lg:max-w-none"
-            >
-              <div className="flex justify-between items-center border-b border-white/10 pb-4">
-                <span className="text-[10px] font-mono text-amber-400 tracking-widest uppercase">
-                  LOGS // CHRYSUS_ENGINE_24/7
-                </span>
-                <span className="text-[10px] font-mono text-zinc-500 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                  ΕΝΕΡΓΟ // 12ms
-                </span>
-              </div>
-
-              <div className="space-y-3">
-                {[
-                  { label: "VOICE AGENT (24/7)", val: "ΕΝΕΡΓΟ", color: "text-amber-400" },
-                  { label: "CALENDAR & CRM SYNC", val: "ΣΥΓΧΡΟΝΙΣΜΕΝΟ", color: "text-emerald-400" },
-                  { label: "AUTOMATION ENGINE", val: "ONLINE", color: "text-cyan-400" },
-                ].map((item, i) => (
-                  <div key={i} className="flex justify-between items-center group">
-                    <span className="text-[11px] text-zinc-400 font-mono uppercase tracking-tighter">
-                      {item.label}
-                    </span>
-                    <span className={`text-[10px] font-bold font-mono ${item.color}`}>
-                      {item.val}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-black/40 p-4 rounded-2xl border border-white/5 h-36 md:h-40 overflow-hidden relative">
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-black/30 z-10 pointer-events-none" />
-                <motion.div
-                  animate={{ y: [0, -180] }}
-                  transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                  className="space-y-2"
-                >
-                  {[
-                    "Εισερχόμενη κλήση: +30 210 ...",
-                    "Αναγνώριση πρόθεσης πελάτη...",
-                    "Έλεγχος διαθεσιμότητας Calendar & CRM",
-                    "Ερώτημα: Πληροφορίες Υπηρεσιών & Ραντεβού",
-                    "Εκτέλεση επιχειρησιακών κανόνων",
-                    "Καταχώρηση ραντεβού: Τρίτη 17:30",
-                    "Αποστολή επιβεβαίωσης SMS / Viber",
-                    "Επιβεβαίωση κλήσης: Ολοκληρώθηκε (84s)",
-                    "Αυτόματο Review Flow: Ενεργό",
-                    "Έτοιμο για την επόμενη κλήση...",
-                  ].map((log, i) => (
-                    <p key={i} className="text-[10px] font-mono text-amber-300/70 lowercase">
-                      {`> ${log}`}
-                    </p>
-                  ))}
-                </motion.div>
-              </div>
-
-              <div className="pt-2">
-                <div className="w-full h-0.5 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div
-                    animate={{ width: ["0%", "100%"] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="h-full bg-amber-500"
-                  />
-                </div>
-                <p className="text-[8px] font-mono text-zinc-500 mt-2 text-center uppercase tracking-widest">
-                  ΑΥΤΟΜΑΤΗ ΕΞΥΠΗΡΕΤΗΣΗ // ΣΤΑΘΕΡΗ ΣΥΝΔΕΣΗ
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
+          </motion.div>           
         </div>
       </motion.div>
 

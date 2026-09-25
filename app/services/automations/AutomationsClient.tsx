@@ -78,13 +78,7 @@ export default function AutomationsClient() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-mono text-emerald-300 uppercase tracking-widest font-semibold">
-              WORKFLOWS & BUSINESS AUTOMATIONS
-            </span>
-          </div>
+        <div className="text-center max-w-4xl mx-auto mb-10">
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8">
             Έξυπνες <span className="bg-linear-to-r from-emerald-200 via-emerald-400 to-teal-500 bg-clip-text text-transparent">Αυτοματοποιήσεις</span> για Κάθε Επιχείρηση
@@ -132,10 +126,7 @@ export default function AutomationsClient() {
 
         {/* Features Showcase Grid */}
         <div className="mb-28">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest font-bold block mb-2">
-              AUTOMATION ENGINE FEATURES
-            </span>
+          <div className="text-center max-w-2xl mx-auto mb-14 pt-8">
             <h2 className="text-3xl md:text-5xl font-black">
               Δυνατότητες & Λειτουργίες
             </h2>

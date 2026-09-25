@@ -20,9 +20,6 @@ export default function Services() {
         
         {/* Header */}
         <header className="mb-16 text-center md:text-left">
-          <span className="text-[10px] sm:text-xs font-bold text-amber-400 uppercase tracking-[0.4em] mb-3 font-mono block">
-            ΔΥΝΑΤΟΤΗΤΕΣ & ΠΥΛΩΝΕΣ
-          </span>
           <h2 
             id="services-heading"
             className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"

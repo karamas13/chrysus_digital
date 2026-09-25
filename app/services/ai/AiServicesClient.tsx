@@ -72,22 +72,15 @@ const businessBenefits = [
 
 export default function AIServicesClient() {
   return (
-    <main className="min-h-screen bg-[#030303] text-white pt-32 pb-24 px-6 relative overflow-hidden font-sans">
+    <main className="min-h-screen bg-[#030303] text-white pt-42 pb-24 px-6 relative overflow-hidden font-sans">
       {/* Background Ambient Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-200 h-100 bg-linear-to-b from-amber-500/15 via-amber-500/5 to-transparent blur-[140px] pointer-events-none" />
       <div className="absolute top-1/3 left-1/4 w-125 h-125 bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-6">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            <span className="text-xs font-mono text-amber-300 uppercase tracking-widest font-semibold">
-              NEXT-GEN AI TELEPHONY & WORKFLOWS
-            </span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8">
+        <div className="text-center max-w-4xl mx-auto mb-20">          
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8">
             Ψηφιακοί <span className="bg-linear-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-transparent">AI Receptionists</span> για την Επιχείρησή σας
           </h1>
 
@@ -95,7 +88,7 @@ export default function AIServicesClient() {
             Μετατρέψτε κάθε τηλεφωνική κλήση σε ευκαιρία ανάπτυξης. Οι AI Voice Agents απαντούν ακαριαία 24/7, προγραμματίζουν ραντεβού, εξυπηρετούν πελάτες και αυτοματοποιούν την επικοινωνία του οργανισμού σας.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pb-20 lg:pb-1">
             <Link
               href="/pricing"
               className="w-full sm:w-auto px-8 py-4 bg-amber-500 text-black font-bold text-xs uppercase tracking-widest rounded-xl hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/25"
@@ -134,11 +127,9 @@ export default function AIServicesClient() {
         {/* Core Features */}
         <div className="mb-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-mono text-amber-400 uppercase tracking-widest font-bold block mb-2">
-              CORE CAPABILITIES
-            </span>
             <h2 className="text-3xl md:text-5xl font-black">
-              Δυνατότητες AI Receptionist
+              Δυνατότητες 
+              <span className="text-main-400"> AI Receptionist</span>
             </h2>
           </div>
 
@@ -166,9 +157,6 @@ export default function AIServicesClient() {
         {/* Business Benefits Grid */}
         <div className="mb-28">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="text-xs font-mono text-cyan-400 uppercase tracking-widest font-bold block mb-2">
-              VALUE PROPOSITION
-            </span>
             <h2 className="text-3xl md:text-5xl font-black">
               Οφέλη για τον Οργανισμό σας
             </h2>

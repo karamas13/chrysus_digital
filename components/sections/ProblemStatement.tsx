@@ -86,15 +86,14 @@ export default function ProblemSection() {
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Section Header */}
-        <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-20">
-          <span className="text-zinc-500 font-mono text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase block mb-2 sm:mb-3 font-semibold">
-            ΟΛΟΚΛΗΡΩΜΕΝΕΣ ΨΗΦΙΑΚΕΣ ΛΥΣΕΙΣ
-          </span>
+        <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-20">       
           <h2 
             id="digital-solutions-heading" 
             className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight"
           >
-            Εκσυγχρονίστε την επιχείρησή σας σε 3 επίπεδα
+            Εκσυγχρονίστε την επιχείρησή σας 
+            
+             <span className="text-details-500"> σε 3 επίπεδα</span>
           </h2>
           <p className="mt-3 sm:mt-4 text-zinc-400 text-xs sm:text-base font-light leading-relaxed">
             Καλύπτουμε τα τρία πιο κρίσιμα σημεία ανάπτυξης: επικοινωνία, ψηφιακή εικόνα και εσωτερική παραγωγικότητα.

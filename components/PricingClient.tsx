@@ -263,7 +263,7 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
     {
       title: "Starter Landing",
       badge: "Single Page + Support",
-      price: "150€",
+      price: "149€",
       type: "+ 29€ / μήνα συντήρηση",
       description:
         "Μειωμένο αρχικό κόστος κατασκευής με πλήρη μηνιαία τεχνική υποστήριξη & φιλοξενία.",
@@ -281,7 +281,7 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
     {
       title: "Corporate Multi-Page",
       badge: "Best Value Hybrid",
-      price: "250€",
+      price: "249€",
       type: "+ 49€ / μήνα συντήρηση",
       description:
         "Χαμηλή αρχική επένδυση με συνεχόμενη τεχνική διαχείριση και ανανεώσεις περιεχομένου.",

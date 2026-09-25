@@ -550,10 +550,6 @@ export default function ContactFlashcards() {
           </form>
         )}
       </div>
-
-      <p className="text-[10px] text-zinc-600 text-center font-mono mt-4">
-        🔒 Τα στοιχεία σας προστατεύονται σύμφωνα με τους κανόνες GDPR.
-      </p>
     </div>
   );
 }

@@ -84,10 +84,7 @@ export default function ContactPage() {
         />
 
         {/* Header Section */}
-        <header className="text-center max-w-2xl mx-auto mb-10 relative z-10">
-          <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-[0.4em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 inline-block">
-            ΕΠΙΚΟΙΝΩΝΙΑ // CHRYSUS DIGITAL
-          </span>
+        <header className="text-center max-w-2xl mx-auto mb-10 relative z-10">   
           <h1 className="text-3xl sm:text-5xl font-black text-white mt-5 mb-3 tracking-tight font-sans leading-tight">
             Ξεκινήστε την Αναβάθμιση της{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
@@ -109,10 +106,10 @@ export default function ContactPage() {
         {/* Trust & Direct Contact Badges */}
         <div className="mt-12 relative z-10 flex flex-wrap justify-center items-center gap-6 text-xs text-zinc-400 font-mono">
           <a
-            href="mailto:contact@chrysusdigital.com"
+            href="mailto:contact@chrysusdigital.gr"
             className="flex items-center gap-2 hover:text-amber-400 transition"
           >
-            <span aria-hidden="true">✉</span> contact@chrysusdigital.com
+            <span aria-hidden="true">✉</span> contact@chrysusdigital.gr
           </a>
           <span className="text-zinc-800" aria-hidden="true">
             •

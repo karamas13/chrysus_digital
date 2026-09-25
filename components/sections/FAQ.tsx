@@ -14,58 +14,58 @@ const faqs: FAQItem[] = [
   {
     id: "faq-1",
     category: "λειτουργια",
-    question: "Πώς διαχειρίζεται ο A.I. Agent τα ραντεβού στο Google / Outlook Calendar;",
+    question: "Πώς συνδέεται ο A.I. Agent με το Calendar της επιχείρησής μου;",
     answer:
-      "Ο A.I. Agent συνδέεται απευθείας με το ημερολόγιο της επιχείρησής σας. Ελέγχει τη διαθεσιμότητα σε πραγματικό χρόνο βάσει των κανόνων που ορίζετε (διάρκεια συνεδρίας, ελάχιστος χρόνος προειδοποίησης, απαιτούμενος χρόνος προετοιμασίας) και καταχωρεί, ακυρώνει ή μεταθέτει ραντεβού χωρίς κίνδυνο διπλοεγγραφών.",
+      "Ο AI Agent συνδέεται απευθείας με το Google ή Outlook Calendar. Ελέγχει τη διαθεσιμότητα σε πραγματικό χρόνο, τηρεί τους κανόνες σας (διάρκεια, buffer time, ωράριο) και καταχωρεί, ακυρώνει ή μεταθέτει ραντεβού αυτόματα, εξαλείφοντας τις διπλοεγγραφές.",
   },
   {
     id: "faq-2",
     category: "λειτουργια",
-    question: "Τι συμβαίνει αν ένας πελάτης καλέσει για επείγον αίτημα εκτός ωραρίου;",
+    question: "Τι συμβαίνει σε επείγοντα περιστατικά ή εκτός ωραρίου;",
     answer:
-      "Το σύστημα αξιολογεί το αίτημα και, αν αναγνωρίσει επείγον περιστατικό εκτός ωραρίου, επιχειρεί ζωντανή μεταβίβαση στο αρμόδιο στέλεχος. Αν η μεταβίβαση δεν ολοκληρωθεί, αποστέλλει άμεση ειδοποίηση (Alert) στο Telegram/Viber με τον αριθμό κλήσης και την ώρα, ώστε να καλέσετε πίσω αμέσως.",
+      "Το σύστημα αξιολογεί τη σοβαρότητα του αιτήματος. Αν αναγνωρίσει επείγον περιστατικό, επιχειρεί άμεση μεταβίβαση στο τηλέφωνο ασφαλείας σας. Αν δεν απαντήσετε, αποστέλλει ακαριαία ειδοποίηση (Alert) στο Telegram/Viber με τα στοιχεία του καλούντος για άμεση επανάκληση.",
   },
   {
     id: "faq-3",
     category: "τεχνικα",
-    question: "Χρειάζεται να αλλάξω τον υπάρχοντα τηλεφωνικό μου αριθμό;",
+    question: "Χρειάζεται να αλλάξω τον υφιστάμενο τηλεφωνικό μου αριθμό;",
     answer:
-      "Όχι. Διατηρείτε τον υφιστάμενο τηλεφωνικό σας αριθμό. Η σύνδεση γίνεται μέσω του τηλεφωνικού κέντρου PBX με απλή προώθηση κλήσεων (Overflow, After-Hours ή AI-First), χωρίς διακοπή της καθημερινής λειτουργίας της επιχείρησής σας.",
+      "Όχι. Διατηρείτε 100% τον υφιστάμενο αριθμό και τον πάροχό σας. Η διασύνδεση γίνεται μέσω απλής προώθησης κλήσεων (Overflow, After-Hours ή AI-First) από το υφιστάμενο τηλεφωνικό σας κέντρο (PBX).",
   },
   {
     id: "faq-4",
     category: "τεχνικα",
-    question: "Πώς διαχειρίζεται το σύστημα τις κλήσεις με απόκρυψη;",
+    question: "Τι γίνεται αν ο A.I. Agent δεχθεί ερώτηση που δεν γνωρίζει;",
     answer:
-      "Για λόγους ασφαλείας και ορθής ταυτοποίησης, οι κλήσεις από απόκρυψη δεν δρομολογούνται στον A.I. Agent. Μεταβιβάζονται απευθείας στη φυσική γραμματεία κατά τις ώρες λειτουργίας ή καθοδηγούνται κατάλληλα εκτός ωραρίου.",
+      "Ο Agent απαντά αυστηρά και μόνο με βάση τη Βάση Γνώσης (Knowledge Base) που έχουμε εγκρίνει μαζί σας. Αν υποβληθεί εξειδικευμένη ερώτηση εκτός πεδίου, ενημερώνει ευγενικά τον πελάτη και καταγράφει αίτημα επικοινωνίας για το προσωπικό σας.",
   },
   {
     id: "faq-5",
     category: "ασφαλεια",
-    question: "Πώς προστατεύονται τα προσωπικά δεδομένα των πελατών;",
+    question: "Πώς διασφαλίζεται η προστασία δεδομένων (GDPR);",
     answer:
-      "Το σύστημα σχεδιάστηκε με αυστηρή προσήλωση στον κανονισμό GDPR. Δεν αποθηκεύονται ευαίσθητα προσωπικά δεδομένα στις εξωτερικές ειδοποιήσεις (π.χ. στο Telegram στέλνεται μόνο ο αριθμός τηλεφώνου, η ώρα και ένας εσωτερικός αναγνωριστικός κωδικός). Παράλληλα, ζητείται ρητή συναίνεση πριν από την καταγραφή αιτημάτων επανάκλησης (Callback Requests).",
+      "Η αρχιτεκτονική μας είναι πλήρως συμμορφωμένη με τον GDPR. Όλες οι συνομιλίες και τα δεδομένα κρυπτογραφούνται. Στις εξωτερικές ειδοποιήσεις (Telegram/Viber) δεν μεταφέρονται ευαίσθητα προσωπικά δεδομένα, παρά μόνο τα απαραίτητα στοιχεία επικοινωνίας.",
   },
   {
     id: "faq-6",
-    category: "ασφαλεια",
-    question: "Τι απαντά ο A.I. Agent αν του υποβληθεί μια πολύ εξειδικευμένη ερώτηση;",
+    category: "τεχνικα",
+    question: "Πώς αντιμετωπίζονται οι κλήσεις με απόκρυψη;",
     answer:
-      "Ο Agent βασίζεται αποκλειστικά στη Βάση Γνώσης που έχει εγκριθεί από εσάς. Σε εξειδικευμένες ερωτήσεις εκτός πεδίου, ενημερώνει τον πελάτη ότι το θέμα απαιτεί εκτίμηση από εκπρόσωπο και καταγράφει αίτημα επικοινωνίας.",
+      "Για λόγους ταυτοποίησης και ασφαλείας, οι κλήσεις από απόκρυψη δεν επεξεργάζονται από τον AI Agent. Μεταβιβάζονται απευθείας στη φυσική γραμματεία κατά τις ώρες λειτουργίας ή καθοδηγούνται καταλλήλως εκτός ωραρίου.",
   },
   {
     id: "faq-7",
     category: "τιμολογηση",
-    question: "Ποια είναι η διαφορά μεταξύ των διαθέσιμων πλάνων;",
+    question: "Πώς διαμορφώνονται τα πλάνα συνδρομής;",
     answer:
-      "Τα πλάνα μας προσαρμόζονται στον όγκο των κλήσεων, στον αριθμό των ημερολογίων/στελεχών και στις απαιτήσεις αυτοματισμού της επιχείρησής σας. Όλα τα πλάνα περιλαμβάνουν πλήρη συγχρονισμό Calendar, ειδοποιήσεις Telegram και βασικά analytics.",
+      "Η τιμολόγηση προσαρμόζεται ανάλογα με τον μηνιαίο όγκο κλήσεων, τον αριθμό των συνδεδεμένων ημερολογίων/στελεχών και τις ειδικές απαιτήσεις αυτοματισμού. Όλα τα πλάνα περιλαμβάνουν διασύνδεση Calendar, ειδοποιήσεις και analytics.",
   },
   {
     id: "faq-8",
     category: "τιμολογηση",
-    question: "Πόσος χρόνος απαιτείται για την πλήρη ενεργοποίηση της υπηρεσίας;",
+    question: "Πόσος χρόνος απαιτείται για την πλήρη ενεργοποίηση;",
     answer:
-      "Η διαδικασία Onboarding ολοκληρώνεται συνήθως σε λίγες εργάσιμες ημέρες. Περιλαμβάνει τη ρύθμιση της Βάσης Γνώσης, τη διασύνδεση του Ημερολογίου & PBX και τις τελικές δοκιμαστικές κλήσεις επιβεβαίωσης.",
+      "Η διαδικασία Onboarding ολοκληρώνεται συνήθως σε 3 έως 5 εργάσιμες ημέρες. Περιλαμβάνει τη δημιουργία της Βάσης Γνώσης, τη διασύνδεση με το τηλεφωνικό κέντρο & το ημερολόγιό σας, καθώς και εξαντλητικές δοκιμές πριν τη ζωντανή λειτουργία.",
   },
 ];
 
@@ -86,41 +86,40 @@ export default function FAQSection() {
     <section 
       id="faq"
       aria-labelledby="faq-heading"
+      itemScope
+      itemType="https://schema.org/FAQPage"
       className="relative py-20 sm:py-28 px-4 sm:px-6 bg-[#030303] text-zinc-100 overflow-hidden"
     >
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
         aria-hidden="true" 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
       {/* 2. Background Ambient Glow */}
       <div 
         aria-hidden="true" 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-100 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
       />
 
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Section Header */}
         <header className="text-center mb-12 sm:mb-16">
-          <span className="inline-block text-[10px] sm:text-xs font-mono font-semibold text-amber-400 uppercase tracking-[0.3em] px-3.5 py-1.5 rounded-full bg-amber-950/40 border border-amber-500/20 backdrop-blur-md">
-            ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ)
-          </span>
           <h2 
             id="faq-heading"
-            className="text-3xl sm:text-5xl font-black text-white mt-6 mb-4 tracking-tight leading-tight"
+            className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight"
           >
-            Όσα θέλετε να γνωρίζετε για τις{" "}
+            Όσα Θέλετε να Γνωρίζετε για τις{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
               Ψηφιακές Λύσεις
             </span>
           </h2>
-          <p className="text-zinc-400 text-xs sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
-            Απαντήσεις στις κυριότερες απορίες σχετικά με τη λειτουργία των AI agents, την ασφάλεια, την τηλεφωνία και τις ενσωματώσεις.
+          <p className="mt-4 text-zinc-400 text-xs sm:text-base font-light max-w-2xl mx-auto leading-relaxed">
+            Απαντήσεις στις κυριότερες απορίες σχετικά με τη λειτουργία των AI Agents, την ασφάλεια, την τηλεφωνία και τις ενοποιήσεις.
           </p>
         </header>
 
-        {/* Filter Categories (Tablist - Mobile Friendly Scrollable) */}
+        {/* Filter Categories (Tablist - Mobile Friendly) */}
         <div 
           role="tablist" 
           aria-label="Κατηγορίες ερωτήσεων" 
@@ -162,6 +161,9 @@ export default function FAQSection() {
             return (
               <div
                 key={faq.id}
+                itemScope
+                itemProp="mainEntity"
+                itemType="https://schema.org/Question"
                 className={`rounded-2xl border transition-all duration-300 overflow-hidden backdrop-blur-sm ${
                   isOpen
                     ? "bg-zinc-900/80 border-amber-500/40 shadow-xl shadow-amber-950/20"
@@ -176,7 +178,10 @@ export default function FAQSection() {
                     onClick={() => toggleFAQ(faq.id)}
                     className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 focus:outline-none cursor-pointer"
                   >
-                    <span className="text-sm sm:text-lg font-bold text-white leading-snug">
+                    <span 
+                      itemProp="name" 
+                      className="text-sm sm:text-lg font-bold text-white leading-snug"
+                    >
                       {faq.question}
                     </span>
                     <div
@@ -211,8 +216,13 @@ export default function FAQSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 text-zinc-300 text-xs sm:text-sm font-light leading-relaxed border-t border-zinc-800/50">
-                        {faq.answer}
+                      <div 
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                        className="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 text-zinc-300 text-xs sm:text-sm font-light leading-relaxed border-t border-zinc-800/50"
+                      >
+                        <span itemProp="text">{faq.answer}</span>
                       </div>
                     </motion.div>
                   )}
