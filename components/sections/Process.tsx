@@ -51,7 +51,7 @@ export default function Process() {
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
         aria-hidden="true" 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:3rem_3rem] md:bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
       />
 
       {/* 2. Background Ambient Glow */}
@@ -84,7 +84,7 @@ export default function Process() {
           {/* Horizontal Connecting Line (Desktop) */}
           <div 
             aria-hidden="true" 
-            className="hidden lg:block absolute top-[27px] left-[10%] right-[10%] h-px bg-gradient-to-r from-amber-500/20 via-amber-500/60 to-amber-500/20 z-0" 
+            className="hidden lg:block absolute top-6.75 left-[10%] right-[10%] h-px bg-linear-to-r from-amber-500/20 via-amber-500/60 to-amber-500/20 z-0" 
           />
 
           {/* Steps Horizontal Flow */}

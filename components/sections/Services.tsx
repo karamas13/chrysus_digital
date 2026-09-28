@@ -19,12 +19,12 @@ export default function Services() {
       <div className="container mx-auto px-6 relative z-10">
         
         {/* Header */}
-        <header className="mb-16 text-center md:text-left">
+        <header className="mb-16 text-center md:text-left ">
           <h2 
             id="services-heading"
-            className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase"
+            className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase text-center"
           >
-            Παροχή <span className="text-zinc-500 italic font-serif font-light lowercase">Υπηρεσιών</span>
+            Παροχή <span className="text-zinc-300 italic font-serif font-light lowercase">Υπηρεσιών</span>
           </h2>
         </header>
 

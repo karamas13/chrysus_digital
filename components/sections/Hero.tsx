@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
-// Infinite Maeque data
+// Infinite Marquee data
 const agentFeatures = [
   {
     title: "24/7 Αυτόματη Απάντηση Κλήσεων",
@@ -81,37 +81,28 @@ export default function Hero() {
         <div className="absolute top-1/3 right-10 w-72 h-72 bg-cyan-500/5 blur-[120px] rounded-full" />
       </div>
 
-      {/* MAIN HERO CONTENT */}
+      {/* MAIN HERO CONTENT WITH REANIMATED REVEAL VARIANTS */}
       <motion.div
         style={{ transformStyle: "preserve-3d" }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 my-auto"
       >
-        <div className="flex flex-col  items-center justify-center ">
+        <div className="flex flex-col items-center justify-center">
           
-          {/* Content Reveal Animtation*/}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-6 md:space-y-8 text-center lg:text-center"
+            className="space-y-6 md:space-y-8 text-center"
           >
-            {/* Business Tagline */}
-            <div className="overflow-hidden inline-block">
-              <motion.div variants={revealVariants} className="flex items-center gap-4 ">               
-                <span className="text-main-400 font-mono text-[13px] tracking-[0.4em] md:tracking-[0.5em] uppercase">
-                  Chrysus Digital // AI & Web Transformation
-                </span>
-              </motion.div>
-            </div>
 
             {/* Title */}
             <div className="overflow-hidden py-8">
               <motion.h1
                 variants={revealVariants}
-                className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter "
+                className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter"
               >
                 ΛΙΓΟΤΕΡΑ ΤΗΛΕΦΩΝΑ{" "}
-                <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800 ">
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-main-300 via-main-500 to-main-800">
                   ΠΕΡΙΣΣΟΤΕΡΟΙ ΠΕΛΑΤΕΣ
                 </span>
               </motion.h1>
@@ -160,7 +151,7 @@ export default function Hero() {
             >
               Ιδανικό για επιχειρήσεις & επαγγελματίες που θέλουν 24/7 αυτόματη εξυπηρέτηση & ψηφιακή υπεροχή.
             </motion.p>
-          </motion.div>           
+          </motion.div>          
         </div>
       </motion.div>
 

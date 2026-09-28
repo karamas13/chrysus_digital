@@ -50,7 +50,7 @@ export default function Footer() {
                  className="w-32 sm:w-40 md:w-44 lg:w-48 h-auto object-contain" 
                />
             </Link>
-            <p className="text-zinc-500 text-xs leading-relaxed max-w-sm font-light uppercase tracking-wider font-mono">
+            <p className="text-zinc-300 text-xs leading-relaxed max-w-sm font-light uppercase tracking-wider font-mono">
               Ολοκληρωμένες λύσεις AI & Digital Solutions για σύγχρονες επιχειρήσεις.
             </p>            
           </div>
@@ -88,7 +88,7 @@ export default function Footer() {
               </a>
               
               <div className="pt-2 flex flex-col items-center">
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block mb-2">
+                <span className="text-[10px] font-mono text-zinc-300 uppercase tracking-wider block mb-2">
                   Social Media
                 </span>
                 <div className="flex justify-center gap-3">

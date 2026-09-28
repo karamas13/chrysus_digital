@@ -8,7 +8,7 @@ import Link from "next/link";
 const navLinks = [
   { name: "ΑΡΧΙΚΗ", href: "/" },
   { name: "Υπηρεσίες", href: "/services" },
-  { name: "Πακέτα", href: "/pricing" }, 
+  { name: "Πακέτα", href: "/pricing" },
   { name: "Επικοινωνία", href: "/contact" },
 ];
 
@@ -46,45 +46,42 @@ export default function Navigation() {
 
   return (
     <header className="absolute top-0 left-0 w-full z-50 px-4 md:px-6 py-3 transition-all duration-300">
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
+      <div
         className={`mx-auto max-w-7xl rounded-2xl transition-all duration-300 border ${
-          isScrolled 
-            ? "bg-zinc-950/85 backdrop-blur-md border-white/10 py-1.5 shadow-2xl" 
+          isScrolled
+            ? "bg-zinc-950/85 backdrop-blur-md border-white/10 py-1.5 shadow-2xl"
             : "bg-transparent border-transparent py-2"
         }`}
       >
-        <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 h-12 md:h-14">
+        <div className="flex items-center justify-between px-4 sm:px-6 md:px-8 h-12 md:h-14 gap-4">
           
           {/* 1. LOGO */}
-          <div className="flex-1 flex justify-start items-center overflow-visible">
+          <div className="flex-1 flex justify-start items-center shrink-0">
             <Link 
               href="/" 
-              className="inline-flex items-center transition-transform active:scale-95 origin-left scale-110 sm:scale-125 md:scale-130 lg:scale-135"
+              className="inline-flex items-center transition-opacity hover:opacity-90 active:scale-95 origin-left"
               aria-label="Αρχική σελίδα Chrysus Digital"
             >
               <Image 
                 src="/images/Logo.avif" 
                 alt="Chrysus Digital Logo"
-                width={500}
-                height={125}
-                quality={100}
+                width={192}
+                height={48}                            
                 priority
-                unoptimized
-                className="w-32 sm:w-40 md:w-44 lg:w-48 h-auto object-contain" 
+                fetchPriority="high"
+                sizes="(max-width: 640px) 128px, (max-width: 768px) 144px, (max-width: 1024px) 160px, 192px"
+                className="w-32 sm:w-36 md:w-40 lg:w-44 xl:w-48 h-auto object-contain" 
               />
             </Link>
           </div>
 
           {/* 2. NAV LINKS - Desktop Only (lg screens & above) */}
-          <ul className="hidden lg:flex items-center gap-8 lg:gap-10">
+          <ul className="hidden lg:flex items-center gap-4 xl:gap-8 shrink-0">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link 
                   href={link.href}
-                  className="text-[12px] lg:text-[13px] font-bold uppercase tracking-[0.25em] text-zinc-400 hover:text-amber-400 transition-colors whitespace-nowrap"
+                  className="text-[11px] lg:text-[12px] xl:text-[13px] font-bold uppercase tracking-wider xl:tracking-[0.25em] text-zinc-400 hover:text-amber-400 transition-colors whitespace-nowrap"
                 >
                   {link.name}
                 </Link>
@@ -93,7 +90,7 @@ export default function Navigation() {
           </ul>
 
           {/* 3. ACTIONS & MOBILE/TABLET TOGGLE */}
-          <div className="flex-1 flex justify-end items-center gap-4">          
+          <div className="flex-1 flex justify-end items-center gap-4 shrink-0">          
             <button 
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -119,7 +116,7 @@ export default function Navigation() {
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Mobile & Tablet Menu Drawer */}
       <AnimatePresence>

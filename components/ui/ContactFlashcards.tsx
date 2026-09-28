@@ -7,7 +7,7 @@ type ServiceOption = "AI Agents" | "Automations" | "Web Development" | "Άλλο
 
 interface FormDataState {
   fullName: string;
-  service: ServiceOption;
+  services: ServiceOption[];
   email: string;
   phone: string;
   message: string;
@@ -27,7 +27,7 @@ export default function ContactFlashcards() {
 
   const [formData, setFormData] = useState<FormDataState>({
     fullName: "",
-    service: "AI Agents",
+    services: ["AI Agents"], // Default to initial selection in an array
     email: "",
     phone: "",
     message: "",
@@ -37,9 +37,21 @@ export default function ContactFlashcards() {
     fullName: "",
     phone: "",
     email: "",
+    services: "",
   });
 
   // --- SAFEGUARDS & HANDLERS ---
+
+  const toggleService = (serviceId: ServiceOption) => {
+    setFormData((prev) => {
+      const exists = prev.services.includes(serviceId);
+      const updated = exists
+        ? prev.services.filter((item) => item !== serviceId)
+        : [...prev.services, serviceId];
+      return { ...prev, services: updated };
+    });
+    if (errors.services) setErrors((prev) => ({ ...prev, services: "" }));
+  };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -77,6 +89,14 @@ export default function ContactFlashcards() {
     return true;
   };
 
+  const validateStep2 = () => {
+    if (formData.services.length === 0) {
+      setErrors((prev) => ({ ...prev, services: "Παρακαλώ επιλέξτε τουλάχιστον μία υπηρεσία." }));
+      return false;
+    }
+    return true;
+  };
+
   const validateStep3 = () => {
     let valid = true;
     const newErrors = { phone: "", email: "" };
@@ -102,6 +122,7 @@ export default function ContactFlashcards() {
 
   const nextStep = () => {
     if (step === 1 && !validateStep1()) return;
+    if (step === 2 && !validateStep2()) return;
     if (step === 3 && !validateStep3()) return;
 
     setDirection(1);
@@ -115,9 +136,11 @@ export default function ContactFlashcards() {
 
   const handleSubmit = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    if (!validateStep1() || !validateStep3()) return;
+    if (!validateStep1() || !validateStep2() || !validateStep3()) return;
 
     setStatus("submitting");
+
+    const selectedServicesString = formData.services.join(", ");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -129,9 +152,9 @@ export default function ContactFlashcards() {
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           to: "contact@chrysusdigital.gr",
-          subject: `Νέο Αίτημα Επικοινωνίας (${formData.service}): ${formData.fullName.trim()}`,
+          subject: `Νέο Αίτημα Επικοινωνίας (${selectedServicesString}): ${formData.fullName.trim()}`,
           from_name: formData.fullName.trim(),
-          service_requested: formData.service,
+          service_requested: selectedServicesString,
           phone: formData.phone,
           email: formData.email.trim(),
           message: formData.message || "Δεν συμπληρώθηκε επιπλέον μήνυμα",
@@ -151,10 +174,10 @@ export default function ContactFlashcards() {
   const resetForm = () => {
     setStep(1);
     setStatus("idle");
-    setErrors({ fullName: "", phone: "", email: "" });
+    setErrors({ fullName: "", phone: "", email: "", services: "" });
     setFormData({
       fullName: "",
-      service: "AI Agents",
+      services: ["AI Agents"],
       email: "",
       phone: "",
       message: "",
@@ -336,7 +359,7 @@ export default function ContactFlashcards() {
                   </motion.div>
                 )}
 
-                {/* STEP 2: ΕΠΙΛΟΓΗ ΥΠΗΡΕΣΙΑΣ */}
+                {/* STEP 2: ΕΠΙΛΟΓΗ ΥΠΗΡΕΣΙΑΣ (MULTI-SELECT) */}
                 {step === 2 && (
                   <motion.div
                     key="step2"
@@ -352,35 +375,46 @@ export default function ContactFlashcards() {
                       ΒΗΜΑ 2
                     </span>
                     <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
-                      Ποια υπηρεσία σας ενδιαφέρει;
+                      Ποιες υπηρεσίες σας ενδιαφέρουν;
                     </h3>
                     <p className="text-xs text-zinc-400 font-light">
-                      Επιλέξτε το πεδίο που ταιριάζει στις ανάγκες της επιχείρησής σας.
+                      Επιλέξτε μία ή περισσότερες επιλογές που ταιριάζουν στις ανάγκες σας.
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                       {serviceOptions.map((opt) => {
-                        const isSelected = formData.service === opt.id;
+                        const isSelected = formData.services.includes(opt.id);
                         return (
                           <button
                             key={opt.id}
                             type="button"
-                            onClick={() => setFormData((prev) => ({ ...prev, service: opt.id }))}
-                            className={`p-3 rounded-xl border text-left transition duration-200 cursor-pointer flex items-start gap-3 ${
+                            onClick={() => toggleService(opt.id)}
+                            aria-pressed={isSelected}
+                            className={`p-3 rounded-xl border text-left transition duration-200 cursor-pointer flex items-start gap-3 relative ${
                               isSelected
                                 ? "bg-amber-400/10 border-amber-400 text-white shadow-md shadow-amber-400/5"
                                 : "bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                             }`}
                           >
                             <span className="text-lg leading-none mt-0.5" aria-hidden="true">{opt.icon}</span>
-                            <div>
+                            <div className="flex-1 pr-6">
                               <div className="text-xs font-bold font-mono text-white mb-0.5">{opt.title}</div>
                               <div className="text-[11px] text-zinc-500 font-light leading-snug">{opt.desc}</div>
+                            </div>
+                            <div className={`absolute top-3 right-3 w-4 h-4 rounded border flex items-center justify-center text-[10px] transition-colors ${
+                              isSelected ? "bg-amber-400 border-amber-400 text-black font-bold" : "border-zinc-700 bg-zinc-900"
+                            }`}>
+                              {isSelected && "✓"}
                             </div>
                           </button>
                         );
                       })}
                     </div>
+                    {errors.services && (
+                      <p className="text-red-400 text-xs mt-1 font-mono">
+                        {errors.services}
+                      </p>
+                    )}
                   </motion.div>
                 )}
 
@@ -532,6 +566,7 @@ export default function ContactFlashcards() {
                   onClick={nextStep}
                   disabled={
                     (step === 1 && formData.fullName.trim().length < 2) ||
+                    (step === 2 && formData.services.length === 0) ||
                     (step === 3 && (formData.phone.length !== 10 || !formData.email.trim()))
                   }
                   className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-mono text-xs font-bold uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-amber-400/10 ml-auto cursor-pointer"
