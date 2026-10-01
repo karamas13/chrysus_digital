@@ -14,7 +14,7 @@ const aiPlansData: Record<AiBillingType, PlanFeature[]> = {
       badge: "Βασικό Πακέτο",
       price: "149€",
       period: "/ μήνα",
-      setupFee: "+ 199€ Setup Fee",
+      setupFee: "+ 49€ Τέλος Ενεργοποίησης",
       description: "Πλήρης AI ρεσεψιονίστ για μικρές & μεσαίες επιχειρήσεις.",
       isPopular: false,
       features: [
@@ -23,7 +23,7 @@ const aiPlansData: Record<AiBillingType, PlanFeature[]> = {
         "1 Ταυτόχρονη AI κλήση & 1 Softphone extension",
         "1 Ημερολόγιο / Πάροχος & 1 Τοποθεσία",
         "Πλήρης διαχείριση ραντεβού (Κράτηση, Ακύρωση, Αλλαγή)",
-        "Telegram alerts για επείγοντα περιστατικά",
+        "Alerts για επείγοντα περιστατικά",
       ],
       detailedFeatures: [
         "400 λεπτά AI κλήσεων / μήνα",
@@ -45,7 +45,7 @@ const aiPlansData: Record<AiBillingType, PlanFeature[]> = {
       badge: "Δημοφιλέστερο",
       price: "299€",
       period: "/ μήνα",
-      setupFee: "+ 299€ Setup Fee",
+      setupFee: "+ 79€ Τέλος Ενεργοποίησης",
       description: "Αυξημένη χωρητικότητα κλήσεων & πλήρης υποστήριξη ομάδας.",
       isPopular: true,
       features: [
@@ -76,7 +76,7 @@ const aiPlansData: Record<AiBillingType, PlanFeature[]> = {
       badge: "Multi-Team / Enterprise",
       price: "599€",
       period: "/ μήνα",
-      setupFee: "+ 499€ – 799€ Setup Fee",
+      setupFee: "Προσαρμοσμένο Τέλος Ενεργοποίησης",
       description: "Για πολυεταιρικά σχήματα & κλινικές με πολλαπλά τμήματα.",
       isPopular: false,
       features: [
@@ -209,7 +209,7 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
     {
       title: "Starter Landing",
       badge: "Single Page",
-      price: "250€",
+      price: "249€",
       type: "Εφάπαξ πληρωμή",
       description:
         "Ultra-fast μονοσέλιδη ιστοσελίδα σχεδιασμένη για άμεση μετατροπή επισκεπτών σε πελάτες.",
@@ -220,14 +220,14 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
         "Πλήρης Προσαρμογή σε Κινητά & Tablets",
         "Έως 2 reviews για αλλαγές πριν την παράδοση",
         "Online Booking System (Προαιρετικό)",
-        "SEO Optimization",
+        "SEO για παρουσία στο Google",
         "Πλήρης Παράδοση & Ιδιοκτησία Κώδικα",
       ],
     },
     {
       title: "Corporate Multi-Page",
       badge: "Δημοφιλέστερο Web",
-      price: "420€",
+      price: "419€",
       type: "Εφάπαξ πληρωμή",
       description:
         "Ολοκληρωμένη πολυσέλιδη ιστοσελίδα για πλήρη προβολή των υπηρεσιών και του brand σας.",
@@ -235,10 +235,9 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
       features: [
         "Ότι περιλαμβάνει το Starter πλάνο",
         "Έως 6 Πολυσέλιδες Ενότητες (Αρχική, Υπηρεσίες, κ.ά.)",
-        "Online Booking System & Ημερολόγιο (Προαιρετικό)",
+        "Online Booking System & Administrative Control (Προαιρετικό)",
         "Έως 5 reviews για αλλαγές πριν την παράδοση",
-        "Προηγμένο SEO & Google Business Profile",
-        "Διασύνδεση με Social Media & Contact Funnels",
+        "Προηγμένο SEO & Google Business Profile",        
       ],
     },
     {
@@ -282,7 +281,7 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
       title: "Corporate Multi-Page",
       badge: "Best Value Hybrid",
       price: "249€",
-      type: "+ 49€ / μήνα συντήρηση",
+      type: "+ 39€ / μήνα συντήρηση",
       description:
         "Χαμηλή αρχική επένδυση με συνεχόμενη τεχνική διαχείριση και ανανεώσεις περιεχομένου.",
       isBestOffer: true,
@@ -299,17 +298,17 @@ const webPlansData: Record<WebBillingType, PlanFeature[]> = {
       title: "Enterprise Custom Web",
       badge: "Bespoke Managed",
       price: "Custom",
-      type: "Custom Monthly SLA",
+      type: "Custom Monthly Plan",
       description:
         "Πλήρως διαχειριζόμενη web πλατφόρμα με dedicated developer & continuous integration.",
       isBestOffer: false,
       features: [
-        "100% Tailor-made Architecture (Next.js)",
+        "100% Tailor-made Architecture",
         "Custom Booking System & Enterprise APIs",
         "Dedicated Managed Infrastructure",
         "Continuous Deployment & Custom Features",
         "Πολυγλωσσική Υποστήριξη (Multi-language)",
-        "Guaranteed Response SLA (<2 hours)",
+        "Guaranteed Response SLA",
       ],
     },
   ],
