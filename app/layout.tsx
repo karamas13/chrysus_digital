@@ -2,7 +2,9 @@ import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navigation from '@/components/sections/Navigation';
 import Footer from '@/components/sections/Footer';
-import PageTransition from '@/components/PageTransition'; // 1. Import του PageTransition
+import PageTransition from '@/components/PageTransition'; 
+import { preload } from 'react-dom';
+
 
 
 
@@ -21,11 +23,19 @@ const spaceGrotesk = Space_Grotesk({
   variable: '--font-space',
 });
 
+
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  preload('/images/bgimg2.jpg', { 
+    as: 'image', 
+    fetchPriority: 'high' 
+  } as any);
+
   return (
     <html lang="el" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <link rel="preload" as="image" href="/images/Logo.avif" fetchPriority="high" />

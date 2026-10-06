@@ -76,8 +76,9 @@ export default function Hero() {
           alt="Hero background"
           fill
           priority       
+          fetchPriority="high"
           sizes="100vw"
-          className="object-cover object-center opacity-30"
+          className="object-cover object-center opacity-40"
         />
         {/* Dark Vignette & Gradient Transition to Section Below */}
         <div className="absolute inset-0 bg-linear-to-b from-[#030303]/20 via-[#030303]/10 to-[#030303]" />
