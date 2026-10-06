@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 // Infinite Marquee data
@@ -66,22 +67,29 @@ export default function Hero() {
     <section
       ref={containerRef}
       aria-label="Εισαγωγή"
-      className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-serif"
+      className="relative min-h-screen w-full bg-[#030303] flex flex-col justify-between overflow-hidden pt-32 pb-8 font-display"
     >
+      {/* 1. BACKGROUND IMAGE WITH DARK OVERLAY & SEAMLESS BOTTOM FADE */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <Image
+          src="/images/bgimg2.jpg" 
+          alt="Hero background"
+          fill
+          priority       
+          sizes="100vw"
+          className="object-cover object-center opacity-30"
+        />
+        {/* Dark Vignette & Gradient Transition to Section Below */}
+        <div className="absolute inset-0 bg-linear-to-b from-[#030303]/20 via-[#030303]/10 to-[#030303]" />
+      </div>
+
       {/* Grid Pattern Background */}
       <div 
         aria-hidden="true" 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
-      />
+        className="absolute inset-0 z-1 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+      />      
 
-      {/* Background Ambiance */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-full max-w-150 h-150 bg-main-600/10 blur-[120px] rounded-full" />
-        <div className="absolute top-1/3 left-10 w-72 h-72 bg-amber-500/5 blur-[120px] rounded-full" />
-        <div className="absolute top-1/3 right-10 w-72 h-72 bg-cyan-500/5 blur-[120px] rounded-full" />
-      </div>
-
-      {/* MAIN HERO CONTENT WITH REANIMATED REVEAL VARIANTS */}
+      {/* MAIN HERO CONTENT */}
       <motion.div
         style={{ transformStyle: "preserve-3d" }}
         className="relative z-10 w-full max-w-7xl mx-auto px-6 my-auto"
@@ -172,7 +180,7 @@ export default function Hero() {
               return (
                 <div
                   key={idx}
-                  className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300 ${
+                  className={`flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-300${
                     isPrimary
                       ? "bg-main-500/5 border-main-500/20 text-white"
                       : "bg-white/2 border-details-900 text-zinc-300"

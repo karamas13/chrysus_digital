@@ -8,7 +8,7 @@ export default function CTA() {
     <section 
       id="cta"
       aria-labelledby="cta-heading"
-      className="relative py-24 sm:py-32 md:py-32 bg-[#030303] overflow-hidden"
+      className="relative py-24 sm:py-32 md:py-32 bg-[#030303] overflow-hidden font-display"
     >
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
@@ -41,7 +41,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-6xl text-[#f1f1f1] tracking-tight leading-[1.1]"
           >
             Εκσυγχρονίστε την <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-400 to-amber-100">

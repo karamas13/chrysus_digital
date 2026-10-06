@@ -88,7 +88,7 @@ export default function FAQSection() {
       aria-labelledby="faq-heading"
       itemScope
       itemType="https://schema.org/FAQPage"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 bg-[#030303] text-zinc-100 overflow-hidden"
+      className="relative py-20 sm:py-28 px-4 sm:px-6 bg-[#030303] text-zinc-100 overflow-hidden font-sans"
     >
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
@@ -107,7 +107,7 @@ export default function FAQSection() {
         <header className="text-center mb-12 sm:mb-16">
           <h2 
             id="faq-heading"
-            className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight"
+            className="text-3xl sm:text-5xl text-[#f1f1f1] tracking-tight leading-tight"
           >
             Όσα Θέλετε να Γνωρίζετε για τις{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
@@ -180,7 +180,7 @@ export default function FAQSection() {
                   >
                     <span 
                       itemProp="name" 
-                      className="text-sm sm:text-lg font-bold text-white leading-snug"
+                      className="text-sm sm:text-lg text-[#f1f1f1] leading-snug"
                     >
                       {faq.question}
                     </span>

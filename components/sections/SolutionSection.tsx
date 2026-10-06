@@ -84,7 +84,7 @@ export default function SolutionValueSection() {
   return (
     <section 
       aria-labelledby="solution-section-heading"
-      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-linear-to-b from-[#030303] via-zinc-950/80 to-[#030303] overflow-hidden"
+      className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-linear-to-b from-[#030303] via-zinc-950/80 to-[#030303] overflow-hidden font-display"
     >
       {/* Background Tech Grid */}
       <div 

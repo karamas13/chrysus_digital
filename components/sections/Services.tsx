@@ -8,7 +8,7 @@ export default function Services() {
     <section 
       id="services"
       aria-labelledby="services-heading"
-      className="py-24 sm:py-32 bg-[#030303] relative overflow-hidden"
+      className="py-24 sm:py-32 bg-[#030303] relative overflow-hidden font-display"
     >
       {/* 1. Subtle Tech Grid Pattern Overlay */}
       <div 
@@ -22,9 +22,9 @@ export default function Services() {
         <header className="mb-16 text-center md:text-left ">
           <h2 
             id="services-heading"
-            className="text-4xl md:text-6xl font-black text-white tracking-tight uppercase text-center"
+            className="text-4xl md:text-6xl text-[#f1f1f1] tracking-tight  text-center"
           >
-            Παροχή <span className="text-zinc-300 italic font-serif font-light lowercase">Υπηρεσιών</span>
+            Παροχή <span className=" italic text-transparent tracking-wider bg-clip-text bg-linear-to-r from-emerald-200 to-emerald-400">Υπηρεσιών</span>
           </h2>
         </header>
 
@@ -38,10 +38,7 @@ export default function Services() {
             className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-amber-500/50 flex flex-col justify-between min-h-95 backdrop-blur-sm"
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
-              <div>
-                <span className="text-amber-400 text-[10px] font-bold uppercase tracking-widest bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full font-mono">
-                  AI PROTOCOL
-                </span>
+              <div>        
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mt-6 mb-4">
                   24/7 Έξυπνη <br />Τηλεφωνική Υποδοχή
                 </h3>
@@ -68,10 +65,7 @@ export default function Services() {
             className="bg-zinc-900/20 border border-zinc-800 rounded-[2.5rem] p-8 sm:p-10 relative overflow-hidden group transition-all duration-500 hover:border-emerald-500/50 flex flex-col justify-between min-h-95 backdrop-blur-sm"
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
-              <div>
-                <span className="text-emerald-400 text-[10px] font-bold uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full font-mono">
-                  WORKFLOWS & AUTOMATIONS
-                </span>
+              <div>      
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mt-6 mb-4">
                   Αυτοματοποιήσεις <br />Διαδικασιών
                 </h3>
@@ -99,9 +93,6 @@ export default function Services() {
           >
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>
-                <span className="text-cyan-400 text-[10px] font-bold uppercase tracking-widest bg-cyan-500/10 border border-cyan-500/20 px-3 py-1 rounded-full font-mono">
-                  WEB DEVELOPMENT
-                </span>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mt-6 mb-4">
                   Ανάπτυξη <br />Σύγχρονης Ιστοσελίδας
                 </h3>

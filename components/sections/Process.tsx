@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface ProcessStep {
@@ -46,19 +47,27 @@ export default function Process() {
     <section
       id="process"
       aria-labelledby="process-heading"
-      className="py-20 sm:py-28 bg-[#030303] relative overflow-hidden text-zinc-100"
+      className="py-20 sm:py-28 bg-[#030303] relative overflow-hidden text-zinc-100 font-display"
     >
-      {/* 1. Subtle Tech Grid Pattern Overlay */}
-      <div 
-        aria-hidden="true" 
-        className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
-      />
+      {/* 1. BACKGROUND IMAGE WITH DARK OVERLAY & SEAMLESS DUAL FADE */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <Image
+          src="/images/processbg.jpg" // Place processbg.jpg inside public/images/
+          alt="Process background"
+          fill
+          quality={85}
+          sizes="100vw"
+          className="object-cover object-center opacity-30"
+        />
+        {/* Seamless dark gradient transition from previous section to next section */}
+        <div className="absolute inset-0 bg-linear-to-b from-[#030303] via-[#030303]/5 to-[#030303]" />
+      </div>
 
-      {/* 2. Background Ambient Glow */}
+      {/* 2. Subtle Tech Grid Pattern Overlay */}
       <div 
         aria-hidden="true" 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-6xl h-80 bg-amber-500/5 blur-[160px] rounded-full pointer-events-none" 
-      />
+        className="absolute inset-0 z-1 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-size-[3rem_3rem] md:bg-size-[3.5rem_3.5rem] mask-[radial-gradient(ellipse_70%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+      />     
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         

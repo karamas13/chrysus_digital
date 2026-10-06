@@ -89,7 +89,7 @@ export default function ProblemSection() {
         <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-20">       
           <h2 
             id="digital-solutions-heading" 
-            className="text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-display text-white tracking-tight leading-tight"
           >
             Εκσυγχρονίστε την επιχείρησή σας 
             
@@ -101,7 +101,7 @@ export default function ProblemSection() {
         </header>
 
         {/* Minimal Process Flow Grid */}
-        <div className="relative">
+        <div className="relative font-display">
           
           {/* Dashed Connecting Line (Desktop Only) */}
           <div 
@@ -136,17 +136,17 @@ export default function ProblemSection() {
                   </div>
 
                   {/* Category Tag */}
-                  <span className={`relative z-10 text-[10px] font-mono font-bold uppercase tracking-widest mb-2 ${theme.badge}`}>
+                  <span className={`relative z-10 text-[10px] font-bold uppercase tracking-widest mb-2 ${theme.badge}`}>
                     {item.category}
                   </span>
 
                   {/* Title */}
-                  <h3 className="relative z-10 text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 tracking-tight">
+                  <h3 className="relative z-10 text-base sm:text-lg  text-white mb-2 sm:mb-3 tracking-tight">
                     {item.title}
                   </h3>
 
                   {/* Concise Description */}
-                  <p className="relative z-10 text-zinc-400 text-xs sm:text-sm font-light leading-relaxed max-w-xs">
+                  <p className="relative z-10 text-zinc-400 text-xs sm:text-sm leading-relaxed max-w-xs">
                     {item.description}
                   </p>
                 </motion.article>
