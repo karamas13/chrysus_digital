@@ -9,7 +9,7 @@ export default function ServicesClient() {
   const [hoveredSide, setHoveredSide] = useState<ServiceCategory>(null);
 
   return (
-    <main className="relative min-h-screen w-full bg-[#030303] text-white overflow-hidden pt-30 flex flex-col font-serif">
+    <main className="relative min-h-screen w-full bg-[#030303] text-white overflow-hidden pt-30 flex flex-col font-sans">
       {/* Background Atmosphere */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-white/5 blur-[150px]" />
@@ -17,7 +17,7 @@ export default function ServicesClient() {
 
       {/* Header Info */}
       <div className="text-center pt-8 pb-6 z-20 pointer-events-none px-4">
-        <h1 className="text-3xl md:text-5xl font-black tracking-tight mt-2 text-white font-sans">
+        <h1 className="text-3xl md:text-5xl tracking-tight mt-2 text-white font-sans">
           ΕΠΙΛΕΞΤΕ ΚΑΤΗΓΟΡΙΑ 
           <span className="text-emerald-500"> ΥΠΗΡΕΣΙΩΝ</span>
         </h1>
@@ -54,15 +54,15 @@ export default function ServicesClient() {
               <span className="text-xs font-mono tracking-[0.3em] text-amber-400 uppercase block mb-4">
                 01 // VOICE & CONVERSATION AI
               </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-white group-hover:text-amber-300 transition-colors duration-300 mb-4 font-sans">
+              <h2 className="text-3xl lg:text-4xl text-white group-hover:text-amber-300 transition-colors duration-300 mb-4 font-display">
                 AI Receptionists & Voice Agents
               </h2>
-              <p className="text-zinc-400 text-sm leading-relaxed font-sans font-light mb-8">
+              <p className="text-zinc-400 text-sm leading-relaxed font-display font-light mb-8">
                 Αυτοματοποιημένη τηλεφωνική υποδοχή 24/7 με εξειδικευμένη AI φωνή. Διαχειριστείτε κλήσεις, ραντεβού και αιτήματα πελατών αυτόματα.
               </p>
 
               {/* Bullet Features */}
-              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-sans">
+              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-display">
                 <li className="flex items-center gap-3">
                   <span className="text-amber-400 font-bold">✦</span> 24/7 Αυτόματη Απάντηση Κλήσεων
                 </li>
@@ -112,15 +112,15 @@ export default function ServicesClient() {
               <span className="text-xs font-mono tracking-[0.3em] text-emerald-400 uppercase block mb-4">
                 02 // WORKFLOW & SYSTEMS
               </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-white group-hover:text-emerald-300 transition-colors duration-300 mb-4 font-sans">
+              <h2 className="text-3xl lg:text-4xl  text-white group-hover:text-emerald-300 transition-colors duration-300 mb-4 font-display">
                 Smart Automations
               </h2>
-              <p className="text-zinc-400 text-sm leading-relaxed font-sans font-light mb-8">
+              <p className="text-zinc-400 text-sm leading-relaxed font-display font-light mb-8">
                 Συνδέστε τα συστήματα της επιχείρησής σας. Αυτοματοποιήστε υπενθυμίσεις, CRM ενημερώσεις, follow-ups και εσωτερικά workflows.
               </p>
 
               {/* Bullet Features */}
-              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-sans">
+              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-display">
                 <li className="flex items-center gap-3">
                   <span className="text-emerald-400 font-bold">✦</span> Live Calendar & CRM Integrations
                 </li>
@@ -170,15 +170,15 @@ export default function ServicesClient() {
               <span className="text-xs font-mono tracking-[0.3em] text-cyan-400 uppercase block mb-4">
                 03 // DIGITAL PRESENCE
               </span>
-              <h2 className="text-3xl lg:text-4xl font-black text-white group-hover:text-cyan-300 transition-colors duration-300 mb-4 font-sans">
+              <h2 className="text-3xl lg:text-4xl text-white group-hover:text-cyan-300 transition-colors duration-300 mb-4 font-display">
                 Web Development
               </h2>
-              <p className="text-zinc-400 text-sm leading-relaxed font-sans font-light mb-8">
+              <p className="text-zinc-400 text-sm leading-relaxed font-display font-light mb-8">
                 Σύγχρονες, ultra-fast ιστοσελίδες και web εφαρμογές σχεδιασμένες για μέγιστη μετατροπή επισκεπτών σε πελάτες.
               </p>
 
               {/* Bullet Features */}
-              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-sans">
+              <ul className="space-y-3 mb-8 text-xs text-zinc-300 font-display">
                 <li className="flex items-center gap-3">
                   <span className="text-cyan-400 font-bold">✦</span> Custom High-Performance Architecture
                 </li>

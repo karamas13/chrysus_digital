@@ -72,7 +72,7 @@ export default function Hero() {
       {/* 1. BACKGROUND IMAGE WITH DARK OVERLAY & SEAMLESS BOTTOM FADE */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Image
-          src="/images/bgimg2.jpg" 
+          src="/images/bgimg2.avif" 
           alt="Hero background"
           fill
           priority       

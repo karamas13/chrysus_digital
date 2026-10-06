@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "Τεχνικό SEO",
   ],
   alternates: {
-    canonical: "https://chrysusdigital.com/web-services",
+    canonical: "https://chrysusdigital.com/services/web",
   },
   openGraph: {
     title: "Κατασκευή Ιστοσελίδων & Web Applications | Chrysus Digital",
     description:
       "Ultra-fast custom ιστοσελίδες και web εφαρμογές με ενσωματωμένα συστήματα κρατήσεων και βέλτιστο SEO[cite: 3].",
-    url: "https://chrysusdigital.com/web-services",
+    url: "https://chrysusdigital.com/services/web",
     siteName: "Chrysus Digital",
     locale: "el_GR",
     type: "website",
@@ -38,8 +38,8 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://chrysusdigital.com/web-services/#webpage",
-      url: "https://chrysusdigital.com/web-services",
+      "@id": "https://chrysusdigital.com/services/web/#webpage",
+      url: "https://chrysusdigital.com/services/web",
       name: "Κατασκευή Ιστοσελίδων & Web Applications | Chrysus Digital",
       description:
         "Υπηρεσίες σχεδιασμού και ανάπτυξης custom ιστοσελίδων, web εφαρμογών και συστημάτων κρατήσεων[cite: 3].",

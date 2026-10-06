@@ -52,7 +52,7 @@ export default function Process() {
       {/* 1. BACKGROUND IMAGE WITH DARK OVERLAY & SEAMLESS DUAL FADE */}
       <div className="absolute inset-0 z-0 pointer-events-none select-none">
         <Image
-          src="/images/processbg.jpg" // Place processbg.jpg inside public/images/
+          src="/images/processbg.avif"
           alt="Process background"
           fill
           quality={85}

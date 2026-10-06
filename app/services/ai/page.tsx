@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     "Virtual Voice Assistant",
   ],
   alternates: {
-    canonical: "https://chrysusdigital.com/ai-services",
+    canonical: "https://chrysusdigital.com/services/ai",
   },
   openGraph: {
     title: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
     description:
       "24/7 AI τηλεφωνητές για επιχειρήσεις. Αυτόματος προγραμματισμός ραντεβού, διασύνδεση CRM και φυσική ελληνική ομιλία.",
-    url: "https://chrysusdigital.com/ai-services",
+    url: "https://chrysusdigital.com/services/ai",
     siteName: "Chrysus Digital",
     locale: "el_GR",
     type: "website",
@@ -41,8 +41,8 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://chrysusdigital.com/ai-services/#webpage",
-      url: "https://chrysusdigital.com/ai-services",
+      "@id": "https://chrysusdigital.com/services/ai/#webpage",
+      url: "https://chrysusdigital.com/services/ai",
       name: "AI Voice Agents & Τηλεφωνική Υποδοχή AI | Chrysus Digital",
       description:
         "Υπηρεσίες τεχνητής νοημοσύνης για αυτόματη τηλεφωνική εξυπηρέτηση, διαχείριση ραντεβού και αυτοματοποίηση ροής εργασιών.",

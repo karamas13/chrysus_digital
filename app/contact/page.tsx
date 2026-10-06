@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ContactFlashcards from "@/components/ui/ContactFlashcards";
+import { MapPin } from "lucide-react";
 
 // 1. ΠΛΗΡΕΣ B2B SEO METADATA (.com domain)
 export const metadata: Metadata = {
@@ -70,22 +72,34 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="min-h-screen bg-[#030303] text-zinc-100 py-20 px-6 relative flex flex-col justify-center items-center overflow-hidden mt-10">
+      <main className="min-h-screen bg-[#030303] text-zinc-100 py-20 px-6 relative flex flex-col justify-center items-center overflow-hidden ">
+        {/* Background Image & Dark Overlay */}
+        <div aria-hidden="true" className="absolute inset-0 z-0">
+          <Image
+            src="/images/contactbg.avif"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center pointer-events-none"
+          />      
+          <div className="absolute inset-0 bg-linear-to-b from-[#030303]/90 via-[#030303]/80 to-[#030303]" />
+        </div>
+
         {/* Background Grid Pattern */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"
+          className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none z-0"
         />
 
         {/* Ambient Background Glow */}
         <div
           aria-hidden="true"
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-100 bg-amber-500/5 blur-[180px] rounded-full pointer-events-none"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-100 bg-amber-500/5 blur-[180px] rounded-full pointer-events-none z-0"
         />
 
         {/* Header Section */}
-        <header className="text-center max-w-2xl mx-auto mb-10 relative z-10">   
-          <h1 className="text-3xl sm:text-5xl font-black text-white mt-5 mb-3 tracking-tight font-sans leading-tight">
+        <header className="text-center max-w-2xl mx-auto mb-10 relative z-10"> 
+          <h1 className="text-3xl sm:text-5xl font-black text-white mt-10 mb-3 tracking-tight font-sans leading-tight">
             Ξεκινήστε την Αναβάθμιση της{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-amber-300 via-amber-500 to-amber-200">
               Επιχείρησής σας
@@ -115,7 +129,7 @@ export default function ContactPage() {
             •
           </span>
           <div className="flex items-center gap-2">
-            <span aria-hidden="true">📍</span> Ελλάδα / Remote Services
+            <span aria-hidden="true"><MapPin className="w-4 h-4" /></span> Ελλάδα / Remote Services
           </div>
         </div>
       </main>

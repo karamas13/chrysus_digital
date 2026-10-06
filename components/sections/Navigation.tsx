@@ -81,7 +81,7 @@ export default function Navigation() {
               <li key={link.href}>
                 <Link 
                   href={link.href}
-                  className="text-[11px] lg:text-[12px] xl:text-[13px] font-bold uppercase tracking-wider xl:tracking-[0.25em] text-zinc-400 hover:text-amber-400 transition-colors whitespace-nowrap"
+                  className="text-[11px] lg:text-[12px] xl:text-[15px] font-bold font-display uppercase tracking-wider xl:tracking-[0.25em] text-zinc-300 hover:text-amber-400 transition-colors whitespace-nowrap"
                 >
                   {link.name}
                 </Link>

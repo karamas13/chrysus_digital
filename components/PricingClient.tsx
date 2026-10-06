@@ -488,8 +488,8 @@ export default function PricingClient() {
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-6">
-            <span className="text-amber-400">Αναβαθμίστε σήμερα</span> την Επιχείρησή σας
+          <h1 className="text-4xl md:text-6xl tracking-tight mb-6 font-sans">
+            <span className="text-amber-400 font-bold">Αναβαθμίστε σήμερα</span> την Επιχείρησή σας
           </h1>
           <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
             Διαφανείς τιμές χωρίς κρυφές χρεώσεις. Επιλέξτε τα πακέτα που

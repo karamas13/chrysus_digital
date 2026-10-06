@@ -2,6 +2,19 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Bot, 
+  Zap, 
+  Globe, 
+  Lightbulb, 
+  User, 
+  Mail, 
+  Phone, 
+  Check, 
+  X, 
+  ArrowRight, 
+  LucideIcon 
+} from "lucide-react";
 
 type ServiceOption = "AI Agents" | "Automations" | "Web Development" | "Άλλο";
 
@@ -13,11 +26,11 @@ interface FormDataState {
   message: string;
 }
 
-const serviceOptions: { id: ServiceOption; title: string; icon: string; desc: string }[] = [
-  { id: "AI Agents", title: "AI Agents", icon: "🤖", desc: "Αυτοματοποιημένοι ψηφιακοί βοηθοί" },
-  { id: "Automations", title: "Automations", icon: "⚡", desc: "Βελτιστοποίηση διαδικασιών" },
-  { id: "Web Development", title: "Web Development", icon: "🌐", desc: "Σύγχρονες ιστοσελίδες & Apps" },
-  { id: "Άλλο", title: "Άλλο", icon: "💡", desc: "Εξειδικευμένες λύσεις" },
+const serviceOptions: { id: ServiceOption; title: string; icon: LucideIcon; desc: string }[] = [
+  { id: "AI Agents", title: "AI Agents", icon: Bot, desc: "Αυτοματοποιημένοι ψηφιακοί βοηθοί" },
+  { id: "Automations", title: "Automations", icon: Zap, desc: "Βελτιστοποίηση διαδικασιών" },
+  { id: "Web Development", title: "Web Development", icon: Globe, desc: "Σύγχρονες ιστοσελίδες & Apps" },
+  { id: "Άλλο", title: "Άλλο", icon: Lightbulb, desc: "Εξειδικευμένες λύσεις" },
 ];
 
 export default function ContactFlashcards() {
@@ -27,7 +40,7 @@ export default function ContactFlashcards() {
 
   const [formData, setFormData] = useState<FormDataState>({
     fullName: "",
-    services: ["AI Agents"], // Default to initial selection in an array
+    services: ["AI Agents"],
     email: "",
     phone: "",
     message: "",
@@ -101,7 +114,6 @@ export default function ContactFlashcards() {
     let valid = true;
     const newErrors = { phone: "", email: "" };
 
-    // Validation Τηλεφώνου
     if (formData.phone.length !== 10) {
       newErrors.phone = "Το τηλέφωνο πρέπει να έχει 10 ψηφία.";
       valid = false;
@@ -110,7 +122,6 @@ export default function ContactFlashcards() {
       valid = false;
     }
 
-    // Validation Email
     if (!formData.email.trim() || !isValidEmail(formData.email)) {
       newErrors.email = "Εισάγετε μια έγκυρη διεύθυνση email.";
       valid = false;
@@ -219,7 +230,7 @@ export default function ContactFlashcards() {
             className="flex flex-col items-center justify-center my-auto py-12 text-center"
           >
             <div className="w-12 h-12 border-3 border-amber-400 border-t-transparent rounded-full animate-spin mb-6" aria-hidden="true" />
-            <h3 className="text-xl font-sans  text-[#f1f1f1] mb-2">Αποστολή αλλήλων...</h3>
+            <h3 className="text-xl font-sans text-[#f1f1f1] mb-2">Αποστολή αλλήλων...</h3>
             <p className="text-xs font-display text-zinc-400">Παρακαλώ περιμένετε μια στιγμή.</p>
           </motion.div>
         )}
@@ -233,8 +244,8 @@ export default function ContactFlashcards() {
             aria-live="polite"
             className="flex flex-col items-center justify-center my-auto py-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-6 text-amber-400 text-2xl shadow-lg shadow-amber-400/10" aria-hidden="true">
-              ✓
+            <div className="w-16 h-16 rounded-full bg-amber-400/10 border border-amber-400/30 flex items-center justify-center mb-6 text-amber-400 shadow-lg shadow-amber-400/10" aria-hidden="true">
+              <Check className="w-8 h-8" />
             </div>
             <h3 className="text-2xl font-sans text-[#f1f1f1] mb-2">
               Το μήνυμά σας στάλθηκε!
@@ -245,7 +256,7 @@ export default function ContactFlashcards() {
             <button
               type="button"
               onClick={resetForm}
-              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-display text-xs  rounded-xl transition duration-200 cursor-pointer shadow-lg shadow-amber-400/10"
+              className="w-full py-3.5 bg-amber-400 hover:bg-amber-300 text-black font-display text-xs rounded-xl transition duration-200 cursor-pointer shadow-lg shadow-amber-400/10"
             >
               Επιστροφή στην αρχική
             </button>
@@ -261,10 +272,10 @@ export default function ContactFlashcards() {
             aria-live="assertive"
             className="flex flex-col items-center justify-center my-auto py-8 text-center"
           >
-            <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6 text-red-400 text-2xl shadow-lg shadow-red-500/10" aria-hidden="true">
-              ✕
+            <div className="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center mb-6 text-red-400 shadow-lg shadow-red-500/10" aria-hidden="true">
+              <X className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-sans  text-[#f1f1f1] mb-2">
+            <h3 className="text-2xl font-sans text-[#f1f1f1] mb-2">
               Κάτι πήγε στραβά!
             </h3>
             <p className="text-xs text-zinc-400 font-light mb-8 max-w-xs leading-relaxed">
@@ -273,7 +284,7 @@ export default function ContactFlashcards() {
             <button
               type="button"
               onClick={() => setStatus("idle")}
-              className="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-[#f1f1f1] font-display text-xs  rounded-xl transition duration-200 cursor-pointer"
+              className="w-full py-3.5 bg-zinc-800 hover:bg-zinc-700 text-[#f1f1f1] font-display text-xs rounded-xl transition duration-200 cursor-pointer"
             >
               Δοκιμάστε ξανά
             </button>
@@ -316,10 +327,10 @@ export default function ContactFlashcards() {
                     transition={{ duration: 0.2 }}
                     className="space-y-4"
                   >
-                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400  block">
+                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400 block">
                       ΒΗΜΑ 1
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-sans  text-[#f1f1f1]">
+                    <h3 className="text-2xl sm:text-3xl font-sans text-[#f1f1f1]">
                       Πώς σας λένε;
                     </h3>
                     <p className="text-xs text-zinc-400 font-light">
@@ -330,7 +341,7 @@ export default function ContactFlashcards() {
                       <label htmlFor="fullName" className="sr-only">
                         Ονοματεπώνυμο
                       </label>
-                      <span className="absolute left-4 top-5 text-zinc-500 text-sm" aria-hidden="true">👤</span>
+                      <User className="absolute left-4 top-5 w-4 h-4 text-zinc-500" aria-hidden="true" />
                       <input
                         id="fullName"
                         type="text"
@@ -371,10 +382,10 @@ export default function ContactFlashcards() {
                     transition={{ duration: 0.2 }}
                     className="space-y-4"
                   >
-                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400  block">
+                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400 block">
                       ΒΗΜΑ 2
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-sans  text-[#f1f1f1]">
+                    <h3 className="text-2xl sm:text-3xl font-sans text-[#f1f1f1]">
                       Ποιες υπηρεσίες σας ενδιαφέρουν;
                     </h3>
                     <p className="text-xs text-zinc-400 font-light">
@@ -383,6 +394,7 @@ export default function ContactFlashcards() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
                       {serviceOptions.map((opt) => {
+                        const IconComponent = opt.icon;
                         const isSelected = formData.services.includes(opt.id);
                         return (
                           <button
@@ -396,15 +408,15 @@ export default function ContactFlashcards() {
                                 : "bg-zinc-950/60 border-zinc-800/80 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                             }`}
                           >
-                            <span className="text-lg leading-none mt-0.5" aria-hidden="true">{opt.icon}</span>
+                            <IconComponent className="w-5 h-5 mt-0.5 shrink-0" aria-hidden="true" />
                             <div className="flex-1 pr-6">
-                              <div className="text-xs  font-display text-[#f1f1f1] mb-0.5">{opt.title}</div>
+                              <div className="text-xs font-display text-[#f1f1f1] mb-0.5">{opt.title}</div>
                               <div className="text-[11px] text-zinc-500 font-light leading-snug">{opt.desc}</div>
                             </div>
-                            <div className={`absolute top-3 right-3 w-4 h-4 rounded border flex items-center justify-center text-[10px] transition-colors ${
-                              isSelected ? "bg-amber-400 border-amber-400 text-black " : "border-zinc-700 bg-zinc-900"
+                            <div className={`absolute top-3 right-3 w-4 h-4 rounded border flex items-center justify-center transition-colors ${
+                              isSelected ? "bg-amber-400 border-amber-400 text-black" : "border-zinc-700 bg-zinc-900"
                             }`}>
-                              {isSelected && "✓"}
+                              {isSelected && <Check className="w-3 h-3 stroke-[3]" />}
                             </div>
                           </button>
                         );
@@ -430,10 +442,10 @@ export default function ContactFlashcards() {
                     transition={{ duration: 0.2 }}
                     className="space-y-4"
                   >
-                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400  block">
+                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400 block">
                       ΒΗΜΑ 3
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-sans  text-[#f1f1f1]">
+                    <h3 className="text-2xl sm:text-3xl font-sans text-[#f1f1f1]">
                       Στοιχεία επικοινωνίας
                     </h3>
                     <p className="text-xs text-zinc-400 font-light">
@@ -447,7 +459,7 @@ export default function ContactFlashcards() {
                           Email <span className="text-amber-400">*</span>
                         </label>
                         <div className="relative">
-                          <span className="absolute left-4 top-3.5 text-zinc-500 text-xs" aria-hidden="true">✉</span>
+                          <Mail className="absolute left-3.5 top-3 w-4 h-4 text-zinc-500" aria-hidden="true" />
                           <input
                             id="email"
                             type="email"
@@ -480,7 +492,7 @@ export default function ContactFlashcards() {
                           Τηλέφωνο <span className="text-amber-400">*</span>
                         </label>
                         <div className="relative">
-                          <span className="absolute left-4 top-3.5 text-zinc-500 text-xs" aria-hidden="true">📞</span>
+                          <Phone className="absolute left-3.5 top-3 w-4 h-4 text-zinc-500" aria-hidden="true" />
                           <input
                             id="phone"
                             type="tel"
@@ -519,10 +531,10 @@ export default function ContactFlashcards() {
                     transition={{ duration: 0.2 }}
                     className="space-y-4"
                   >
-                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400  block">
+                    <span className="text-[10px] font-display uppercase tracking-widest text-amber-400 block">
                       ΒΗΜΑ 4
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-sans  text-[#f1f1f1]">
+                    <h3 className="text-2xl sm:text-3xl font-sans text-[#f1f1f1]">
                       Πώς μπορούμε να βοηθήσουμε;
                     </h3>
                     <p className="text-xs text-zinc-400 font-light">
@@ -554,7 +566,7 @@ export default function ContactFlashcards() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="px-5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 font-display text-xs  hover:bg-zinc-900 transition cursor-pointer"
+                  className="px-5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 font-display text-xs hover:bg-zinc-900 transition cursor-pointer"
                 >
                   Πίσω
                 </button>
@@ -569,14 +581,15 @@ export default function ContactFlashcards() {
                     (step === 2 && formData.services.length === 0) ||
                     (step === 3 && (formData.phone.length !== 10 || !formData.email.trim()))
                   }
-                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display text-xs  uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-amber-400/10 ml-auto cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display text-xs uppercase transition disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-amber-400/10 ml-auto cursor-pointer flex items-center gap-1.5"
                 >
-                  Συνέχεια →
+                  <span>Συνέχεια</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               ) : (
                 <button
                   type="submit"
-                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display text-xs  uppercase transition shadow-lg shadow-amber-400/20 ml-auto cursor-pointer"
+                  className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-display text-xs uppercase transition shadow-lg shadow-amber-400/20 ml-auto cursor-pointer"
                 >
                   Αποστολή
                 </button>

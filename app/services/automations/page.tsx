@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "CRM Calendar Integration",
   ],
   alternates: {
-    canonical: "https://chrysusdigital.com/automations",
+    canonical: "https://chrysusdigital.com/services/automations",
   },
   openGraph: {
     title: "Αυτοματοποιήσεις & Business Workflows | Chrysus Digital",
     description:
       "Εξαλείψτε τις ακυρώσεις ραντεβού, ανακτήστε χαμένες κλήσεις και αυτοματοποιήστε τις αξιολογήσεις Google για την επιχείρησή σας.",
-    url: "https://chrysusdigital.com/automations",
+    url: "https://chrysusdigital.com/services/automations",
     siteName: "Chrysus Digital",
     locale: "el_GR",
     type: "website",
@@ -38,8 +38,8 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": "https://chrysusdigital.com/automations/#webpage",
-      url: "https://chrysusdigital.com/automations",
+      "@id": "https://chrysusdigital.com/services/automations/#webpage",
+      url: "https://chrysusdigital.com/services/automations",
       name: "Αυτοματοποιήσεις & Business Workflows | Chrysus Digital",
       description:
         "Υπηρεσίες αυτοματοποίησης επιχειρησιακών διαδικασιών, υπενθυμίσεων SMS, συγχρονισμού CRM και ανάκτησης κλήσεων.",

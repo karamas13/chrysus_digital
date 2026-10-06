@@ -16,7 +16,7 @@ export interface PlanFeature {
   isPopular?: boolean;
   isBestOffer?: boolean;
   features: string[];
-  detailedFeatures?: string[]; // Προαιρετική λίστα με εκτενείς λεπτομέρειες για το modal
+  detailedFeatures?: string[];
 }
 
 interface PricingCardProps {
@@ -98,22 +98,12 @@ export default function PricingCard({ plan, index, accentColor, ctaText }: Prici
             : 'bg-zinc-900/20 border border-zinc-800/80 hover:border-zinc-700'
         }`}
       >
-        <div>
-          <div className="flex justify-between items-center mb-6">
-            <span
-              className={`text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full ${
-                isHighlighted ? theme.badgePopular : 'bg-zinc-800 text-zinc-400'
-              }`}
-            >
-              {plan.badge}
-            </span>
-          </div>
-
-          <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
+        <div className='font-display'>        
+          <h3 className="text-2xl font-bold text-[#f1f1f1] mb-2">{title}</h3>
           <p className="text-zinc-400 text-xs leading-relaxed mb-8 h-10">{plan.description}</p>
 
           <div className="mb-1 flex items-baseline gap-1">
-            <span className="text-4xl font-black text-white">{plan.price}</span>
+            <span className="text-4xl font-black text-[#f1f1f1]">{plan.price}</span>
             {plan.period && <span className="text-zinc-500 text-xs font-mono">{plan.period}</span>}
           </div>
           {subDetail && <p className={`text-[11px] font-mono ${theme.subText} mb-8`}>{subDetail}</p>}
@@ -146,7 +136,7 @@ export default function PricingCard({ plan, index, accentColor, ctaText }: Prici
             className={`w-full block py-4 text-center font-bold text-xs uppercase tracking-widest rounded-xl transition-all ${
               isHighlighted
                 ? theme.buttonPopular
-                : 'bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700'
+                : 'bg-zinc-800 hover:bg-zinc-700 text-[#f1f1f1] border border-zinc-700'
             }`}
           >
             {ctaText}
@@ -173,13 +163,13 @@ export default function PricingCard({ plan, index, accentColor, ctaText }: Prici
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
               transition={{ type: 'spring', duration: 0.4 }}
-              className={`relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-zinc-950 border ${theme.modalBorder} rounded-3xl p-6 md:p-8 shadow-2xl z-10 text-white scrollbar-thin scrollbar-thumb-zinc-800`}
+              className={`relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-zinc-950 border ${theme.modalBorder} rounded-3xl p-6 md:p-8 shadow-2xl z-10 text-[#f1f1f1] scrollbar-thin scrollbar-thumb-zinc-800`}
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+                className="absolute top-6 right-6 p-2 rounded-full bg-zinc-900 text-zinc-400 hover:text-[#f1f1f1] hover:bg-zinc-800 transition-colors"
                 aria-label="Close modal"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,7 +231,7 @@ export default function PricingCard({ plan, index, accentColor, ctaText }: Prici
                   className={`w-full sm:w-2/3 py-3.5 text-center font-bold text-xs uppercase tracking-widest rounded-xl transition-all ${
                     isHighlighted
                       ? theme.buttonPopular
-                      : 'bg-zinc-800 hover:bg-zinc-700 text-white border border-zinc-700'
+                      : 'bg-zinc-800 hover:bg-zinc-700 text-[#f1f1f1] border border-zinc-700'
                   }`}
                 >
                   {ctaText}
